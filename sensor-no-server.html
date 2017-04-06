@@ -6,7 +6,7 @@
 </head>
 
 <body>
-	<h2> V3</h2>  
+	<h2> V4</h2>  
   <div id="myDiv"><!-- Plotly chart will be drawn inside this DIV --></div>
 
   FPS: <div id="fps"></div>
@@ -44,7 +44,12 @@
 		}
 		];		
                 console.time('draw');
- 		Plotly.newPlot('myDiv', d, layout);
+		if(window.drawn) {
+ 		  Plotly.redraw('myDiv');
+		} else {
+		  Plotly.newPlot('myDiv', d, layout);
+	          window.drawn = true;
+		}
                 console.timeEnd('draw');
 
 		document.getElementById('fps').innerHTML = fps.getFPS();
