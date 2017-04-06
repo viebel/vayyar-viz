@@ -2,11 +2,10 @@
 <head>
   <!-- Plotly.js -->
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <script src="https://d3js.org/d3.v4.min.js"></script>
 </head>
 
 <body>
-  
+	<h2> Version 3 </h2>
   <div id="myDiv"><!-- Plotly chart will be drawn inside this DIV --></div>
 
   FPS: <div id="fps"></div>
@@ -18,7 +17,7 @@
 	{
 	//var url='http://localhost:1234/demoData2';
 	var url='http://209.9.36.2:1234/demoData2';
-	d3.json(url, function(error, data) 
+	Plotly.d3.json(url, function(error, data) 
 	{
   		if (error) return console.warn(error);
 
