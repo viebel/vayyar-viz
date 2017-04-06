@@ -43,8 +43,9 @@
 			type: 'heatmap'			
 		}
 		];		
-
+                console.time('draw');
  		Plotly.newPlot('myDiv', d, layout);
+                console.timeEnd('draw');
 
 		document.getElementById('fps').innerHTML = fps.getFPS();
 
