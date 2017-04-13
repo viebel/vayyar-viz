@@ -1,19 +1,48 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Connection from './Connection';
+import GraphAndParams from './GraphAndParams';
+//import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap-theme.css';
 import './App.css';
+import { Grid, Navbar} from 'react-bootstrap';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      url: 'http://209.9.36.2:1234/demoData2',
+      connected: false,
+      sensorData: undefined,
+      fps: undefined,
+    }
+  }
+  connect(url) {
+    this.setState(Object.assign({}, this.state,
+      {url,
+      connected: true}));
+    console.log("connect to: " + url);
+  }
   render() {
+    let url = this.state.connected ? this.state.url : null;
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <div>
+        <Navbar inverse fixedTop>
+          <Grid>
+            <Navbar.Header>
+              <Navbar.Brand>
+                <a href="/">Vayyar Live Visualization </a>
+              </Navbar.Brand>
+            </Navbar.Header>
+          </Grid>
+        </Navbar>
+       <Connection
+         url={this.state.url}
+         onConnect={(url) => this.connect(url)}></Connection>
+       <GraphAndParams
+         url={url}
+         />
+       </div>
     );
   }
 }
