@@ -4,6 +4,7 @@ import GraphAndParams from './GraphAndParams';
 //import logo from './logo.svg';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
+
 import './App.css';
 import { Grid, Navbar} from 'react-bootstrap';
 

@@ -15,15 +15,21 @@ class Slider extends Component{
         <Col sm={6} xs={6}>
           <FormControl
             type="number"
+            min={this.props.args.Min}
+            max={this.props.args.Max}            
             value={this.props.args.Value}
             onChange={(e) => this.props.onChange(e.target.value)}/>
         </Col>
-        <ReactBootstrapSlider
-          value={this.props.args.Value}
-          min={this.props.args.Min}
-          max={this.props.args.Max}
-          change={(e) => this.props.onChange(e.target.value)}
-        />
+        <Col sm={6} xs={6}></Col>
+        <Col sm={6} xs={6}>
+          <ReactBootstrapSlider
+            value={this.props.args.Value}
+            min={this.props.args.Min}
+            max={this.props.args.Max}
+            tooltip="hide"
+            change={(e) => this.props.onChange(e.target.value)}
+            />
+        </Col>
       </FormGroup>
     );
   }
