@@ -1,58 +1,6 @@
 import React, {Component} from 'react';
 import Plotly from 'plotly.js';
-import { Grid, Jumbotron, Button, FormGroup, FormControl, Form, Col} from 'react-bootstrap';
-
-
-function draw(data) {
-    if(window.drawn) {
-	Plotly.restyle('heatmap', {z: [data.Data]});
-    } else {
-	var axisTemplate = {
-  	    range: [data.X0, data.X1],
-	    autorange: false,
-  	    showgrid: true,
-  	    zeroline: false,
-  	    linecolor: 'black',
-  	    showticklabels: true,
-  	    ticks: ''
-	};
-
-	var layout = {
-  	    title: 'Heatmap test',
-  	    xaxis: axisTemplate,
-  	    yaxis: axisTemplate,
-  	    showlegend: false,
-	};
-
-	var d = [
-	    {
-		colorscale: 'Jet',
-		z: data.Data,
-		zmin: 0,
-		zmax: 4000,
-		type: 'heatmapgl'
-	    }
-	];
-	Plotly.newPlot('heatmap', d, layout);
-	window.drawn = true;
-    }
-}
-
-function updateGraph(data)
-{
-    console.time('draw');
-    draw(data);
-    console.timeEnd('draw');
-}
-
-function loadDataAndDraw(url) {
-
-  Plotly.d3.json(url, function(error, data) {
-    if (error) return console.warn(error);
-    updateGraph(data);
-    loadDataAndDraw(url);
-  });
-}
+import {Button} from 'react-bootstrap';
 
 
 class HeatMap extends Component {
@@ -60,34 +8,108 @@ class HeatMap extends Component {
     super(props);
     this.state = {
       data: "n/a",
+      running: true,
+      drawn: false,
     }
   }
-  updateData() {
-    this.setState({data: Math.random()});
+  draw(id, data) {
+    if(this.state.drawn) {
+      Plotly.restyle(id, {z: [data.Data]});
+    } else {
+      var axisTemplate = {
+        range: [data.X0, data.X1],
+        autorange: false,
+        showgrid: true,
+        zeroline: false,
+        linecolor: 'black',
+        showticklabels: true,
+        ticks: ''
+      };
+
+      var layout = {
+        xaxis: axisTemplate,
+        yaxis: axisTemplate,
+        showlegend: false,
+      };
+
+      var d = [
+        {
+          colorscale: 'Jet',
+          z: data.Data,
+          zmin: 0,
+          zmax: 4000,
+          type: 'heatmapgl'
+        }
+      ];
+      Plotly.newPlot(id, d, layout);
+      this.setState(Object.assign({}, this.state, {drawn: true}));
+    }
+  }
+
+  updateGraph(id, data)
+  {
+    console.time('draw');
+    this.draw(id, data);
+    console.timeEnd('draw');
+  }
+  loadDataAndDraw() {
+    var that = this;
+    Plotly.d3.json(this.props.url, function(error, data) {
+      if(!that.state.running) {
+        return;
+      }
+      if (error) return console.warn(error);
+      that.updateGraph('heatmap', data);
+      that.loadDataAndDraw();
+    });
   }
   componentDidMount() {
-    loadDataAndDraw(this.props.url);
+    this.loadDataAndDraw();
+  }
+  toggle() {
+    this.setState(Object.assign({}, this.state, {running:!this.state.running}));
+    this.loadDataAndDraw();
+  }
+
+  playOrPauseButtonText() {
+    if(this.state.running) {
+      return "Pause";
+    }
+    return "Play";
   }
   render() {
     return (
-      <div id="heatmap"> </div>
+      <div>
+        <Button
+          onClick={() => this.toggle()}
+          bsStyle="primary"
+          >
+          {this.playOrPauseButtonText()}
+        </Button>
+        <div id="heatmap"> </div>
+      </div>
     );
   }
 }
 class Graph extends Component {
-  constructor(props) {
-    super(props);
-  }
+
   render () {
     let heatmap;
-    if (this.props.url) heatmap = <HeatMap url={this.props.url}></HeatMap>;
-      return (
-        <div>
-          <h1> Heat Map {this.props.url}</h1>
-          { heatmap }
-        </div>
-      );
+    if (this.props.url) {
+      heatmap = <HeatMap
+        running={this.props.running}
+        url={this.props.url}
+        ></HeatMap>;
+      } else {
+        heatmap = <div>Not connected</div>;
+        }
+        return (
+          <div>
+            <h1> Heat Map </h1>
+            { heatmap }
+          </div>
+        );
+      }
     }
-  }
 
-  export default Graph;
+    export default Graph;

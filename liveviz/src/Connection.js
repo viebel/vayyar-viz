@@ -44,8 +44,7 @@ class Connection extends Component {
             <Button
               onClick={() => this.connect()}
               type="button"
-              bsStyle="primary"
-              >
+              bsStyle="primary">
               Connect
             </Button>
           </Form>

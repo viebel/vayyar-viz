@@ -3,21 +3,11 @@ import { Grid, Jumbotron, Button, FormGroup,
          FormControl, Form, Col} from 'react-bootstrap';
 
 import Graph from './Graph';
+import Params from './Params';
 
-
-class Params extends Component {
-   render() {
-     return (
-       <h1> Params </h1>
-     );
-   }
-}
 
 
 class GraphAndParams extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <Grid>
