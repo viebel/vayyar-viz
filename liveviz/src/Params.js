@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {Button, Form, Col} from 'react-bootstrap';
 import Boolean from './controls/Boolean';
+import Slider from './controls/Slider';
+
 
 const params = {
   "variables":[
@@ -72,14 +74,6 @@ const params = {
       "Description":"Background Removal",
       "DefaultValue":true
     },
-    {
-      "VisibleName":"BG Removal.MTI",
-      "ActualName":"x.boolvb",
-      "VariableType":"Boolean",
-      "Value":false,
-      "Description":"Color Removal",
-      "DefaultValue":true
-    }
   ],
 };
 
@@ -91,7 +85,9 @@ function DefaultControl(props) {
 
 class Param extends Component {
   typeToComponent(type) {
-    const m = {'Boolean': Boolean};
+    const m = {Boolean: Boolean,
+               Slider: Slider,
+               };
     return m[type] || DefaultControl;
   }
   render(){
@@ -140,6 +136,7 @@ class Param extends Component {
         };
       }
     );
+    console.log('sendParams: ' + JSON.stringify(p));
   }
   findParam (name) {
     return this.state.params.find(x => x.ActualName === name);
