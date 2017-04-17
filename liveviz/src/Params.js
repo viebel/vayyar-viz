@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Button, Form, Col} from 'react-bootstrap';
+import {Button, Form, ButtonToolbar} from 'react-bootstrap';
 import Boolean from './controls/Boolean';
 import Slider from './controls/Slider';
 
@@ -86,8 +86,8 @@ function DefaultControl(props) {
 class Param extends Component {
   typeToComponent(type) {
     const m = {Boolean: Boolean,
-               Slider: Slider,
-               };
+      Slider: Slider,
+    };
     return m[type] || DefaultControl;
   }
   render(){
@@ -126,7 +126,13 @@ class Param extends Component {
       };
       this.updateParam = this.updateParam.bind(this);
       this.sendParams = this.sendParams.bind(this);
-
+      this.resetParams = this.resetParams.bind(this);
+    }
+    resetParams() {
+      let state = this.state;
+      state.params.forEach(p => p.Value = p.DefaultValue);
+      this.setState(state);
+      this.sendParams();
     }
     sendParams() {
       let p = this.state.params.map(p => {
@@ -149,15 +155,23 @@ class Param extends Component {
   render() {
     return (
       <div>
-        <h1> Params</h1>
+        <h1> Parameters</h1>
         <ParamsList
           updateParam={this.updateParam}
-          params={this.state.params}></ParamsList>
-        <Button
-          onClick={this.sendParams}
-          bsStyle="primary">
-          Update Params
-        </Button>
+          params={this.state.params}>
+        </ParamsList>
+        <ButtonToolbar>
+          <Button
+            onClick={this.resetParams}
+            bsStyle="primary">
+            Reset Params
+          </Button>
+          <Button
+            onClick={this.sendParams}
+            bsStyle="primary">
+            Update Params
+          </Button>
+        </ButtonToolbar>
       </div>
     );
   }
