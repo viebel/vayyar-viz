@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import { Grid, Jumbotron, Button, FormGroup,
-         FormControl, Form, Col} from 'react-bootstrap';
+import { Grid, Col} from 'react-bootstrap';
 
 import Graph from './Graph';
 import Params from './Params';

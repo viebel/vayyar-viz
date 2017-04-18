@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {FormGroup, FormControl, ControlLabel, Radio, Col} from 'react-bootstrap';
+import {FormGroup, ControlLabel, Radio, Col} from 'react-bootstrap';
 
 
 class Boolean extends Component{

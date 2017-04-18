@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Button, Form, ButtonToolbar} from 'react-bootstrap';
 import Boolean from './controls/Boolean';
 import Slider from './controls/Slider';
+import {assoc, map, findIndex, propEq, adjust} from 'ramda';
 
 
 const params = {
@@ -129,9 +130,8 @@ class Param extends Component {
       this.resetParams = this.resetParams.bind(this);
     }
     resetParams() {
-      let state = this.state;
-      state.params.forEach(p => p.Value = p.DefaultValue);
-      this.setState(state);
+      let params = map(p => assoc('Value', p.DefaultValue, p))(this.state.params);
+      this.setState(assoc('params', params, this.state));
       this.sendParams();
     }
     sendParams() {
@@ -144,13 +144,10 @@ class Param extends Component {
     );
     console.log('sendParams: ' + JSON.stringify(p));
   }
-  findParam (name) {
-    return this.state.params.find(x => x.ActualName === name);
-  }
   updateParam(name, value) {
-    let param = this.findParam(name);
-    param.Value = value;
-    this.setState(this.state);
+    const idx = findIndex(propEq('ActualName', name), this.state.params);
+    const params = adjust(assoc('Value',value), idx)(this.state.params);
+    this.setState(assoc('params', params, this.state));
   }
   render() {
     return (
