@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Grid, Jumbotron, Button, FormGroup,
-         FormControl, Form} from 'react-bootstrap';
+import { Grid, Jumbotron, Button, FormGroup, FormControl, Form} from 'react-bootstrap';
+import {merge} from 'ramda';
 
 class Connection extends Component {
   constructor(props) {
@@ -14,10 +14,8 @@ class Connection extends Component {
     return true;
   }
   handleChangeUrl(e) {
-    this.setState(Object.assign({}, this.state, {url: e.target.value}));
-  }
-  getValidationState () {
-    return 'error';
+    let url = e.target.value;
+    this.setState(merge(this.state, {url}));
   }
   render() {
     return (
@@ -26,32 +24,30 @@ class Connection extends Component {
           <h1>Welcome to Vayyar</h1>
           <p>
             Connect to a sensor <br></br>
-          </p>
-          <Form inline>
-            <FormGroup
-              controlId="url"
-              validationState={this.getValidationState()}>
-              <FormControl
-                type="text"
-                ref="url"
-                value={this.state.url}
-                onChange={(e) => this.handleChangeUrl(e)}
-                placeholder="Url of the sensor server">
-              </FormControl>
-              <FormControl.Feedback />
-            </FormGroup>
-             {' '}
-            <Button
-              onClick={() => this.connect()}
-              type="button"
-              bsStyle="primary">
-              Connect
-            </Button>
-          </Form>
-        </Grid>
-      </Jumbotron>
-    );
-  }
+        </p>
+        <Form inline>
+          <FormGroup
+            controlId="url">
+            <FormControl
+              type="text"
+              ref="url"
+              value={this.state.url}
+              onChange={(e) => this.handleChangeUrl(e)}
+              placeholder="Url of the sensor server">
+            </FormControl>
+          </FormGroup>
+          {' '}
+          <Button
+            onClick={() => this.connect()}
+            type="button"
+            bsStyle="primary">
+            Connect
+          </Button>
+        </Form>
+      </Grid>
+    </Jumbotron>
+  );
+}
 }
 
 export default Connection;

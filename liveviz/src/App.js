@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap-theme.css';
 
 import './App.css';
 import { Grid, Navbar} from 'react-bootstrap';
+import {merge} from 'ramda';
 
 class App extends Component {
   constructor() {
@@ -19,10 +20,7 @@ class App extends Component {
     }
   }
   connect(url) {
-    this.setState(Object.assign({}, this.state,
-      {url,
-      connected: true}));
-    console.log("connect to: " + url);
+    this.setState(merge(this.state, {url,connected: true}));
   }
   render() {
     let url = this.state.connected ? this.state.url : null;
@@ -37,13 +35,13 @@ class App extends Component {
             </Navbar.Header>
           </Grid>
         </Navbar>
-       <Connection
-         url={this.state.url}
-         onConnect={(url) => this.connect(url)}></Connection>
-       <GraphAndParams
-         url={url}
-         />
-       </div>
+        <Connection
+          url={this.state.url}
+          onConnect={(url) => this.connect(url)}></Connection>
+        <GraphAndParams
+          url={url}
+          />
+      </div>
     );
   }
 }

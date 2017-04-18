@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Plotly from 'plotly.js';
 import {Button} from 'react-bootstrap';
+import {merge} from 'ramda';
 
 
 class HeatMap extends Component {
@@ -42,15 +43,13 @@ class HeatMap extends Component {
         }
       ];
       Plotly.newPlot(id, d, layout);
-      this.setState(Object.assign({}, this.state, {drawn: true}));
+      this.setState(merge(this.state, {drawn: true}));
     }
   }
 
   updateGraph(id, data)
   {
-    console.time('draw');
     this.draw(id, data);
-    console.timeEnd('draw');
   }
   loadDataAndDraw() {
     var that = this;
@@ -67,7 +66,8 @@ class HeatMap extends Component {
     this.loadDataAndDraw();
   }
   toggle() {
-    this.setState(Object.assign({}, this.state, {running:!this.state.running}));
+    let running = !this.state.running;
+    this.setState(merge(this.state, {running}));
     this.loadDataAndDraw();
   }
 
@@ -82,8 +82,7 @@ class HeatMap extends Component {
       <div>
         <Button
           onClick={() => this.toggle()}
-          bsStyle="primary"
-          >
+          bsStyle="primary">
           {this.playOrPauseButtonText()}
         </Button>
         <div id="heatmap"> </div>

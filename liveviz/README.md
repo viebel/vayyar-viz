@@ -18,12 +18,15 @@ npm run deploy
 - group parameters
 - display fps
 - more params types
-- reset params
 - improve styles
 
 ## Bugs
 
 - memory leak?
+
+## DONE
+- reset params
+
 
 ## More info
 
