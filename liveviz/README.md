@@ -15,7 +15,6 @@ npm run deploy
 ## TODO
 
 - get/send params to server
-- group parameters
 - display fps
 - more params types
 - improve styles
@@ -26,6 +25,8 @@ npm run deploy
 
 ## DONE
 - reset params
+- group parameters
+
 
 
 ## More info

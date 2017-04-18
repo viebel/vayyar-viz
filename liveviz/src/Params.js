@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Button, Form, ButtonToolbar} from 'react-bootstrap';
 import Boolean from './controls/Boolean';
 import Slider from './controls/Slider';
-import {assoc, map, findIndex, propEq, adjust} from 'ramda';
+import {assoc, map, findIndex, propEq, adjust, groupBy, split, head, keys} from 'ramda';
 
 
 const params = {
@@ -99,25 +99,54 @@ class Param extends Component {
     };
   }
 
-  class ParamsList extends Component {
-    render(){
-      return (
-        <Form horizontal>
-          {
-            this.props.params.map (param =>
-              <Param
-                onChange={(val) => this.props.updateParam(param.ActualName, val)}
-                key={param.ActualName}
-                args={param}
-                type={param.VariableType}>
-              </Param>
-            )
-          }
-        </Form>
-      );
+  const ParamsList = ({params, updateParam}) =>
+  <Form horizontal>
+    {
+      params.map (param =>
+        <Param
+          onChange={(val) => updateParam(param.ActualName, val)}
+          key={param.ActualName}
+          args={param}
+          type={param.VariableType}>
+        </Param>
+      )
     }
+  </Form>
 
-  }
+
+  const ParamsGroup = ({group, updateParam, params}) =>
+  <div key={group}>
+    <h2> {group} </h2>
+    <ParamsList
+      updateParam={updateParam}
+      params={params}>
+    </ParamsList>
+  </div>
+
+  const ParamsUI = ({paramsByCategory, updateParam, resetParams, sendParams}) =>
+    <div>
+      <h1> Parameters</h1> {
+        map( group =>
+          <ParamsGroup
+            key={group}
+            updateParam={updateParam}
+            group={group}
+            params={paramsByCategory[group]}/>
+        )(keys(paramsByCategory))
+      }
+      <ButtonToolbar>
+        <Button
+          onClick={resetParams}
+          bsStyle="primary">
+          Reset Params
+        </Button>
+        <Button
+          onClick={sendParams}
+          bsStyle="primary">
+          Update Params
+        </Button>
+      </ButtonToolbar>
+    </div>
 
   class Params extends Component {
     constructor(props){
@@ -149,27 +178,18 @@ class Param extends Component {
     const params = adjust(assoc('Value',value), idx)(this.state.params);
     this.setState(assoc('params', params, this.state));
   }
+  paramsByCategory() {
+    return groupBy(p => head(split('.', p.VisibleName)))(this.state.params);
+  }
+
   render() {
     return (
-      <div>
-        <h1> Parameters</h1>
-        <ParamsList
-          updateParam={this.updateParam}
-          params={this.state.params}>
-        </ParamsList>
-        <ButtonToolbar>
-          <Button
-            onClick={this.resetParams}
-            bsStyle="primary">
-            Reset Params
-          </Button>
-          <Button
-            onClick={this.sendParams}
-            bsStyle="primary">
-            Update Params
-          </Button>
-        </ButtonToolbar>
-      </div>
+      <ParamsUI
+        paramsByCategory={this.paramsByCategory()}
+        updateParam={this.updateParam}
+        resetParams={this.resetParams}
+        sendParams={this.sendParams}
+        />
     );
   }
 }
