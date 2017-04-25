@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "golden-layout": "^1.5.7",
     "plotly.js": "^1.25.2",
     "ramda": "^0.23.0",
     "react": "^15.4.0",

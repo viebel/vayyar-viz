@@ -82,9 +82,7 @@ module.exports = {
     alias: {
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
-	'react-native': 'react-native-web',
-     // https://github.com/seiyria/bootstrap-slider#how-do-i-exclude-the-optional-jquery-dependency-from-my-build
-	"jquery": paths.appSrc + "/jquery-stub.js"	
+	'react-native': 'react-native-web'
     }
   },
   
