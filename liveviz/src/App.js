@@ -13,17 +13,21 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      url: 'http://209.9.36.2:1234/demoData2',
-      connected: false,
-      sensorData: undefined,
-      fps: undefined,
+      url: 'http://209.9.36.2:1234',
+      status: "disconnected",
+      graphKey: 0,
     }
+    this.connect = this.connect.bind(this);
+    this.updateStatus = this.updateStatus.bind(this);
   }
   connect(url) {
-    this.setState(merge(this.state, {url,connected: true}));
+    this.setState(merge(this.state, {url, status: "connecting", graphKey: this.state.graphKey+1}));
+  }
+  updateStatus(status) {
+    this.setState(merge(this.state, {status}));
   }
   render() {
-    let url = this.state.connected ? this.state.url : null;
+    let {url, status} = this.state;
     return (
       <div>
         <Navbar inverse fixedTop>
@@ -36,11 +40,13 @@ class App extends Component {
           </Grid>
         </Navbar>
         <Connection
-          url={this.state.url}
-          onConnect={(url) => this.connect(url)}></Connection>
-        <GraphAndParams
           url={url}
-          />
+          onConnect={this.connect}></Connection>
+        <GraphAndParams
+          key={ this.state.graphKey } /* use key in order to force re-mounting each time we re-connect */
+          url={ url }
+          status={ status }
+          updateStatus={this.updateStatus}/>
       </div>
     );
   }
