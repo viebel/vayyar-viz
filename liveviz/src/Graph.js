@@ -1,5 +1,7 @@
 import React from 'react';
 import HeatMap from './HeatMap';
+import Tracker from './Tracker';
+
 
 function DefaultGraph({type}) {
   return (
@@ -11,6 +13,7 @@ function DefaultGraph({type}) {
 function Graph  ({url, status, updateStatus, title, type}) {
   const typeToGraph = {
     HeatMap,
+    Tracker,
   };
   let Component = typeToGraph[type] || DefaultGraph;
   return (

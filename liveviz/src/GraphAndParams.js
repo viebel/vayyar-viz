@@ -23,8 +23,8 @@ function GraphAndParams ({url, status, updateStatus}) {
           <Row>
             <Graph
               url={url}
-              type="HeatMap"
-              title="Heat Map"
+              type="Tracker"
+              title="Tracker"
               updateStatus={updateStatus}
               status={status}/>
           </Row>
