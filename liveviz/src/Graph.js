@@ -1,22 +1,31 @@
 import React from 'react';
 import HeatMap from './HeatMap';
 
-function Graph  ({url, status, updateStatus}) {
-  let heatmap;
-  if (status !== "disconnected") {
-    heatmap = <HeatMap
-      status={status}
-      updateStatus={updateStatus}
-      url={url}/>;
-  } else {
-    heatmap = <div>Not connected</div>;
-    }
-    return (
+function DefaultGraph({type}) {
+  return (
+    <div>
+      Graph of type <strong>{type}</strong> is not supported.
+    </div>
+  )
+}
+function Graph  ({url, status, updateStatus, title, type}) {
+  const typeToGraph = {
+    HeatMap,
+  };
+  let Component = typeToGraph[type] || DefaultGraph;
+  return (
+    <div>
+      <h1> { title } </h1>
       <div>
-        <h1> Heat Map </h1>
-        { heatmap }
+        <div>status: {status}</div>
+        <Component
+          type={type}
+          status={status}
+          updateStatus={updateStatus}
+          url={url}/>
       </div>
-    );
-  }
+    </div>
+  );
+}
 
-  export default Graph;
+export default Graph;

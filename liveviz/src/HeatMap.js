@@ -13,9 +13,9 @@ class HeatMap extends Component {
     }
     this.toggle = this.toggle.bind(this);
   }
-  draw(id, data) {
+  draw(data) {
     if(this.state.drawn) {
-      Plotly.restyle(id, {z: [data.Data]});
+      Plotly.restyle(this.container, {z: [data.Data]});
     } else {
       var axisTemplate = {
         range: [data.X0, data.X1],
@@ -42,14 +42,14 @@ class HeatMap extends Component {
           type: 'heatmapgl'
         }
       ];
-      Plotly.newPlot(id, d, layout);
+      Plotly.newPlot(this.container, d, layout);
       this.setState(merge(this.state, {drawn: true}));
     }
   }
 
-  updateGraph(id, data)
+  updateGraph(data)
   {
-    this.draw(id, data);
+    this.draw(data);
   }
   loadDataAndDraw() {
     var that = this;
@@ -64,12 +64,14 @@ class HeatMap extends Component {
         return;
       }
       that.props.updateStatus("connected");
-      that.updateGraph('heatmap', data);
+      that.updateGraph(data);
       that.loadDataAndDraw();
     });
   }
   componentDidMount() {
-    this.loadDataAndDraw();
+    if(this.props.status !== "disconnected") {
+      this.loadDataAndDraw();
+    }
   }
   componentWillUnmount() {
     this.unmounted = true;
@@ -89,21 +91,20 @@ class HeatMap extends Component {
     let {status} = this.props;
     if (status === "error") {
       errorOrMap = <div>{this.state.error}</div>;
-    }  else {
-      errorOrMap = <div id="heatmap"/>;
+      }  else {
+        errorOrMap = <div ref={element => this.container = element}/>;
+      }
+      return (
+        <div>
+          <Button
+            onClick={ this.toggle }
+            bsStyle="primary">
+            { this.playOrPauseButtonText() }
+          </Button>
+          { errorOrMap }
+        </div>
+      );
     }
-    return (
-      <div>
-        <Button
-          onClick={ this.toggle }
-          bsStyle="primary">
-          { this.playOrPauseButtonText() }
-        </Button>
-        <div>Status: { status }</div>
-        { errorOrMap }
-      </div>
-    );
   }
-}
 
-export default HeatMap;
+  export default HeatMap;
