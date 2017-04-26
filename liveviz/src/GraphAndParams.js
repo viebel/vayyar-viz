@@ -1,10 +1,11 @@
-import React from 'react';
-import { Grid, Col, Row} from 'react-bootstrap';
+import React, {Component} from 'react';
+import { Grid, Col, Row, Button} from 'react-bootstrap';
 import Graph from './Graph';
 import Params from './Params';
+import {assoc} from 'ramda';
 
 
-function GraphAndParams ({url, status, updateStatus}) {
+function GraphAndParamsUI ({url, status, running, updateStatus, playOrPauseButtonText, toggleRunning}) {
   return (
     <Grid>
       <Row>
@@ -13,8 +14,16 @@ function GraphAndParams ({url, status, updateStatus}) {
         </Col>
         <Col md={8} xs={6}>
           <Row>
+            <Button
+              onClick={ toggleRunning }
+              bsStyle="primary">
+              { playOrPauseButtonText() }
+            </Button>
+          </Row>
+          <Row>
             <Graph
               url={url}
+              running={running}
               type="HeatMap"
               title="Heat Map"
               updateStatus={updateStatus}
@@ -23,6 +32,7 @@ function GraphAndParams ({url, status, updateStatus}) {
           <Row>
             <Graph
               url={url}
+              running={running}
               type="Tracker"
               title="Tracker"
               updateStatus={updateStatus}
@@ -34,4 +44,29 @@ function GraphAndParams ({url, status, updateStatus}) {
   );
 }
 
+class GraphAndParams extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      running: true,
+    };
+    this.toggleRunning = this.toggleRunning.bind(this);
+    this.playOrPauseButtonText = this.playOrPauseButtonText.bind(this);
+  }
+  playOrPauseButtonText() {
+    return (this.state.running ? "Pause" : "Play");
+  }
+  toggleRunning() {
+    this.setState(assoc("running", !this.state.running, this.state));
+  }
+  render() {
+    return(
+      <GraphAndParamsUI
+        playOrPauseButtonText={this.playOrPauseButtonText}
+        toggleRunning={this.toggleRunning}
+        running={this.state.running}
+        {...this.props}/>
+    )
+  }
+}
 export default GraphAndParams;

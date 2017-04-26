@@ -1,17 +1,14 @@
 import React, {Component} from 'react';
 import Plotly from 'plotly.js';
-import {Button} from 'react-bootstrap';
-import {merge} from 'ramda';
+import {merge, assoc} from 'ramda';
 
 class HeatMap extends Component {
   constructor(props) {
     super(props);
     this.state = {
       data: "n/a",
-      running: true,
       drawn: false,
     }
-    this.toggle = this.toggle.bind(this);
   }
   draw(data) {
     if(this.state.drawn) {
@@ -47,20 +44,19 @@ class HeatMap extends Component {
     }
   }
 
-  updateGraph(data)
-  {
+  updateGraph(data) {
     this.draw(data);
   }
   loadDataAndDraw() {
-    var that = this;
-    let url = that.props.url + '/demoData2';
+    const that = this,
+      url = that.props.url + '/demoData2';
     Plotly.d3.json(url, function(error, data) {
-      if(!that.state.running || that.unmounted) {
+      if(!that.props.running || that.unmounted) {
         return;
       }
       if (error) {
         that.props.updateStatus("error");
-        that.setState(merge(that.state, {error: `Cannot connect to server at ${url}:  ${error.statusText}`}));
+        that.setState(assoc('error', `Cannot connect to server at ${url}:  ${error.statusText}`, that.state));
         return;
       }
       that.props.updateStatus("connected");
@@ -76,16 +72,12 @@ class HeatMap extends Component {
   componentWillUnmount() {
     this.unmounted = true;
   }
-  toggle() {
-    this.setState(merge(this.state, {running: !this.state.running}));
-    this.loadDataAndDraw();
-  }
-  playOrPauseButtonText() {
-    if(this.state.running) {
-      return "Pause";
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.running && !this.props.running) {
+      this.loadDataAndDraw();
     }
-    return "Play";
   }
+
   render() {
     let errorOrMap;
     let {status} = this.props;
@@ -96,11 +88,6 @@ class HeatMap extends Component {
       }
       return (
         <div>
-          <Button
-            onClick={ this.toggle }
-            bsStyle="primary">
-            { this.playOrPauseButtonText() }
-          </Button>
           { errorOrMap }
         </div>
       );

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import d3 from 'd3';
-import {merge} from 'ramda';
+import {merge, assoc} from 'ramda';
 import './styles/tracker.css';
 
 const json = {
@@ -52,25 +52,33 @@ class Tracker extends Component {
     }
   }
   loadDataAndDraw() {
-    var that = this;
-    let url = that.props.url + '/Targets';
+    const that = this,
+      url = that.props.url + '/Targets';
     d3.json(url, function(error, data) {
-      if(!that.state.running || that.unmounted) {
+      if(!that.props.running || that.unmounted) {
         return;
       }
       if (error) {
         that.props.updateStatus("error");
-        that.setState(merge(that.state, {error: `Cannot connect to server at ${url}:  ${error.statusText}`}));
+        that.setState(assoc('error', `Cannot connect to server at ${url}:  ${error.statusText}`, that.state));
         return;
       }
       that.props.updateStatus("connected");
-      that.updateGraph(data);
+      that.setState(assoc('targets', data.targets, that.state));
       that.loadDataAndDraw();
     });
   }
   componentDidMount() {
     const {width, height} = this.domElement.getBoundingClientRect();
     this.setState(merge(this.state, {width, height}));
+    if(this.props.status !== "disconnected") {
+      this.loadDataAndDraw();
+    }
+  }
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.running && !this.props.running) {
+      this.loadDataAndDraw();
+    }
   }
   componentWillUnmount() {
     this.unmounted = true;

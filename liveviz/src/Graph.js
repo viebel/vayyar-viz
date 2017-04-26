@@ -10,22 +10,19 @@ function DefaultGraph({type}) {
     </div>
   )
 }
-function Graph  ({url, status, updateStatus, title, type}) {
+function Graph  (props) {
   const typeToGraph = {
     HeatMap,
     Tracker,
-  };
-  let Component = typeToGraph[type] || DefaultGraph;
+  },
+  {status, title, type} = props,
+  Component = typeToGraph[type] || DefaultGraph;
   return (
     <div>
       <h1> { title } </h1>
       <div>
         <div>status: {status}</div>
-        <Component
-          type={type}
-          status={status}
-          updateStatus={updateStatus}
-          url={url}/>
+        <Component {...props}/>
       </div>
     </div>
   );
