@@ -28,7 +28,7 @@ docker build -t vayyar/liveviz .
 Run the docker image (e.g. on port 9999):
 
 ```sh
- docker run -it -p 9999:8080 vayyar/liveviz
+ docker run -p 9999:8080 vayyar/liveviz
 ```
 
 
