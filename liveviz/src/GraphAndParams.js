@@ -10,7 +10,7 @@ function GraphAndParamsUI ({url, status, running, updateStatus, playOrPauseButto
     <Grid>
       <Row>
         <Col md={4} xs={6}>
-          <Params></Params>
+          <Params url={url}></Params>
         </Col>
         <Col md={8} xs={6}>
           <Row>

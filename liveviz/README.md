@@ -34,6 +34,7 @@ Run the docker image (e.g. on port 9999):
 
 ## TODO
 
+- route per app
 - get/send params to server
 - display fps
 - more params types

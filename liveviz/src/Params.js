@@ -4,90 +4,23 @@ import Boolean from './controls/Boolean';
 import Slider from './controls/Slider';
 import {assoc, map, findIndex, propEq, adjust, groupBy, split, head, keys} from 'ramda';
 
+const paramsRequestId = 'UpdateConfigurationEditor';
+const paramsRequestTypeId = 'MatGUIInterfaces.UpdateConfigurationEditorDataBlock, MatGUIInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null';
 
-const params = {
-  "variables":[
-    {
-      "VisibleName":"Arena.X_Min",
-      "ActualName":"x.amin",
-      "VariableType":"Slider",
-      "Value":3.0,
-      "Description":"Arena X min",
-      "Min":1.0,
-      "Max":100.0,
-      "DefaultValue":3.0
-    },
-    {
-      "VisibleName":"Arena.X_Max",
-      "ActualName":"x.amax",
-      "VariableType":"Slider",
-      "Value":10.0,
-      "Description":"Arena X max",
-      "Min":1.0,
-      "Max":100.0,
-      "DefaultValue":10.0
-    },
-    {
-      "VisibleName":"Arena.Y_Min",
-      "ActualName":"x.bmin",
-      "VariableType":"Slider",
-      "Value":4.0,
-      "Description":"Arena Y min",
-      "Min":1.0,
-      "Max":100.0,
-      "DefaultValue":4.0
-    },
-    {
-      "VisibleName":"Arena.Y_Max",
-      "ActualName":"x.bmax",
-      "VariableType":"Slider",
-      "Value":8.0,
-      "Description":"Arena Y max",
-      "Min":1.0,
-      "Max":100.0,
-      "DefaultValue":8.0
-    },
-    {
-      "VisibleName":"Arena.Z_Min",
-      "ActualName":"x.cmin",
-      "VariableType":"Slider",
-      "Value":5.0,
-      "Description":"Arena Z min",
-      "Min":1.0,
-      "Max":100.0,
-      "DefaultValue":5.0
-    },
-    {
-      "VisibleName":"Arena.Z_Max",
-      "ActualName":"x.cmax",
-      "VariableType":"Slider",
-      "Value":50.0,
-      "Description":"Arena Z max",
-      "Min":1.0,
-      "Max":100.0,
-      "DefaultValue":50.0
-    },
-    {
-      "VisibleName":"BG Removal.MTI",
-      "ActualName":"x.boolv",
-      "VariableType":"Boolean",
-      "Value":true,
-      "Description":"Background Removal",
-      "DefaultValue":true
-    },
-  ],
-};
 
 function DefaultControl(props) {
   return (
-    <div> {JSON.stringify(props)} </div>
+    <div> Unsupported Param: {props.type} <br/>
+    {JSON.stringify(props)} </div>
   );
 }
 
 class Param extends Component {
   typeToComponent(type) {
-    const m = {Boolean: Boolean,
+    const m = {
+      Boolean: Boolean,
       Slider: Slider,
+      Checkbox: Boolean,
     };
     return m[type] || DefaultControl;
   }
@@ -150,11 +83,20 @@ class Params extends Component {
   constructor(props){
     super(props);
     this.state = {
-      params: params.variables,
+      params: [],
     };
     this.updateParam = this.updateParam.bind(this);
     this.sendParams = this.sendParams.bind(this);
     this.resetParams = this.resetParams.bind(this);
+  }
+  componentDidMount() {
+    fetch(`${this.props.url}/${paramsRequestId}`, {
+      method: 'GET'
+    })
+    .then(response => response.json())
+    .then(params => {
+      this.setState(assoc('params', params.variables, this.state));
+    });
   }
   resetParams() {
     let params = map(p => assoc('Value', p.DefaultValue, p))(this.state.params);
@@ -162,34 +104,49 @@ class Params extends Component {
     this.sendParams();
   }
   sendParams() {
-    let p = this.state.params.map(p => {
+    const params = this.state.params.map(p => {
       return {
         ActualName: p.ActualName,
         Value: p.Value
       };
-    }
-  );
-  console.log('sendParams: ' + JSON.stringify(p));
-}
-updateParam(name, value) {
-  const idx = findIndex(propEq('ActualName', name), this.state.params);
-  const params = adjust(assoc('Value',value), idx)(this.state.params);
-  this.setState(assoc('params', params, this.state));
-}
-paramsByCategory() {
-  return groupBy(p => head(split('.', p.VisibleName)))(this.state.params);
-}
+    });
 
-render() {
-  return (
-    <ParamsUI
-      paramsByCategory={this.paramsByCategory()}
-      updateParam={this.updateParam}
-      resetParams={this.resetParams}
-      sendParams={this.sendParams}
-      />
-  );
-}
+    const d = {
+      variables : params,
+      ID : paramsRequestId,
+      __jTypeID : paramsRequestTypeId,
+    };
+
+    fetch(`${this.props.url}/post`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'text/plain'
+      },
+      body: JSON.stringify(d)
+    }).then(response => {
+      console.log(response);
+      window.response = response;
+    });
+  }
+  updateParam(name, value) {
+    const idx = findIndex(propEq('ActualName', name), this.state.params);
+    const params = adjust(assoc('Value',value), idx)(this.state.params);
+    this.setState(assoc('params', params, this.state));
+  }
+  paramsByCategory() {
+    return groupBy(p => head(split('.', p.VisibleName)))(this.state.params);
+  }
+
+  render() {
+    return (
+      <ParamsUI
+        paramsByCategory={this.paramsByCategory()}
+        updateParam={this.updateParam}
+        resetParams={this.resetParams}
+        sendParams={this.sendParams}
+        />
+    );
+  }
 }
 
 export default Params;
