@@ -78,7 +78,9 @@ class Tracker extends Component {
   }
   componentWillReceiveProps(nextProps) {
     if(nextProps.running && !this.props.running) {
-      this.loadDataAndDraw();
+      if(this.props.status === "connected") {
+        this.loadDataAndDraw();
+      }
     }
   }
   componentWillUnmount() {

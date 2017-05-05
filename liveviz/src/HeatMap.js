@@ -49,7 +49,7 @@ class HeatMap extends Component {
   }
   loadDataAndDraw() {
     const that = this,
-      url = that.props.url + '/demoData2';
+    url = that.props.url + '/demoData2';
     Plotly.d3.json(url, function(error, data) {
       if(!that.props.running || that.unmounted) {
         return;
@@ -74,7 +74,9 @@ class HeatMap extends Component {
   }
   componentWillReceiveProps(nextProps) {
     if(nextProps.running && !this.props.running) {
-      this.loadDataAndDraw();
+      if(this.props.status === "connected") {
+        this.loadDataAndDraw();
+      }
     }
   }
 
