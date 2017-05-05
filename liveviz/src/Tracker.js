@@ -54,14 +54,14 @@ class Tracker extends Component {
   }
   loadDataAndDraw() {
     const that = this,
-      url = that.props.url + '/Targets';
+    url = that.props.url + '/Targets';
     d3.json(url, function(error, data) {
       if(!that.props.running || that.unmounted) {
         return;
       }
       if (error) {
         that.props.updateStatus("error");
-        that.setState(assoc('error', `Cannot connect to server at ${url}:  ${error.statusText}`, that.state));
+        that.setState(assoc('error', `Cannot connect to server at ${url}`, that.state));
         return;
       }
       that.props.updateStatus("connected");
@@ -89,18 +89,21 @@ class Tracker extends Component {
     [arenaWidth, arenaHeight] = [20, 10];
 
     return (
-      <div className="tracker-arena"
-           ref={element => this.domElement = element}>
-        {
-          targets.map (target =>
-            <Target
-              key={target.TargetType + "__" + target.Name}
-              type={target.TargetType}
-              x={(target.X + Math.random())* width/arenaWidth}
-              y={(target.Y + Math.random())* height/arenaHeight}
-              />
-          )
-        }
+      <div>
+        <div>{this.state.error}</div>
+        <div className="tracker-arena"
+          ref={element => this.domElement = element}>
+          {
+            targets.map (target =>
+              <Target
+                key={target.TargetType + "__" + target.Name}
+                type={target.TargetType}
+                x={(target.X + Math.random())* width/arenaWidth}
+                y={(target.Y + Math.random())* height/arenaHeight}
+                />
+            )
+          }
+        </div>
       </div>
     );
   }

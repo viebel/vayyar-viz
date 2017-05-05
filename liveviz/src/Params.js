@@ -13,7 +13,7 @@ function DefaultControl(props) {
   return (
     <div> Unsupported Param: {props.type} <br/>
     {JSON.stringify(props)} </div>
-  );
+);
 }
 
 class Param extends Component {
@@ -55,9 +55,12 @@ const ParamsGroup = ({group, updateParam, params}) =>
   </ParamsList>
 </div>
 
-const ParamsUI = ({paramsByCategory, updateParam, resetParams, sendParams}) =>
+const ParamsUI = ({paramsByCategory, updateParam, resetParams, sendParams, status, error}) =>
 <div>
-  <h1> Parameters</h1> {
+  <h1> Parameters</h1>
+  <div> status: {status}</div>
+  <div> {error}</div>
+  {
     map( group =>
       <ParamsGroup
         key={group}
@@ -93,88 +96,96 @@ class Params extends Component {
     this.getValues = this.getValues.bind(this);
 
   }
+  url() {
+    return `${this.props.url}/${paramsRequestId}`
+  }
   getValues() {
-    fetch(`${this.props.url}/${paramsRequestId}`, {
+    const that = this;
+    fetch(that.url(), {
       method: 'GET'
     })
-    .then(response => response.json())
-    .then(params => {
-      if(!this.preventGetValues) {
-        console.log("this.preventGetValues: " + this.preventGetValues);
-        this.setState(assoc('params', params.variables, this.state));
-        setTimeout(this.getValues, 1000);
+    .then(response => {
+      if(response.ok) {
+        return response.json();
       }
-    });
+      throw new Error('Network response was not ok.');
+    })
+    .then(params => {
+      if(!that.preventGetValues) {
+        that.setState(assoc('params', params.variables, that.state));
+        setTimeout(that.getValues, 1000);
+      }
+    })
+    .catch(reason => {
+      that.setState(assoc('error', `Cannot connect to server at ${that.url()}`, that.state))
+    }
+    )
   }
 
-  componentDidMount() {
-    if(this.props.status !== "disconnected") {
-      this.getValues();
-    }
+componentDidMount() {
+  if(this.props.status !== "disconnected") {
+    this.getValues();
   }
-  componentWillReceiveProps(nextProps) {
-    if(nextProps.running && !this.props.running) {
-      this.loadDataAndDraw();
-    }
-  }
-  componentWillUnmount() {
-    this.unmounted = true;
-  }
-  resetParams() {
-    let params = map(p => assoc('Value', p.DefaultValue, p))(this.state.params);
-    this.setState(assoc('params', params, this.state));
-    this.sendParams();
-  }
-  sendParams() {
-    this.preventGetValues = true;
-    console.log(`sendParams`)
-    const params = this.state.params.map(p => {
-      return {
-        ActualName: p.ActualName,
-        Value: p.Value
-      };
-    });
+}
 
-    const d = {
-      variables : params,
-      ID : paramsRequestId,
-      __jTypeID : paramsRequestTypeId,
+componentWillUnmount() {
+  this.preventGetValues = true;
+}
+resetParams() {
+  let params = map(p => assoc('Value', p.DefaultValue, p))(this.state.params);
+  this.setState(assoc('params', params, this.state));
+  this.sendParams();
+}
+sendParams() {
+  this.preventGetValues = true;
+  const params = this.state.params.map(p => {
+    return {
+      ActualName: p.ActualName,
+      Value: p.Value
     };
+  });
 
-    fetch(`${this.props.url}/post`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'text/plain'
-      },
-      body: JSON.stringify(d)
-    }).then(response => {
-      this.preventGetValues = false;
-      this.getValues();
-      console.log(response);
-      window.response = response;
-    });
-  }
-  updateParam(name, value) {
-    const idx = findIndex(propEq('ActualName', name), this.state.params);
-    const params = adjust(assoc('Value',value), idx)(this.state.params);
-    this.setState(assoc('params', params, this.state));
-    this.preventGetValues = true;
-    this.debouncedSendParams();
-  }
-  paramsByCategory() {
-    return groupBy(p => head(split('.', p.VisibleName)))(this.state.params);
-  }
+  const d = {
+    variables : params,
+    ID : paramsRequestId,
+    __jTypeID : paramsRequestTypeId,
+  };
 
-  render() {
-    return (
-      <ParamsUI
-        paramsByCategory={this.paramsByCategory()}
-        updateParam={this.updateParam}
-        resetParams={this.resetParams}
-        sendParams={this.sendParams}
-        />
-    );
-  }
+  fetch(`${this.props.url}/post`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'text/plain'
+    },
+    body: JSON.stringify(d)
+  }).then(response => {
+    this.preventGetValues = false;
+    this.getValues();
+    window.response = response;
+  });
+}
+updateParam(name, value) {
+  const idx = findIndex(propEq('ActualName', name), this.state.params);
+  const params = adjust(assoc('Value',value), idx)(this.state.params);
+  this.setState(assoc('params', params, this.state));
+  this.preventGetValues = true;
+  this.debouncedSendParams();
+}
+paramsByCategory() {
+  return groupBy(p => head(split('.', p.VisibleName)))(this.state.params);
+}
+
+render() {
+  return (
+    <ParamsUI
+      {...this.props}
+      error = {this.state.error}
+      paramsByCategory={this.paramsByCategory()}
+      updateParam={this.updateParam}
+      resetParams={this.resetParams}
+      sendParams={this.sendParams}
+      />
+  );
+}
 }
 
 export default Params;

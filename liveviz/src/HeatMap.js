@@ -56,7 +56,7 @@ class HeatMap extends Component {
       }
       if (error) {
         that.props.updateStatus("error");
-        that.setState(assoc('error', `Cannot connect to server at ${url}:  ${error.statusText}`, that.state));
+        that.setState(assoc('error', `Cannot connect to server at ${url}`, that.state));
         return;
       }
       that.props.updateStatus("connected");
