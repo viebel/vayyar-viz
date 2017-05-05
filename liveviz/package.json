@@ -10,7 +10,8 @@
     "react-bootstrap": "^0.30.8",
     "react-bootstrap-slider": "^1.1.7",
     "react-dom": "^15.4.0",
-    "react-fetch": "0.0.9"
+    "react-fetch": "0.0.9",
+    "throttle-debounce": "^1.0.1"
   },
   "homepage": "./",
   "devDependencies": {

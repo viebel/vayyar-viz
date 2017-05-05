@@ -50,6 +50,7 @@ class Tracker extends Component {
       width: 0,
       height: 0,
     }
+    this.loadDataAndDraw = this.loadDataAndDraw.bind(this);
   }
   loadDataAndDraw() {
     const that = this,
@@ -65,7 +66,7 @@ class Tracker extends Component {
       }
       that.props.updateStatus("connected");
       that.setState(assoc('targets', data.targets, that.state));
-      that.loadDataAndDraw();
+      requestAnimationFrame(that.loadDataAndDraw);
     });
   }
   componentDidMount() {

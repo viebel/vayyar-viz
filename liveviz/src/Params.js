@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Button, Form, ButtonToolbar} from 'react-bootstrap';
 import Boolean from './controls/Boolean';
 import Slider from './controls/Slider';
+import {debounce} from 'throttle-debounce';
 import {assoc, map, findIndex, propEq, adjust, groupBy, split, head, keys} from 'ramda';
 
 const paramsRequestId = 'UpdateConfigurationEditor';
@@ -87,16 +88,37 @@ class Params extends Component {
     };
     this.updateParam = this.updateParam.bind(this);
     this.sendParams = this.sendParams.bind(this);
+    this.debouncedSendParams = debounce(300, this.sendParams);
     this.resetParams = this.resetParams.bind(this);
+    this.getValues = this.getValues.bind(this);
+
   }
-  componentDidMount() {
+  getValues() {
     fetch(`${this.props.url}/${paramsRequestId}`, {
       method: 'GET'
     })
     .then(response => response.json())
     .then(params => {
-      this.setState(assoc('params', params.variables, this.state));
+      if(!this.preventGetValues) {
+        console.log("this.preventGetValues: " + this.preventGetValues);
+        this.setState(assoc('params', params.variables, this.state));
+        setTimeout(this.getValues, 1000);
+      }
     });
+  }
+
+  componentDidMount() {
+    if(this.props.status !== "disconnected") {
+      this.getValues();
+    }
+  }
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.running && !this.props.running) {
+      this.loadDataAndDraw();
+    }
+  }
+  componentWillUnmount() {
+    this.unmounted = true;
   }
   resetParams() {
     let params = map(p => assoc('Value', p.DefaultValue, p))(this.state.params);
@@ -104,6 +126,8 @@ class Params extends Component {
     this.sendParams();
   }
   sendParams() {
+    this.preventGetValues = true;
+    console.log(`sendParams`)
     const params = this.state.params.map(p => {
       return {
         ActualName: p.ActualName,
@@ -124,6 +148,8 @@ class Params extends Component {
       },
       body: JSON.stringify(d)
     }).then(response => {
+      this.preventGetValues = false;
+      this.getValues();
       console.log(response);
       window.response = response;
     });
@@ -132,6 +158,8 @@ class Params extends Component {
     const idx = findIndex(propEq('ActualName', name), this.state.params);
     const params = adjust(assoc('Value',value), idx)(this.state.params);
     this.setState(assoc('params', params, this.state));
+    this.preventGetValues = true;
+    this.debouncedSendParams();
   }
   paramsByCategory() {
     return groupBy(p => head(split('.', p.VisibleName)))(this.state.params);
