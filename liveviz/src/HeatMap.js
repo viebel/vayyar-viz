@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Plotly from 'plotly.js';
+import draw from './heatmap/heatmap'
 import {merge, assoc} from 'ramda';
 
 class HeatMap extends Component {
@@ -11,37 +12,7 @@ class HeatMap extends Component {
     }
   }
   draw(data) {
-    if(this.state.drawn) {
-      Plotly.restyle(this.container, {z: [data.Data]});
-    } else {
-      var axisTemplate = {
-        range: [data.X0, data.X1],
-        autorange: false,
-        showgrid: true,
-        zeroline: false,
-        linecolor: 'black',
-        showticklabels: true,
-        ticks: ''
-      };
-
-      var layout = {
-        xaxis: axisTemplate,
-        yaxis: axisTemplate,
-        showlegend: false,
-      };
-
-      var d = [
-        {
-          colorscale: 'Jet',
-          z: data.Data,
-          zmin: 0,
-          zmax: 4000,
-          type: 'heatmapgl'
-        }
-      ];
-      Plotly.newPlot(this.container, d, layout);
-      this.setState(merge(this.state, {drawn: true}));
-    }
+    draw(this.canvas, data.Data, {min: 0, max: 4000});
   }
 
   updateGraph(data) {
@@ -81,16 +52,13 @@ class HeatMap extends Component {
   }
 
   render() {
-    let errorOrMap;
-    let {status} = this.props;
-    if (status === "error") {
-      errorOrMap = <div>{this.state.error}</div>;
-      }  else {
-        errorOrMap = <div ref={element => this.container = element}/>;
-      }
       return (
         <div>
-          { errorOrMap }
+         <div>{this.state.error}</div>
+         <canvas
+           width="600"
+           height="400"
+           ref={element => this.canvas = element}/>
         </div>
       );
     }
