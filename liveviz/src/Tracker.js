@@ -1,35 +1,8 @@
 import React, {Component} from 'react';
-import d3 from 'd3';
+import FetchPeriodic from './common/FetchPeriodic';
 import {merge, assoc} from 'ramda';
 import './styles/tracker.css';
 
-const json = {
-  targets: [
-    {
-      TargetType: "triangle",
-      Name: "",
-      X: 1.5,
-      Y: 3,
-      Z: 0
-    },
-    {
-      TargetType: "circle",
-      Name: "Some Name",
-      X: 2,
-      Y: 2.5,
-      Z: 0
-    },
-    {
-      TargetType: "square",
-      Name: "Other name",
-      X: 12,
-      Y: 9,
-      Z: 0
-    }
-  ],
-  ID: "Targets",
-  __jTypeID: "MatGUIInterfaces.TargetsDataBlock, MatGUIInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
-};
 function Target({x, y, type}) {
   const targetClasses = {
     "circle": "target-circle",
@@ -46,45 +19,14 @@ class Tracker extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      targets: json.targets,
+      targets: [],
       width: 0,
       height: 0,
     }
-    this.loadDataAndDraw = this.loadDataAndDraw.bind(this);
-  }
-  loadDataAndDraw() {
-    const that = this,
-    url = that.props.url + '/Targets';
-    d3.json(url, function(error, data) {
-      if(!that.props.running || that.unmounted) {
-        return;
-      }
-      if (error) {
-        that.props.updateStatus("error");
-        that.setState(assoc('error', `Cannot connect to server at ${url}`, that.state));
-        return;
-      }
-      that.props.updateStatus("connected");
-      that.setState(assoc('targets', data.targets, that.state));
-      requestAnimationFrame(that.loadDataAndDraw);
-    });
   }
   componentDidMount() {
     const {width, height} = this.domElement.getBoundingClientRect();
     this.setState(merge(this.state, {width, height}));
-    if(this.props.status !== "disconnected") {
-      this.loadDataAndDraw();
-    }
-  }
-  componentWillReceiveProps(nextProps) {
-    if(nextProps.running && !this.props.running) {
-      if(this.props.status === "connected") {
-        this.loadDataAndDraw();
-      }
-    }
-  }
-  componentWillUnmount() {
-    this.unmounted = true;
   }
   render() {
     const {targets, width, height} = this.state,
@@ -93,6 +35,21 @@ class Tracker extends Component {
     return (
       <div>
         <div>{this.state.error}</div>
+        <div>running:{this.props.running.toString()}</div>
+        {this.props.status === "disconnected"? null :
+            <FetchPeriodic
+              url={`${this.props.url}/Targets`}
+              onAnimationFrame={true}
+              prevent={!this.props.running}
+              onSuccess={data => {
+                this.setState(assoc('targets', data.targets, this.state));                this.props.updateStatus("connected");
+              }}
+              onError={(reason, url) => {
+                this.props.updateStatus("error");
+                this.setState(assoc('error', `Cannot connect to server at ${url}`, this.state));
+              }}
+              />
+        }
         <div className="tracker-arena"
           ref={element => this.domElement = element}>
           {
@@ -106,9 +63,9 @@ class Tracker extends Component {
             )
           }
         </div>
-      </div>
-    );
-  }
+    </div>
+  );
+}
 
 }
 

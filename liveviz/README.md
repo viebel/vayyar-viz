@@ -34,18 +34,13 @@ Run the docker image (e.g. on port 9999):
 
 ## TODO
 
-- handle errors while reading params
-- route per app
-- get/send params to server
-- display fps
-- more params types
-- improve styles
 
 ## Bugs
 
-- memory leak in heatmap: https://community.plot.ly/t/bad-performance-over-time-up-to-a-crash/3999/3?
 
 ## DONE
+- handle errors while reading params
+- get/send params to server
 - read params every second
 - wait for connection before reading params
 - reset params

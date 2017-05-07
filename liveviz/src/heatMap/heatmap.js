@@ -20,7 +20,7 @@ function scale(x, a, b, aa, bb) {
   return aa + (bb - aa) * (x - a) / (b - a);
 }
 
-function draw(canvas, data, {min, max}) {
+function drawHeatMap(canvas, data, {min, max}) {
   resetCanvas(canvas);
   const ctx = canvas.getContext("2d");
   const width = canvas.width;
@@ -38,4 +38,4 @@ function draw(canvas, data, {min, max}) {
   }
 }
 
-export default draw;
+export default drawHeatMap;
