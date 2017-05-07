@@ -17,8 +17,13 @@ class FetchPeriodic extends Component {
       }
       throw new Error('Network response was not ok.');
     })
-    .catch(reason => that.props.onError(reason, that.props.url))
+    .catch(reason => {
+      that.props.onError(reason, that.props.url)
+    })
     .then(params => {
+      if(!params) {
+        return; //TODO: find a better solution to detect there was an error
+      }
       if(!(that.props.prevent || that.preventFetch)) {
         that.props.onSuccess(params);
         if(that.props.onAnimationFrame) {

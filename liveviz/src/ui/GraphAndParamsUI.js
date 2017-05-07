@@ -1,6 +1,6 @@
 import React from 'react';
 import {Grid, Col, Row, Button} from 'react-bootstrap';
-import Graph from '../Graph';
+import Graph from './Graph';
 import Params from '../Params';
 
 
