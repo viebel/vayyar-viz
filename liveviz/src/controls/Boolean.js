@@ -2,29 +2,29 @@ import React, {Component} from 'react';
 import {FormGroup, ControlLabel, Radio, Col} from 'react-bootstrap';
 
 
-class Boolean extends Component{
-
-  render() {
-    return (
-      <FormGroup>
-        <Col componentClass={ControlLabel} sm={6} xs={6}>
-          {this.props.args.Description + ' '}
-        </Col>
-        <Radio inline
-          checked={this.props.args.Value === true}
-          name={this.props.args.ActualName}
-          onChange={(e) => this.props.onChange(true)}>
+function Boolean ({args, onChange}){
+  function truthy () {
+    return (args.Value === true || args.Value === 1);
+  }
+  return (
+    <FormGroup>
+      <Col componentClass={ControlLabel} sm={6} xs={6}>
+        {args.Description + ' '}
+      </Col>
+      <Radio inline
+        checked={truthy()}
+          name={args.ActualName}
+          onChange={(e) => onChange(true)}>
           true
         </Radio>
         <Radio inline
-          checked={this.props.args.Value === false}
-          name={this.props.args.ActualName}
-          onChange={(e) => this.props.onChange(false)}>
+          checked={!truthy()}
+          name={args.ActualName}
+          onChange={(e) => onChange(false)}>
           false
         </Radio>
       </FormGroup>
     );
   }
-}
 
-export default Boolean;
+  export default Boolean;

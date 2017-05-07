@@ -3,7 +3,7 @@ import {Button, Form, ButtonToolbar} from 'react-bootstrap';
 import Boolean from './controls/Boolean';
 import Slider from './controls/Slider';
 import {debounce} from 'throttle-debounce';
-import {assoc, map, findIndex, propEq, adjust, groupBy, split, head, keys} from 'ramda';
+import {merge, assoc, map, findIndex, propEq, adjust, groupBy, split, head, keys} from 'ramda';
 import FetchPeriodic from './common/FetchPeriodic';
 const paramsRequestId = 'UpdateConfigurationEditor';
 const paramsRequestTypeId = 'MatGUIInterfaces.UpdateConfigurationEditorDataBlock, MatGUIInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null';
@@ -127,8 +127,7 @@ class Params extends Component {
   updateParam(name, value) {
     const idx = findIndex(propEq('ActualName', name), this.state.params);
     const params = adjust(assoc('Value',value), idx)(this.state.params);
-    this.setState(assoc('params', params, this.state));
-    this.setState(assoc('preventGetValues', true, this.state));
+    this.setState(merge(this.state, {params, preventGetValues: true}));
     this.debouncedSendParams();
   }
   paramsByCategory() {
