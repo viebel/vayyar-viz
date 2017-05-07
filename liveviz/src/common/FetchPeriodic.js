@@ -24,9 +24,9 @@ class FetchPeriodic extends Component {
         that.props.onSuccess(params);
         if(that.props.onAnimationFrame) {
           requestAnimationFrame(that.fetch);
-
+        } else {
+          setTimeout(that.fetch, that.props.interval);
         }
-        setTimeout(that.fetch, that.props.interval);
       }
     })
   }
