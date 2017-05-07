@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {FormGroup, ControlLabel, Radio, Col} from 'react-bootstrap';
 
 

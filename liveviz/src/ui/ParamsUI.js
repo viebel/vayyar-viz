@@ -1,20 +1,17 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Button, Form, ButtonToolbar} from 'react-bootstrap';
 import Boolean from '../controls/Boolean';
 import Slider from '../controls/Slider';
-
 import {map, keys} from 'ramda';
 
+const DefaultControl = (props) =>
+<div> Unsupported Param: {props.type} <br/>
+{JSON.stringify(props)}
+</div>
 
-function DefaultControl(props) {
-  return (
-    <div> Unsupported Param: {props.type} <br/>
-    {JSON.stringify(props)} </div>
-);
-}
-
-class Param extends Component {
-  typeToComponent(type) {
+const Param = (props) => {
+  const typeToComponent = (type) =>
+  {
     const m = {
       Boolean: Boolean,
       Slider: Slider,
@@ -22,10 +19,8 @@ class Param extends Component {
     };
     return m[type] || DefaultControl;
   }
-  render(){
-    const Component = this.typeToComponent(this.props.type);
-    return <Component {...this.props}/>;
-  }
+  const Component = typeToComponent(props.type);
+  return <Component {...props}/>;
 }
 
 const ParamsList = ({params, updateParam}) =>

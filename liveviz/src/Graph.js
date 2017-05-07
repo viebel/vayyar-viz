@@ -2,15 +2,13 @@ import React from 'react';
 import HeatMap from './HeatMap';
 import Tracker from './Tracker';
 
+const DefaultGraph = ({type}) =>
+<div>
+  Graph of type <strong>{type}</strong> is not supported.
+</div>
 
-function DefaultGraph({type}) {
-  return (
-    <div>
-      Graph of type <strong>{type}</strong> is not supported.
-    </div>
-  )
-}
-function Graph  (props) {
+const Graph  = (props) =>
+{
   const typeToGraph = {
     HeatMap,
     Tracker,
