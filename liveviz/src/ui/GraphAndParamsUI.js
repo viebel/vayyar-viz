@@ -1,7 +1,7 @@
 import React from 'react';
 import {Grid, Col, Row, Button} from 'react-bootstrap';
-import Graph from './Graph';
-import Params from '../Params';
+import Graph from '../ui/GraphUI';
+import Params from '../logic/Params';
 
 
 const playOrPauseButtonText = (running) =>

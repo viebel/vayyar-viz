@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import GraphAndParamsUI from './ui/GraphAndParamsUI';
+import GraphAndParamsUI from '../ui/GraphAndParamsUI';
 import {assoc} from 'ramda';
 
 class GraphAndParams extends Component {

@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {debounce} from 'throttle-debounce';
 import {merge, assoc, map, findIndex, propEq, adjust, groupBy, split, head} from 'ramda';
-import FetchPeriodic from './common/FetchPeriodic';
-import ParamsUI from './ui/ParamsUI';
+import FetchPeriodic from '../common/FetchPeriodic';
+import ParamsUI from '../ui/ParamsUI';
 
 const paramsRequestId = 'UpdateConfigurationEditor';
 const paramsRequestTypeId = 'MatGUIInterfaces.UpdateConfigurationEditorDataBlock, MatGUIInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null';

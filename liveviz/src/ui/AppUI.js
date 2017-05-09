@@ -1,6 +1,6 @@
 import React from 'react';
-import Connection from '../Connection';
-import GraphAndParams from '../GraphAndParams';
+import ConnectionUI from '../ui/ConnectionUI';
+import GraphAndParams from '../logic/GraphAndParams';
 //import logo from './logo.svg';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
@@ -21,9 +21,9 @@ const AppUI = ({url, status, graphKey, onConnect, updateStatus}) =>
         </Navbar.Header>
       </Grid>
     </Navbar>
-    <Connection
+    <ConnectionUI
       url={ url }
-      onConnect={ onConnect }></Connection>
+      onConnect={ onConnect }/>
     <GraphAndParams
       key={ graphKey } /* use key in order to force re-mounting each time we re-connect */
       url={ url }
