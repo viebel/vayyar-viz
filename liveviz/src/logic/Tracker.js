@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import FetchPeriodic from './common/FetchPeriodic';
+import FetchPeriodic from '../common/FetchPeriodic';
 import TrackerUI from '../ui/TrackerUI';
 import {assoc} from 'ramda';
 

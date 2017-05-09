@@ -1,6 +1,6 @@
 import React from 'react';
 import HeatMap from '../logic/HeatMap';
-import Tracker from '../Tracker';
+import Tracker from '../logic/Tracker';
 
 const DefaultGraph = ({type}) =>
 <div>

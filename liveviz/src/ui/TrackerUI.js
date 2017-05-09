@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {merge} from 'ramda';
-import './styles/tracker.css';
+import '../styles/tracker.css';
 
 const Target = ({x, y, type}) => {
   const targetClasses = {
