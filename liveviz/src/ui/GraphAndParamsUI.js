@@ -18,7 +18,7 @@ const GraphAndParamsUI = ({url, status, running, updateStatus, toggleRunning}) =
             <Button
               onClick={ toggleRunning }
               bsStyle="primary">
-              { playOrPauseButtonText() }
+              { playOrPauseButtonText(running) }
             </Button>
           </Row>
           <Row>
