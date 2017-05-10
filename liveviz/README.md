@@ -34,11 +34,14 @@ Run the docker image (e.g. on port 9999):
 
 ## TODO
 
+- redux
+- automatic tests
 
 ## Bugs
 
 
 ## DONE
+- separate ui and logic
 - handle errors while reading params
 - get/send params to server
 - read params every second

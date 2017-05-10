@@ -1,38 +1,34 @@
-import React, {Component} from 'react';
-import FetchPeriodic from '../common/FetchPeriodic';
-import TrackerUI from '../ui/TrackerUI';
-import {assoc} from 'ramda';
+import TrackerFetchUI from '../ui/TrackerUI'
+import { connect } from 'react-redux'
+import { setConnectionStatus, x§trackerScreenUpdateData, trackerScreenSetError} from '../actions'
 
-class Tracker extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      targets: [],
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onSuccess: (data) => {
+      dispatch(trackerScreenUpdateData(data))
+      dispatch(setConnectionStatus('connected'))
+    },
+    onError: (reason, url) => {
+      dispatch(trackerScreenSetError(reason, url))
     }
   }
-  render() {
-    return (
-      <div>
-        <div>{this.state.error}</div>
-        <div>running:{this.props.running.toString()}</div>
-        {this.props.status === "disconnected"? null :
-          <FetchPeriodic
-            url={`${this.props.url}/Targets`}
-            onAnimationFrame={true}
-            prevent={!this.props.running}
-            onSuccess={data => {
-              this.setState(assoc('targets', data.targets, this.state));                this.props.updateStatus("connected");
-            }}
-            onError={(reason, url) => {
-              this.props.updateStatus("error");
-              this.setState(assoc('error', `Cannot connect to server at ${url}`, this.state));
-            }}
-            />
-        }
-        <TrackerUI targets={this.state.targets}/>
-      </div>
-    );
+}
+
+const mapStateToProps = (state) => {
+  const localState = state.screens.tracker;
+  return {
+    status: state.global.connectionStatus,
+    error: localState.error,
+    targets: localState.targets,
+    url: `${state.global.serverRoot}/Targets`,
+    running: localState.running,
   }
 }
+
+const Tracker = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TrackerFetchUI)
 
 export default Tracker;

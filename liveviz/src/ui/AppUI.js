@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ConnectionUI from '../ui/ConnectionUI';
 import GraphAndParams from '../logic/GraphAndParams';
 //import logo from './logo.svg';
@@ -25,11 +26,17 @@ const AppUI = ({url, status, graphKey, onConnect, updateStatus}) =>
       url={ url }
       onConnect={ onConnect }/>
     <GraphAndParams
-      key={ graphKey } /* use key in order to force re-mounting each time we re-connect */
+      key={ graphKey  /* use key in order to force re-mounting each time we re-connect */ }
       url={ url }
       status={ status }
       updateStatus={ updateStatus }/>
   </div>
 )
+
+AppUI.propTypes = {
+  url: PropTypes.string.isRequired,
+  status: PropTypes.string.isRequired,
+  graphKey: PropTypes.number.isRequired,
+}
 
 export default AppUI

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {merge} from 'ramda';
+import FetchPeriodic from '../common/FetchPeriodic';
 import '../styles/tracker.css';
 
 const Target = ({x, y, type}) => {
@@ -50,4 +51,20 @@ class TrackerUI extends Component {
   }
 }
 
-export default TrackerUI;
+const TrackerFetchUI = ({error, status, running, url, targets, onSuccess, onError}) =>
+<div>
+  <div>{error}</div>
+  <div>running:{running.toString()}</div>
+  {status === "disconnected"? null :
+    <FetchPeriodic
+      url={ url }
+      onAnimationFrame={true}
+      prevent={ !running }
+      onSuccess={ onSuccess }
+      onError={ onError }
+      />
+  }
+  <TrackerUI targets={targets}/>
+</div>
+
+export default TrackerFetchUI;

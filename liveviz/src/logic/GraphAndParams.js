@@ -1,26 +1,24 @@
-import React, {Component} from 'react';
+import { connect } from 'react-redux'
+import { trackerScreenToggleRunning} from '../actions'
 import GraphAndParamsUI from '../ui/GraphAndParamsUI';
-import {assoc} from 'ramda';
 
-class GraphAndParams extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      running: true,
-    };
-    this.toggleRunning = this.toggleRunning.bind(this);
-  }
-  toggleRunning() {
-    this.setState(assoc("running", !this.state.running, this.state));
-  }
-  render() {
-    return(
-      <GraphAndParamsUI
-        toggleRunning={this.toggleRunning}
-        running={this.state.running}
-        {...this.props}/>
-    )
+const mapDispatchToProps = (dispatch) => {
+  return {
+    toggleRunning: () => {
+      dispatch(trackerScreenToggleRunning())
+    }
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    running: state.screens.tracker.running,
+  }
+}
+
+const GraphAndParams = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(GraphAndParamsUI)
 
 export default GraphAndParams;
