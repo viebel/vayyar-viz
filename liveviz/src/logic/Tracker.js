@@ -1,6 +1,6 @@
 import TrackerFetchUI from '../ui/TrackerUI'
 import { connect } from 'react-redux'
-import { setConnectionStatus, x§trackerScreenUpdateData, trackerScreenSetError} from '../actions'
+import { setConnectionStatus, trackerScreenUpdateData, trackerScreenSetError} from '../actions'
 
 
 const mapDispatchToProps = (dispatch) => {
@@ -20,7 +20,7 @@ const mapStateToProps = (state) => {
   return {
     status: state.global.connectionStatus,
     error: localState.error,
-    targets: localState.targets,
+    targets: state.data.tracker.targets,
     url: `${state.global.serverRoot}/Targets`,
     running: localState.running,
   }

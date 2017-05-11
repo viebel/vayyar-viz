@@ -23,12 +23,17 @@ const defaultTrackerScreen = {
   targets:[]
 }
 
-const data=(state={}, action) => {
+const defaultData = {
+  tracker: {targets:[]},
+  heatmap: []
+}
+
+const data=(state=defaultData, action) => {
   switch(action.type) {
     case 'DATA_UPDATE_TRACKER':
-    return assoc('tracker', action.val.targets, state)
-    case 'DATA_UPDATE_HEATMAP':
     return assoc('tracker', action.val, state)
+    case 'DATA_UPDATE_HEATMAP':
+    return assoc('heatmap', action.val, state)
     default:
     return state
   }

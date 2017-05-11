@@ -19,16 +19,16 @@ export const trackerScreenToggleRunning = () => {
   }
 }
 
-export const trackerScreenUpdateData = (data) => {
+export const trackerScreenUpdateData = (data) =>  {
   return {
-    type: 'TRACKER_UPDATE_DATA',
+    type: 'DATA_UPDATE_TRACKER',
     val: data,
   }
 }
 
 export const updateHeatMapData = (data) => {
   return {
-    type: 'HEATMAP_UPDATE_DATA',
+    type: 'DATA_UPDATE_HEATMAP',
     val: data,
   }
 }
