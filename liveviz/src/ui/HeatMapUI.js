@@ -28,7 +28,7 @@ const HeatMapFetchUI = ({error, status, running, url, data, onSuccess, onError})
     {status === "disconnected"? null :
       <div>
         <FetchPeriodic
-          url={`${url}/demoData2`}
+          url={ url }
           onAnimationFrame={true}
           prevent={!running}
           onSuccess={ onSuccess }

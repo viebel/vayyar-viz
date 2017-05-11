@@ -21,7 +21,7 @@ const GraphAndParamsUI = ({url, status, running, updateStatus, toggleRunning}) =
           { playOrPauseButtonText(running) }
         </Button>
       </Row>
-      {/*<Row>
+      {<Row>
         <Graph
         url={url}
         running={running}
@@ -29,7 +29,7 @@ const GraphAndParamsUI = ({url, status, running, updateStatus, toggleRunning}) =
         title="Heat Map"
         updateStatus={updateStatus}
         status={status}/>
-        </Row>*/}
+        </Row>}
         <Row>
           <Graph
             url={url}

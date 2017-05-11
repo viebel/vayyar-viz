@@ -19,7 +19,7 @@ const mapStateToProps = (state) => {
   return {
     status: state.global.connectionStatus,
     error: localState.error,
-    targets: localState.targets,
+    data: state.data.heatmap,
     url: `${state.global.serverRoot}/demoData2`,
     running: localState.running,
   }
