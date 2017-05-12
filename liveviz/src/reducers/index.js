@@ -1,5 +1,5 @@
-import {combineReducers} from 'redux'
-import {assoc, merge } from 'ramda'
+import { combineReducers } from 'redux'
+import { assocPath, assoc, merge, findIndex, adjust, propEq } from 'ramda'
 
 const defaultGlobal = {
   serverRoot: 'http://209.9.36.2:1234',
@@ -25,7 +25,16 @@ const defaultTrackerScreen = {
 
 const defaultData = {
   tracker: {targets:[]},
-  heatmap: []
+  heatmap: [],
+  params: {variables: []},
+}
+
+const defaultParamsScreen = {
+}
+
+const updateParam = (params, name, value) => {
+  const idx = findIndex(propEq('ActualName', name), params)
+  return adjust(assoc('Value',value), idx)(params)
 }
 
 const data=(state=defaultData, action) => {
@@ -34,6 +43,10 @@ const data=(state=defaultData, action) => {
     return assoc('tracker', action.val, state)
     case 'DATA_UPDATE_HEATMAP':
     return assoc('heatmap', action.val, state)
+    case 'DATA_UPDATE_PARAMS':
+    return assoc('params', action.val, state)
+    case 'DATA_UPDATE_PARAM':
+    return assocPath(['params', 'variables'], updateParam(state.params.variables, action.val.name, action.val.value), state)
     default:
     return state
   }
@@ -43,7 +56,18 @@ const trackerScreen = (state=defaultTrackerScreen, action) => {
   switch(action.type) {
     case 'TRACKER_SCREEN_TOGGLE_RUNNING':
     return assoc('running', !state.running, state)
+    case 'PARAMS_SCREEN_TOGGLE_PREVENT_FETCH':
+    return assoc('preventFetch', action.val, state)
     case 'TRACKER_SCREEN_SET_ERROR':
+    return assoc('error', `Cannot connect to: ${action.val.url}`, state)
+    default:
+    return state
+  }
+}
+
+const paramsScreen= (state=defaultParamsScreen, action) => {
+  switch(action.type) {
+    case 'PARAMS_SCREEN_SET_ERROR':
     return assoc('error', `Cannot connect to: ${action.val.url}`, state)
     default:
     return state
@@ -52,7 +76,7 @@ const trackerScreen = (state=defaultTrackerScreen, action) => {
 const app = combineReducers({
   global,
   data,
-  screens: combineReducers({tracker: trackerScreen}),
+  screens: combineReducers({tracker: trackerScreen, params: paramsScreen}),
 })
 
 
