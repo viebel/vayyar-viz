@@ -21,6 +21,7 @@ export const trackerScreenToggleRunning = () => {
 }
 
 export const trackerScreenUpdateData = (data) =>  {
+  console.log(data)
   return {
     type: 'DATA_UPDATE_TRACKER',
     val: data,

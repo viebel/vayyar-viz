@@ -10,10 +10,10 @@ running ? "Pause" : "Play"
 const GraphAndParamsUI = ({url, status, running, updateStatus, toggleRunning}) =>
 <Grid>
   <Row>
-    <Col md={4} xs={6}>
+    <Col md={3} xs={5}>
       <Params url={url} status={status} running={running}></Params>
     </Col>
-    <Col md={8} xs={6}>
+    <Col md={9} xs={7}>
       <Row>
         <Button
           onClick={ toggleRunning }
@@ -21,27 +21,49 @@ const GraphAndParamsUI = ({url, status, running, updateStatus, toggleRunning}) =
           { playOrPauseButtonText(running) }
         </Button>
       </Row>
-      {<Row>
-        <Graph
-        url={url}
-        running={running}
-        type="HeatMap"
-        title="Heat Map"
-        updateStatus={updateStatus}
-        status={status}/>
-        </Row>}
-        <Row>
+      <Row>
+        <Col  md={6}>
           <Graph
-            url={url}
-            running={running}
-            type="Tracker"
-            title="Tracker"
-            updateStatus={updateStatus}
-            status={status}/>
-        </Row>
-      </Col>
-    </Row>
-  </Grid>
+              url={url}
+              running={running}
+              type="HeatMap"
+              title="Heat Map"
+              updateStatus={updateStatus}
+              status={status}/>
+        </Col>
+        <Col md={6}>
+          <Graph
+              url={url}
+              running={running}
+              type="HeatMap"
+              title="Heat Map"
+              updateStatus={updateStatus}
+              status={status}/>
+        </Col>
+      </Row>
+      <Row>
+        <Col md={6}>
+          <Graph
+              url={url}
+              running={running}
+              type="Tracker"
+              title="Tracker"
+              updateStatus={updateStatus}
+              status={status}/>
+        </Col>
+        <Col md={6}>
+          <Graph
+              url={url}
+              running={running}
+              type="Tracker"
+              title="Tracker"
+              updateStatus={updateStatus}
+              status={status}/>
+        </Col>
+      </Row>
+    </Col>
+  </Row>
+</Grid>
 
 
   export default GraphAndParamsUI;

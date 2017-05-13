@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
-import drawHeatMap from '../heatmap/heatmap';
+import drawHeatMap from '../heatMap/heatmap';
 import FetchPeriodic from '../common/FetchPeriodic';
+
+import '../styles/heatMap.css';
 
 
 class HeatMapUI extends Component {
@@ -13,8 +15,7 @@ class HeatMapUI extends Component {
     }
     return (
       <canvas
-      width="600"
-      height="400"
+      className="tracker-arena"
       ref={element => this.canvas = element}/>
     );
   }
