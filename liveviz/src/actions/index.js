@@ -1,5 +1,4 @@
 import { assoc, map } from 'ramda';
-import { debounce } from 'throttle-debounce';
 
 export const setServerRoot = (url) => {
   console.log("url: " + url)
@@ -105,7 +104,16 @@ export const sendParams = () =>
 
 
 const DEBOUNCE_DELAY_SEND_PARAMS = 300
-const debouncedSendParams = debounce(DEBOUNCE_DELAY_SEND_PARAMS, sendParams)
+export const debouncedSendParams = () => {
+  const thunk = sendParams()
+  thunk.meta = {
+    debounce: {
+      time: DEBOUNCE_DELAY_SEND_PARAMS,
+      key: 'SEND_PARAMS'
+    }
+  }
+  return thunk
+}
 
 const updateParamInState = (name, value) => {
   return {
@@ -118,8 +126,7 @@ export const updateParam = (name, value) =>
 dispatch => {
   dispatch(paramsScreenTogglePreventFetch(true))
   dispatch(updateParamInState(name, value))
-  //debouncedSendParams();
-  dispatch(sendParams())
+  dispatch(debouncedSendParams())
 }
 
 

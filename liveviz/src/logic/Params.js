@@ -1,6 +1,6 @@
 import { groupBy, split, head} from 'ramda';
 import { connect } from 'react-redux'
-import { sendParams, resetParams, updateParamsData, paramsScreenSetError, updateParam } from '../actions'
+import { debouncedSendParams, trackCustomerSearch, sendParams, resetParams, updateParamsData, paramsScreenSetError, updateParam } from '../actions'
 
 import ParamsFetchUI from '../ui/ParamsUI';
 
@@ -21,6 +21,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(paramsScreenSetError(reason, url))
     },
     updateParam: (name, value) => {
+      dispatch(debouncedSendParams())
       dispatch(updateParam(name, value))
     }
   }
