@@ -1,7 +1,6 @@
 import { assoc, map } from 'ramda';
 
 export const setServerRoot = (url) => {
-  console.log("url: " + url)
   return {
     type: 'SET_SERVER_ROOT',
     val: url,

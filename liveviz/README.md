@@ -34,8 +34,8 @@ Run the docker image (e.g. on port 9999):
 
 ## TODO
 
-- redux
 - automatic tests
+- redux: bindactioncreator
 
 ## Bugs
 

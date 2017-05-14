@@ -20,7 +20,6 @@ const global = (state=defaultGlobal, action) => {
 
 const defaultTrackerScreen = {
   running: true,
-  targets:[]
 }
 
 const defaultData = {
@@ -37,7 +36,7 @@ const updateParam = (params, name, value) => {
   return adjust(assoc('Value',value), idx)(params)
 }
 
-const data=(state=defaultData, action) => {
+const data = (state=defaultData, action) => {
   switch(action.type) {
     case 'DATA_UPDATE_TRACKER':
     return assoc('tracker', action.val, state)

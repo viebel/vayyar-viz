@@ -1,6 +1,6 @@
 import { groupBy, split, head} from 'ramda';
 import { connect } from 'react-redux'
-import { debouncedSendParams, trackCustomerSearch, sendParams, resetParams, updateParamsData, paramsScreenSetError, updateParam } from '../actions'
+import { debouncedSendParams, sendParams, resetParams, updateParamsData, paramsScreenSetError, updateParam } from '../actions'
 
 import ParamsFetchUI from '../ui/ParamsUI';
 
