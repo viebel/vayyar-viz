@@ -2,7 +2,8 @@ import React from 'react';
 import {Button, Form, ButtonToolbar} from 'react-bootstrap';
 import Boolean from '../controls/Boolean';
 import Slider from '../controls/Slider';
-import {map, keys} from 'ramda';
+import FetchPeriodic from '../common/FetchPeriodic';
+import {map, keys } from 'ramda';
 
 const DefaultControl = (props) =>
 <div> Unsupported Param: {props.type} <br/>
@@ -47,7 +48,7 @@ const ParamsGroup = ({group, updateParam, params}) =>
   </ParamsList>
 </div>
 
-const ParamsUI = ({paramsByCategory, updateParam, resetParams, sendParams, status, error}) =>
+const ParamsUI = ({params, paramsByCategory, updateParam, resetParams, sendParams, status, error, url}) =>
 <div>
   <h1> Parameters</h1>
   <div> status: {status}</div>
@@ -63,16 +64,39 @@ const ParamsUI = ({paramsByCategory, updateParam, resetParams, sendParams, statu
   }
   <ButtonToolbar>
     <Button
-      onClick={resetParams}
+      onClick={ resetParams }
       bsStyle="primary">
       Reset Params
     </Button>
     <Button
-      onClick={sendParams}
+      onClick={ sendParams }
       bsStyle="primary">
       Update Params
     </Button>
   </ButtonToolbar>
 </div>
 
-export default ParamsUI;
+const ParamsFetchUI = ({status, url, urlGetParams, preventFetch, interval, onSuccess, onError, paramsByCategory, updateParam, resetParams, sendParams, error}) =>
+<div>
+  {status === "disconnected"? null :
+    <FetchPeriodic
+      url={ urlGetParams }
+      interval={ interval }
+      prevent={ preventFetch}
+      onSuccess={ onSuccess}
+      onError={ onError }
+      />
+  }
+  <ParamsUI
+    error={ error }
+    url={ url }
+    paramsByCategory={ paramsByCategory }
+    updateParam={ updateParam }
+    resetParams={ resetParams }
+    sendParams={ sendParams }
+    />
+</div>
+
+
+
+export default ParamsFetchUI;

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Grid, Jumbotron, Button, FormGroup, FormControl, Form} from 'react-bootstrap';
 import {merge} from 'ramda';
 
-class Connection extends Component {
+class ConnectionUI extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -50,4 +50,4 @@ class Connection extends Component {
 }
 }
 
-export default Connection;
+export default ConnectionUI;

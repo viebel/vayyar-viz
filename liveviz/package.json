@@ -11,6 +11,10 @@
     "react-bootstrap-slider": "^2.0.0",
     "react-dom": "^15.5.4",
     "react-fetch": "0.0.9",
+    "react-redux": "^5.0.4",
+    "redux": "^3.6.0",
+    "redux-debounced": "^0.4.0",
+    "redux-thunk": "^2.2.0",
     "throttle-debounce": "^1.0.1"
   },
   "homepage": "./",

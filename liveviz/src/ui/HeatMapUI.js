@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import drawHeatMap from '../heatmap/heatmap';
+import FetchPeriodic from '../common/FetchPeriodic';
+
 
 class HeatMapUI extends Component {
   draw (data) {
@@ -18,4 +20,25 @@ class HeatMapUI extends Component {
   }
 }
 
-export default HeatMapUI;
+
+const HeatMapFetchUI = ({error, status, running, url, data, onSuccess, onError}) =>
+  <div>
+    <div>running:{running.toString()}</div>
+    <div> {error} </div>
+    {status === "disconnected"? null :
+      <div>
+        <FetchPeriodic
+          url={ url }
+          onAnimationFrame={true}
+          prevent={!running}
+          onSuccess={ onSuccess }
+          onError={ onError }
+          />
+        <HeatMapUI
+          data={ data }
+          />
+      </div>
+    }
+  </div>
+
+export default HeatMapFetchUI;

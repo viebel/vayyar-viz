@@ -1,46 +1,32 @@
-import React, {Component} from 'react';
-import HeatMapUI from '../ui/HeatMapUI';
-import FetchPeriodic from '../common/FetchPeriodic';
+import HeatMapFetchUI from '../ui/HeatMapUI';
+import { connect } from 'react-redux'
+import {updateHeatMapData, trackerScreenSetError} from '../actions'
 
-import {assoc} from 'ramda';
-
-
-class HeatMap extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-    this.onError = this.onError.bind(this);
-  }
-  onError(reason, url) {
-    this.props.updateStatus("error");
-    this.setState(assoc('error', `Cannot connect to server at ${url}`, this.state));
-  }
-  render() {
-    const {updateStatus, status, running, url} = this.props;
-    return (
-      <div>
-        <div>running:{this.props.running.toString()}</div>
-        <div> {this.state.error} </div>
-        {status === "disconnected"? null :
-          <div>
-            <FetchPeriodic
-              url={`${url}/demoData2`}
-              onAnimationFrame={true}
-              prevent={!running}
-              onSuccess={data => {
-                this.setState(assoc('data', data, this.state));
-                updateStatus("connected");
-              }}
-              onError={this.onError}
-              />
-            <HeatMapUI
-              data={this.state.data}
-              />
-          </div>
-        }
-      </div>
-      );
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onSuccess: (data) => {
+      dispatch(updateHeatMapData(data))
+    },
+    onError: (reason, url) => {
+      dispatch(trackerScreenSetError(reason, url))
     }
   }
+}
 
-  export default HeatMap;
+const mapStateToProps = (state) => {
+  const localState = state.screens.tracker;
+  return {
+    status: state.global.connectionStatus,
+    error: localState.error,
+    data: state.data.heatmap,
+    url: `${state.global.serverRoot}/demoData2`,
+    running: localState.running,
+  }
+}
+
+const HeatMap = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(HeatMapFetchUI)
+
+export default HeatMap;

@@ -1,47 +1,47 @@
 import React from 'react';
 import {Grid, Col, Row, Button} from 'react-bootstrap';
-import Graph from './Graph';
-import Params from '../Params';
+import Graph from '../ui/GraphUI';
+import Params from '../logic/Params';
 
 
 const playOrPauseButtonText = (running) =>
-  running ? "Pause" : "Play"
+running ? "Pause" : "Play"
 
 const GraphAndParamsUI = ({url, status, running, updateStatus, toggleRunning}) =>
-    <Grid>
+<Grid>
+  <Row>
+    <Col md={4} xs={6}>
+      <Params url={url} status={status} running={running}></Params>
+    </Col>
+    <Col md={8} xs={6}>
       <Row>
-        <Col md={4} xs={6}>
-          <Params url={url} status={status} running={running}></Params>
-        </Col>
-        <Col md={8} xs={6}>
-          <Row>
-            <Button
-              onClick={ toggleRunning }
-              bsStyle="primary">
-              { playOrPauseButtonText() }
-            </Button>
-          </Row>
-          <Row>
-            <Graph
-              url={url}
-              running={running}
-              type="HeatMap"
-              title="Heat Map"
-              updateStatus={updateStatus}
-              status={status}/>
-          </Row>
-          <Row>
-            <Graph
-              url={url}
-              running={running}
-              type="Tracker"
-              title="Tracker"
-              updateStatus={updateStatus}
-              status={status}/>
-          </Row>
-        </Col>
+        <Button
+          onClick={ toggleRunning }
+          bsStyle="primary">
+          { playOrPauseButtonText(running) }
+        </Button>
       </Row>
-    </Grid>
+      {<Row>
+        <Graph
+        url={url}
+        running={running}
+        type="HeatMap"
+        title="Heat Map"
+        updateStatus={updateStatus}
+        status={status}/>
+        </Row>}
+        <Row>
+          <Graph
+            url={url}
+            running={running}
+            type="Tracker"
+            title="Tracker"
+            updateStatus={updateStatus}
+            status={status}/>
+        </Row>
+      </Col>
+    </Row>
+  </Grid>
 
 
-export default GraphAndParamsUI;
+  export default GraphAndParamsUI;
