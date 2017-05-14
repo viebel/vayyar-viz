@@ -81,32 +81,54 @@ const paramsForServer = (params) => {
   }
 }
 
-export const sendParams = (url, params) => {
-  paramsScreenTogglePreventFetch(true)
-  fetch(`${url}/post`, {
+const sendParamsToServer = (dispatch, url, params) => {
+  dispatch(paramsScreenTogglePreventFetch(true))
+  return fetch(url, {
     method: 'POST',
     headers: {
       'Content-Type': 'text/plain'
     },
     body: JSON.stringify(paramsForServer(params))
   }).then(response => {
-    paramsScreenTogglePreventFetch(false)
+    dispatch(paramsScreenTogglePreventFetch(false))
   })
 }
+
+export const sendParams = () =>
+(dispatch, getState) => {
+  const state = getState(),
+  params = state.data.params.variables,
+  url = `${state.global.serverRoot}/post`
+
+  return sendParamsToServer(dispatch, url, params)
+}
+
 
 const DEBOUNCE_DELAY_SEND_PARAMS = 300
 const debouncedSendParams = debounce(DEBOUNCE_DELAY_SEND_PARAMS, sendParams)
 
-export const updateParam = (name, value) => {
-  //paramsScreenTogglePreventFetch(true)
-  //debouncedSendParams();
+const updateParamInState = (name, value) => {
   return {
     type: 'DATA_UPDATE_PARAM',
     val: {name, value}
   }
 }
 
-export const resetParams = (url, params) => {
-  const defaultParams = map(p => assoc('Value', p.DefaultValue, p))(params)
-  sendParams(url, defaultParams)
+export const updateParam = (name, value) =>
+dispatch => {
+  dispatch(paramsScreenTogglePreventFetch(true))
+  dispatch(updateParamInState(name, value))
+  //debouncedSendParams();
+  dispatch(sendParams())
+}
+
+
+export const resetParams = () =>
+(dispatch, getState) => {
+  const state = getState(),
+  params = state.data.params.variables,
+  defaultParams = map(p => assoc('Value', p.DefaultValue, p))(params),
+  url = `${state.global.serverRoot}/post`
+
+  return sendParamsToServer(dispatch, url, defaultParams)
 }

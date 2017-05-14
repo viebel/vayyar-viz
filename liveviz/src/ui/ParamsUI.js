@@ -3,7 +3,7 @@ import {Button, Form, ButtonToolbar} from 'react-bootstrap';
 import Boolean from '../controls/Boolean';
 import Slider from '../controls/Slider';
 import FetchPeriodic from '../common/FetchPeriodic';
-import {map, keys, partial} from 'ramda';
+import {map, keys } from 'ramda';
 
 const DefaultControl = (props) =>
 <div> Unsupported Param: {props.type} <br/>
@@ -64,12 +64,12 @@ const ParamsUI = ({params, paramsByCategory, updateParam, resetParams, sendParam
   }
   <ButtonToolbar>
     <Button
-      onClick={ partial(resetParams, [url, params]) }
+      onClick={ resetParams }
       bsStyle="primary">
       Reset Params
     </Button>
     <Button
-      onClick={ partial(sendParams, [url, params]) }
+      onClick={ sendParams }
       bsStyle="primary">
       Update Params
     </Button>

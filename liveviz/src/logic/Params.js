@@ -26,7 +26,7 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const FETCH_PARAMS_INTERVAL = 500000000
+const FETCH_PARAMS_INTERVAL = 5000
 
 const mapStateToProps = (state) => {
   const localState = state.screens.params;
