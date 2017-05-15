@@ -9,11 +9,11 @@ const paramsByCategory = params => groupBy(p => head(split('.', p.VisibleName)))
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    sendParams: (url, params) => {
-      dispatch(sendParams(url, params))
+    sendParams: () => {
+      dispatch(sendParams())
     },
-    resetParams: (url, params) => {
-      dispatch(resetParams(url, params))
+    resetParams: () => {
+      dispatch(resetParams())
     },
     onSuccess: (data) => {
       dispatch(updateParamsData(data))

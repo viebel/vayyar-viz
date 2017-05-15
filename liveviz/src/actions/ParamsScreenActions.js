@@ -41,6 +41,9 @@ const sendParamsToServer = (dispatch, url, params) => {
     body: JSON.stringify(paramsForServer(params))
   }).then(response => {
     dispatch(paramsScreenTogglePreventFetch(false))
+  }).catch( err => {
+    dispatch(paramsScreenTogglePreventFetch(false))
+    console.log(`error in sendParamsToServer => url: ${url} err: ${err}`)
   })
 }
 
