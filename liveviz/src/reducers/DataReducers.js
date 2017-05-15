@@ -8,6 +8,9 @@ const defaultState = {
 
 const updateParam = (params, name, value) => {
   const idx = findIndex(propEq('ActualName', name), params)
+  if(idx === -1) {
+    return params
+  }
   return adjust(assoc('Value',value), idx)(params)
 }
 

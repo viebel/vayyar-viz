@@ -10,11 +10,9 @@ describe('params screen async actions ', () => {
   afterEach(() => {
     fetchMock.restore()
   })
-  describe(' when sending params', () => {
+  describe('when sending params', () => {
     const serverRoot = 'http://server.com'
     const params = {variables: []}
-
-
 
     it('sets prevent fetch to true and then to false on success', () => {
       fetchMock.post(`${serverRoot}/post`, "ok")
