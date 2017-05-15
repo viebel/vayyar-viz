@@ -1,6 +1,7 @@
 import { groupBy, split, head} from 'ramda';
 import { connect } from 'react-redux'
-import { debouncedSendParams, sendParams, resetParams, updateParamsData, paramsScreenSetError, updateParam } from '../actions'
+import { paramsScreenSetError } from '../actions/ParamsScreenActions'
+import { debouncedSendParams, sendParams, resetParams, updateParamsData, updateParam } from '../actions/DataActions'
 
 import ParamsFetchUI from '../ui/ParamsUI';
 
@@ -8,11 +9,11 @@ const paramsByCategory = params => groupBy(p => head(split('.', p.VisibleName)))
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    sendParams: (url, params) => {
-      dispatch(sendParams(url, params))
+    sendParams: () => {
+      dispatch(sendParams())
     },
-    resetParams: (url, params) => {
-      dispatch(resetParams(url, params))
+    resetParams: () => {
+      dispatch(resetParams())
     },
     onSuccess: (data) => {
       dispatch(updateParamsData(data))
