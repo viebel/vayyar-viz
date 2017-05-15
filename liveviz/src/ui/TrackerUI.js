@@ -5,14 +5,15 @@ import '../styles/tracker.css';
 
 const Target = ({x, y, type}) => {
   const targetClasses = {
-    "circle": "target-circle",
-    "square": "target-square",
-    "triangle": "target-triangle",
+    "circle": "blue-target",
+    "square": "red-target",
+    "triangle": "white-target",
   };
   const targetClass = targetClasses[type] || "target-unknown";
   return (
-    <div className={`target-arena ${targetClass}`}
-      style={{top: y, left: x}}/>
+      <div className={`target-arena ${targetClass}`} style={{top: y, left: x}}>
+          <div className={`target-arena-standing `}/>
+      </div>
   );
 }
 
