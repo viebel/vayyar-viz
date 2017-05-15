@@ -1,12 +1,14 @@
 import TrackerFetchUI from '../ui/TrackerUI'
 import { connect } from 'react-redux'
-import { setConnectionStatus, trackerScreenUpdateData, trackerScreenSetError} from '../actions'
+import { trackerScreenSetError} from '../actions/TrackerScreenActions'
+import { updateTrackerData } from '../actions/DataActions'
+import { setConnectionStatus} from '../actions/GlobalActions'
 
 
 const mapDispatchToProps = (dispatch) => {
   return {
     onSuccess: (data) => {
-      dispatch(trackerScreenUpdateData(data))
+      dispatch(updateTrackerData(data))
       dispatch(setConnectionStatus('connected'))
     },
     onError: (reason, url) => {

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { trackerScreenToggleRunning} from '../actions'
+import { trackerScreenToggleRunning} from '../actions/TrackerScreenActions'
 import GraphAndParamsUI from '../ui/GraphAndParamsUI';
 
 const mapDispatchToProps = (dispatch) => {

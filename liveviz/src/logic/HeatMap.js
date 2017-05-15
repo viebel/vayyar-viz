@@ -1,6 +1,8 @@
 import HeatMapFetchUI from '../ui/HeatMapUI';
 import { connect } from 'react-redux'
-import {updateHeatMapData, trackerScreenSetError} from '../actions'
+import { updateHeatMapData } from '../actions/DataActions'
+import { trackerScreenSetError} from '../actions/TrackerScreenActions'
+
 
 const mapDispatchToProps = (dispatch) => {
   return {

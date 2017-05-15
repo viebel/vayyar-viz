@@ -1,54 +1,5 @@
 import { assoc, map } from 'ramda';
 
-export const setServerRoot = (url) => {
-  return {
-    type: 'SET_SERVER_ROOT',
-    val: url,
-  }
-}
-
-export const setConnectionStatus = (status) => {
-  return {
-    type: 'SET_CONNECTION_STATUS',
-    val: status,
-  }
-}
-
-export const trackerScreenToggleRunning = () => {
-  return {
-    type: 'TRACKER_SCREEN_TOGGLE_RUNNING'
-  }
-}
-
-export const trackerScreenUpdateData = (data) =>  {
-  console.log(data)
-  return {
-    type: 'DATA_UPDATE_TRACKER',
-    val: data,
-  }
-}
-
-export const updateHeatMapData = (data) => {
-  return {
-    type: 'DATA_UPDATE_HEATMAP',
-    val: data,
-  }
-}
-
-export const trackerScreenSetError = (reason, url) => {
-  return {
-    type: 'TRACKER_SCREEN_SET_ERROR',
-    val: {reason, url},
-  }
-}
-
-export const updateParamsData = (data) => {
-  return {
-    type: 'DATA_UPDATE_PARAMS',
-    val: data,
-  }
-}
-
 export const paramsScreenSetError = (reason, url) => {
   return {
     type: 'PARAMS_SCREEN_SET_ERROR',
