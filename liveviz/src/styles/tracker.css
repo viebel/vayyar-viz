@@ -16,15 +16,25 @@
   border-radius: 50%;
 }
 
-.target-arena-standing {
+.target-arena-posture {
   position:absolute; /*it can be fixed too*/
   left:5px; right:5px;
   top:5px; bottom:5px;
-
-  background-image: url("./images/standing.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
+}
+
+.target-arena-standing {
+  background-image: url("./images/standing.png");
+}
+
+.target-arena-sitting {
+  background-image: url("./images/sitting.png");
+}
+
+.target-arena-lying {
+  background-image: url("./images/lying.png");
 }
 
 .white-target {

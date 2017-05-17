@@ -3,7 +3,7 @@ import {merge} from 'ramda';
 import FetchPeriodic from '../common/FetchPeriodic';
 import '../styles/tracker.css';
 
-const Target = ({x, y, type}) => {
+const Target = ({x, y, type, posture}) => {
   const targetClasses = {
     "circle": "blue-target",
     "square": "orange-target",
@@ -12,11 +12,16 @@ const Target = ({x, y, type}) => {
   const targetClass = targetClasses[type] || "target-unknown";
   return (
       <div className={`target-arena ${targetClass}`} style={{top: y, left: x}}>
-          <div className={`target-arena-standing `}/>
+          <div className={`target-arena-posture target-arena-${posture}`}/>
       </div>
   );
 }
 
+const postures =  {
+  triangle: "sitting",
+  square: "standing",
+  circle: "lying",
+}
 class TrackerUI extends Component {
   constructor(props) {
     super(props);
@@ -32,7 +37,7 @@ class TrackerUI extends Component {
   render() {
     const {width, height} = this.state,
     {targets} = this.props,
-    [arenaWidth, arenaHeight] = [20, 10];
+    [arenaWidth, arenaHeight] = [20, 10]
 
     return (
       <div className="tracker-arena"
@@ -44,6 +49,7 @@ class TrackerUI extends Component {
               type={target.TargetType}
               x={(target.X + Math.random())* width/arenaWidth}
               y={(target.Y + Math.random())* height/arenaHeight}
+              posture={ postures[target.TargetType] /* TODO: read from serve when it returns the posture*/}
               />
           )
         }
