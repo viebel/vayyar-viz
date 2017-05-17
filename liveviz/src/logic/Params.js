@@ -1,7 +1,8 @@
 import { groupBy, split, head} from 'ramda';
 import { connect } from 'react-redux'
 import { paramsScreenSetError } from '../actions/ParamsScreenActions'
-import { debouncedSendParams, sendParams, resetParams, updateParamsData, updateParam } from '../actions/DataActions'
+import { updateParamsData } from '../actions/DataActions'
+import { debouncedSendParams, sendParams, resetParams, updateParam } from '../actions/ParamsScreenActions'
 
 import ParamsFetchUI from '../ui/ParamsUI';
 
