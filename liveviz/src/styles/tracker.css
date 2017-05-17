@@ -9,25 +9,32 @@
 
 .target-arena {
   position: absolute;
-  width: 20px;
-  height: 20px;
-  max-width: 20px;
-  max-height: 20px;
+  width: 30px;
+  height: 30px;
+  max-width: 30px;
+  max-height: 30px;
+  border-radius: 50%;
 }
 
-.target-square {
+.target-arena-standing {
+  position:absolute; /*it can be fixed too*/
+  left:5px; right:5px;
+  top:5px; bottom:5px;
+
+  background-image: url("./images/standing.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.white-target {
+  background-color: white;
+}
+
+.red-target {
   background-color: red;
 }
 
-.target-circle {
-  border-radius: 50%;
-  background-color: green;
-}
-
-.target-triangle {
-  width: 0;
-  height: 0;
-  border-left: 13px solid transparent;
-  border-right: 13px solid transparent;
-  border-bottom: 20px solid blue;
+.blue-target {
+  background-color: blue;
 }

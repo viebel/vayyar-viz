@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import drawHeatMap from '../heatmap/heatmap';
+import drawHeatMap from '../heatMap/heatmap';
 import FetchPeriodic from '../common/FetchPeriodic';
 
 import '../styles/heatMap.css';
