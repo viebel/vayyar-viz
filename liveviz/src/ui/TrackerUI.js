@@ -6,8 +6,8 @@ import '../styles/tracker.css';
 const Target = ({x, y, type}) => {
   const targetClasses = {
     "circle": "blue-target",
-    "square": "red-target",
-    "triangle": "white-target",
+    "square": "orange-target",
+    "triangle": "green-target",
   };
   const targetClass = targetClasses[type] || "target-unknown";
   return (
