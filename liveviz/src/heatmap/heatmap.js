@@ -33,7 +33,7 @@ function drawHeatMap(canvas, data, {min, max}) {
     for (var j = 0; j < n; j++) {
       const val = scale(data[i][j], min, max, 0, 255);
       ctx.fillStyle = rainbowColor(val);
-      ctx.fillRect(i * scaleX, height - j * scaleY, scaleX, scaleY);
+      ctx.fillRect(i * scaleX, height - (j+1) * scaleY, scaleX, scaleY);
     }
   }
 }
