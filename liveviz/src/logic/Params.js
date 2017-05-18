@@ -1,5 +1,6 @@
 import { groupBy, split, head} from 'ramda';
 import { connect } from 'react-redux'
+import { setParamsStatus } from '../actions/GlobalActions'
 import { paramsScreenSetError } from '../actions/ParamsScreenActions'
 import { updateParamsData } from '../actions/DataActions'
 import { debouncedSendParams, sendParams, resetParams, updateParam } from '../actions/ParamsScreenActions'
@@ -12,6 +13,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     sendParams: () => {
       dispatch(sendParams())
+    },
+    changeParamsStatus: () => {
+      dispatch(setParamsStatus())
     },
     resetParams: () => {
       dispatch(resetParams())
@@ -40,8 +44,10 @@ const mapStateToProps = (state) => {
     interval: FETCH_PARAMS_INTERVAL,
     params: state.data.params,
     paramsByCategory: paramsByCategory(state.data.params.variables),
+    isEditable: state.global.isParamEditable,
     url: `${state.global.serverRoot}/post`,
     urlGetParams: `${state.global.serverRoot}/UpdateConfigurationEditor`,
+
   }
 }
 

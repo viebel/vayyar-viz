@@ -11,3 +11,9 @@ export const setConnectionStatus = (status) => {
     val: status,
   }
 }
+
+export const setParamsStatus = () => {
+    return {
+        type: 'SET_PARAMS_STATUS'
+    }
+}
