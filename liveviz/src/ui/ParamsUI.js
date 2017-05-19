@@ -60,7 +60,6 @@ const ParamsGroup = ({group, updateParam, params, isEditable}) =>
 
 const ParamsUI = ({params, paramsByCategory, updateParam, resetParams, sendParams, status, error, url, isEditable, changeParamsStatus}) =>
 <div>
-  <div> status: {status}</div>
   <Button
       className={keys(paramsByCategory).length > 0 ? "" : "hidden" }
       onClick={ changeParamsStatus }
