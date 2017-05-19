@@ -2,7 +2,7 @@ import { merge, assoc } from 'ramda'
 
 const defaultState = {
   serverRoot: 'http://209.9.36.2:1234',
-  connectionStatus: 'disconnected',
+  connectionStatus: 'connected',
   graphKey: 0,
 }
 

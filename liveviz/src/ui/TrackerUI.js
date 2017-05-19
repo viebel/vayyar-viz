@@ -61,7 +61,6 @@ class TrackerUI extends Component {
 const TrackerFetchUI = ({error, status, running, url, targets, onSuccess, onError}) =>
 <div>
   <div>{error}</div>
-  <div>running:{running.toString()}</div>
   {status === "disconnected"? null :
     <FetchPeriodic
       url={ url }

@@ -24,7 +24,6 @@ class HeatMapUI extends Component {
 
 const HeatMapFetchUI = ({error, status, running, url, data, onSuccess, onError}) =>
   <div>
-    <div>running:{running.toString()}</div>
     <div> {error} </div>
     {status === "disconnected"? null :
       <div>

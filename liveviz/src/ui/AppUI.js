@@ -1,14 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import ConnectionUI from '../ui/ConnectionUI';
-import GraphAndParams from '../logic/GraphAndParams';
-//import logo from './logo.svg';
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/css/bootstrap-theme.css';
-
-import '../styles/App.css';
-import { Grid, Navbar} from 'react-bootstrap';
-
+import React from 'react'
+import PropTypes from 'prop-types'
+import GraphAndParams from '../logic/GraphAndParams'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/css/bootstrap-theme.css'
+import '../styles/App.css'
+import { Navbar} from 'react-bootstrap'
 
 const AppUI = ({url, status, graphKey, onConnect, updateStatus}) =>
 (
@@ -20,9 +16,10 @@ const AppUI = ({url, status, graphKey, onConnect, updateStatus}) =>
           </Navbar.Brand>
         </Navbar.Header>
     </Navbar>
-    <ConnectionUI
+    {/* This should move to a screen with a connection widget
+      <ConnectionUI
       url={ url }
-      onConnect={ onConnect }/>
+      onConnect={ onConnect }/> */}
     <GraphAndParams
       key={ graphKey  /* use key in order to force re-mounting each time we re-connect */ }
       url={ url }
