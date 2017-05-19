@@ -3,4 +3,166 @@ body {
   padding: 0;
   font-family: sans-serif;
   background-color: black;
+  overflow-x: hidden;
+}
+
+.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0;
+    height: 60px;
+    margin: 0;
+    padding: 0;
+}
+.navbar-brand {
+    height: 60px;
+    padding: 20px;
+}
+.navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav > li > a {
+    text-shadow: none;
+    color: #555;
+}
+.navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus {
+    color: #555;
+}
+.btn {
+    padding: 8px 16px;
+    text-shadow: none;
+    margin-right: 15px;
+}
+.btn:active,
+.btn:focus {
+    outline: none;
+}
+.btn.btn-primary {
+    background: #222;
+    border: 0;
+    font-size: 14px;
+}
+
+
+/* Sidebar Styles */
+
+
+#root {
+    padding-right: 0;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+#root.toggled {
+    padding-right: 200px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: absolute !important;
+    top: 60px;
+    right: 200px;
+    width: 0;
+    padding: 20px;
+    margin-right: -200px;
+    overflow-y: auto;
+    background: #555;
+    color: #fff;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+#sidebar-wrapper.toggled {
+    right: 0;
+}
+
+#sidebar-wrapper .form-control {
+    background: #333;
+    border-radius: 0;
+    border: 0;
+    color: #fff;
+}
+
+#sidebar-wrapper h4 {
+
+}
+
+#sidebar-wrapper .form-horizontal .radio, 
+#sidebar-wrapper .form-horizontal .checkbox {
+    padding: 0 15px;
+}
+
+#sidebar-wrapper .form-horizontal .control-label {
+    text-align: left;
+    font-weight: 400;
+    font-size: 13px;
+    margin-bottom: 5px;
+    color: #BBBBBB;
+}
+
+#root.toggled #sidebar-wrapper {
+    width: 200px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+}
+
+#root.toggled #page-content-wrapper {
+    position: absolute;
+    margin-left: -200px;
+}
+
+
+#sidebar-wrapper > div > div a {
+    display: block;
+    text-decoration: none;
+    color: #999999;
+}
+
+#sidebar-wrapper > div > div a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+#sidebar-wrapper > div > div a:active,
+#sidebar-wrapper > div > div a:focus {
+    text-decoration: none;
+}
+
+
+
+@media(min-width:768px) {
+    #root {
+        padding-right: 0;
+    }
+    #root.toggled {
+        padding-right: 200px;
+    }
+    #sidebar-wrapper {
+        width: 0;
+    }
+    #root.toggled #sidebar-wrapper {
+        width: 200px;
+    }
+    #page-content-wrapper {
+        padding: 20px;
+        position: relative;
+    }
+    #root.toggled #page-content-wrapper {
+        position: relative;
+        margin-left: 0;
+    }
+    .jumbotron {
+        padding-top: 80px;
+    }
 }

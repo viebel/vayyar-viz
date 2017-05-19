@@ -8,16 +8,16 @@ function Boolean ({args, onChange}){
   }
   return (
     <FormGroup>
-      <Col componentClass={ControlLabel} sm={6} xs={6}>
+      <Col componentClass={ControlLabel} xs={12}>
         {args.Description + ' '}
       </Col>
-      <Radio inline
+      <Radio
         checked={truthy()}
           name={args.ActualName}
           onChange={(e) => onChange(true)}>
           true
         </Radio>
-        <Radio inline
+        <Radio
           checked={!truthy()}
           name={args.ActualName}
           onChange={(e) => onChange(false)}>

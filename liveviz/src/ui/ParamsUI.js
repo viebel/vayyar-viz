@@ -41,7 +41,7 @@ const ParamsList = ({params, updateParam}) =>
 
 const ParamsGroup = ({group, updateParam, params}) =>
 <div key={group}>
-  <h2> {group} </h2>
+  <h4> {group} </h4>
   <ParamsList
     updateParam={updateParam}
     params={params}>
@@ -50,7 +50,6 @@ const ParamsGroup = ({group, updateParam, params}) =>
 
 const ParamsUI = ({params, paramsByCategory, updateParam, resetParams, sendParams, status, error, url}) =>
 <div>
-  <h1> Parameters</h1>
   <div> status: {status}</div>
   <div> {error}</div>
   {
