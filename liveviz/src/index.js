@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 import thunkMiddleware from 'redux-thunk'
 import createDebounce from 'redux-debounced'
 import { createStore, compose, applyMiddleware } from 'redux'
+import { AppContainer } from 'react-hot-loader'
 import app  from './reducers/index'
 import './styles/index.css'
 
@@ -13,9 +14,25 @@ const store = createStore(app, composeEnhancers(
   applyMiddleware(createDebounce(), thunkMiddleware))
 )
 
-ReactDOM.render(
-  <Provider store={ store }>
-    <App />
-  </Provider>,
-  document.getElementById('root')
-);
+const render = Component => {
+  ReactDOM.render(
+    <AppContainer>
+      <Provider store={ store }>
+        <Component
+          key={ //TODO Yehonathan 2017, May 19: get rid of the key - without it hot reload doesn't work
+            Math.random()}/>
+      </Provider>
+    </AppContainer>
+    ,
+    document.getElementById('root')
+  )
+}
+
+render(App)
+
+if (module.hot) {
+  module.hot.accept('./logic/App', () => {
+    const NextApp = require('./logic/App').default
+    render(NextApp)
+  })
+}
