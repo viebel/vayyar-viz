@@ -93,3 +93,11 @@ export const resetParams = () =>
 
   return sendParamsToServer(dispatch, url, defaultParams)
 }
+
+
+export const setParamsStatus = () => {
+    return {
+        type: 'SET_PARAMS_STATUS'
+    }
+}
+
