@@ -1,7 +1,6 @@
 import { groupBy, split, head} from 'ramda';
 import { connect } from 'react-redux'
-import { setParamsStatus } from '../actions/GlobalActions'
-import { paramsScreenSetError } from '../actions/ParamsScreenActions'
+import { setParamsStatus, paramsScreenSetError } from '../actions/ParamsScreenActions'
 import { updateParamsData } from '../actions/DataActions'
 import { debouncedSendParams, sendParams, resetParams, updateParam } from '../actions/ParamsScreenActions'
 
@@ -44,7 +43,7 @@ const mapStateToProps = (state) => {
     interval: FETCH_PARAMS_INTERVAL,
     params: state.data.params,
     paramsByCategory: paramsByCategory(state.data.params.variables),
-    isEditable: state.global.isParamEditable,
+    isEditable: localState.isParamEditable,
     url: `${state.global.serverRoot}/post`,
     urlGetParams: `${state.global.serverRoot}/UpdateConfigurationEditor`,
 
