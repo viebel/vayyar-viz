@@ -1,6 +1,6 @@
 import { groupBy, split, head} from 'ramda';
 import { connect } from 'react-redux'
-import { setParamsStatus, paramsScreenSetError } from '../actions/ParamsScreenActions'
+import { toggleParamsStatus, paramsScreenSetError } from '../actions/ParamsScreenActions'
 import { updateParamsData } from '../actions/DataActions'
 import { debouncedSendParams, sendParams, resetParams, updateParam } from '../actions/ParamsScreenActions'
 
@@ -14,7 +14,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(sendParams())
     },
     changeParamsStatus: () => {
-      dispatch(setParamsStatus())
+      dispatch(toggleParamsStatus())
     },
     resetParams: () => {
       dispatch(resetParams())

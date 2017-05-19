@@ -95,9 +95,14 @@ export const resetParams = () =>
 }
 
 
-export const setParamsStatus = () => {
+export const toggleParamsStatus = () => {
     return {
-        type: 'SET_PARAMS_STATUS'
+        type: 'TOGGLE_PARAMS_STATUS'
     }
 }
 
+export const toggleParamsDisplay = () => {
+  return {
+    type: 'TOGGLE_DISPLAY_PARAMS'
+  }
+}
