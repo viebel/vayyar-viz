@@ -13,13 +13,12 @@ const Graph  = (props) =>
     HeatMap,
     Tracker,
   },
-  {status, title, type} = props,
+  {title, type} = props,
   Component = typeToGraph[type] || DefaultGraph;
   return (
     <div>
       <h1> { title } </h1>
       <div>
-        <div>status: {status}</div>
         <Component {...props}/>
       </div>
     </div>

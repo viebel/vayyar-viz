@@ -4,10 +4,6 @@ import Graph from '../ui/GraphUI';
 import Params from '../logic/Params';
 
 
-
-    
-
-
 const playOrPauseButtonText = (running) =>
 running ? "Pause" : "Play"
 
@@ -19,7 +15,7 @@ const GraphAndParamsUI = ({url, status, running, updateStatus, toggleRunning}) =
           bsStyle="primary">
           { playOrPauseButtonText(running) }
         </Button>
-        <Button 
+        <Button
            id="menu-toggle"
            bsStyle="primary">
            Toggle Param
@@ -29,8 +25,7 @@ const GraphAndParamsUI = ({url, status, running, updateStatus, toggleRunning}) =
               <Graph
                   url={url}
                   running={running}
-                  type="HeatMap"
-                  title="Heat Map"
+                  type="Tracker"
                   updateStatus={updateStatus}
                   status={status}/>
             </Col>
@@ -39,7 +34,6 @@ const GraphAndParamsUI = ({url, status, running, updateStatus, toggleRunning}) =
                   url={url}
                   running={running}
                   type="HeatMap"
-                  title="Heat Map"
                   updateStatus={updateStatus}
                   status={status}/>
             </Col>
@@ -50,7 +44,6 @@ const GraphAndParamsUI = ({url, status, running, updateStatus, toggleRunning}) =
                   url={url}
                   running={running}
                   type="Tracker"
-                  title="Tracker"
                   updateStatus={updateStatus}
                   status={status}/>
             </Col>
@@ -58,8 +51,7 @@ const GraphAndParamsUI = ({url, status, running, updateStatus, toggleRunning}) =
               <Graph
                   url={url}
                   running={running}
-                  type="Tracker"
-                  title="Tracker"
+                  type="HeatMap"
                   updateStatus={updateStatus}
                   status={status}/>
             </Col>
@@ -68,8 +60,6 @@ const GraphAndParamsUI = ({url, status, running, updateStatus, toggleRunning}) =
     <div id="sidebar-wrapper">
       <Params url={url} status={status} running={running}></Params>
     </div>
-
-
 </Grid>
 
   export default GraphAndParamsUI;
