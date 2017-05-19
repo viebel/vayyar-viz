@@ -1,0 +1,115 @@
+#root {
+    padding-right: 0;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+#root.toggled {
+    padding-right: 200px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: absolute !important;
+    top: 60px;
+    right: 200px;
+    width: 0;
+    margin-right: -200px;
+    overflow-y: auto;
+    background: #555;
+    color: #fff;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+#sidebar-wrapper > div {
+    padding: 20px;
+}
+ 
+#sidebar-wrapper.toggled {
+    right: 0;
+}
+
+#sidebar-wrapper .form-control {
+    background: #333;
+    border-radius: 0;
+    border: 0;
+    color: #fff;
+}
+
+#sidebar-wrapper h4 {
+
+}
+
+#sidebar-wrapper .form-horizontal .radio, 
+#sidebar-wrapper .form-horizontal .checkbox {
+    padding: 0 15px;
+}
+
+#sidebar-wrapper .form-horizontal .control-label {
+    text-align: left;
+    font-weight: 400;
+    font-size: 13px;
+    margin-bottom: 5px;
+    color: #BBBBBB;
+}
+
+#root.toggled #sidebar-wrapper {
+    width: 200px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+}
+
+#root.toggled #page-content-wrapper {
+    position: absolute;
+    margin-left: -230px;
+}
+
+
+#sidebar-wrapper > div > div a {
+    display: block;
+    text-decoration: none;
+    color: #999999;
+}
+
+#sidebar-wrapper > div > div a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+#sidebar-wrapper > div > div a:active,
+#sidebar-wrapper > div > div a:focus {
+    text-decoration: none;
+}
+
+
+
+@media(min-width:768px) {
+    #root {
+        padding-right: 0;
+    }
+    #root.toggled {
+        padding-right: 200px;
+    }
+    #sidebar-wrapper {
+        width: 0;
+    }
+    #root.toggled #sidebar-wrapper {
+        width: 200px;
+    }
+    #page-content-wrapper {
+        padding: 0px;
+        position: relative;
+    }
+    #root .jumbotron {
+        padding-top: 80px;
+    }
+}
