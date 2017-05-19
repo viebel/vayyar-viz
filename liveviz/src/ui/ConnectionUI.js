@@ -21,7 +21,6 @@ class ConnectionUI extends Component {
     return (
       <Jumbotron>
         <Grid>
-          <h1>Welcome to Vayyar</h1>
           <p>
             Connect to a sensor <br></br>
         </p>

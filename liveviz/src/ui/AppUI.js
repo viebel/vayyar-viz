@@ -13,14 +13,12 @@ import { Grid, Navbar} from 'react-bootstrap';
 const AppUI = ({url, status, graphKey, onConnect, updateStatus}) =>
 (
   <div>
-    <Navbar inverse fixedTop>
-      <Grid>
+    <Navbar inverse>
         <Navbar.Header>
           <Navbar.Brand>
             <a href="/">Vayyar Live Visualization </a>
           </Navbar.Brand>
         </Navbar.Header>
-      </Grid>
     </Navbar>
     <ConnectionUI
       url={ url }
