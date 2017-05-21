@@ -7,8 +7,8 @@ import Params from '../logic/Params';
 const playOrPauseButtonText = (running) =>
 running ? "Pause" : "Play"
 
-const GraphAndParamsUI = ({url, status, displayParams, running, updateStatus, toggleRunning, toggleParams }) =>
-<Grid>
+const GraphAndParamsUI = ({ url, status, displayParams, running, updateStatus, toggleRunning, toggleParams }) =>
+<Grid id="graph-params" className={displayParams? "paramsDisplayed" : "paramsHidden"}>
   <div id="page-content-wrapper">
     <Button
       onClick={ toggleRunning }

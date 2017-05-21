@@ -25,7 +25,7 @@ describe('Boolean', () => {
   beforeEach(() => {
     const s = setup(args)
     wrapper = s.wrapper
-    props = s.props 
+    props = s.props
   })
   it('should render with proper title', () => {
     expect(wrapper.find('Col').first().children().first().text())
