@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "node-uuid": "^1.4.8",
     "ramda": "^0.23.0",
     "react": "^15.5.4",
     "react-bootstrap": "^0.31.0",

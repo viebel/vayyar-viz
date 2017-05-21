@@ -8,6 +8,7 @@ import { createStore, compose, applyMiddleware } from 'redux'
 import { AppContainer } from 'react-hot-loader'
 import app  from './reducers/index'
 import './styles/index.css'
+import { v4 } from 'node-uuid'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(app, composeEnhancers(
@@ -20,7 +21,7 @@ const render = Component => {
       <Provider store={ store }>
         <Component
           key={ //TODO Yehonathan 2017, May 19: get rid of the key - without it hot reload doesn't work
-            Math.random()}/>
+            v4()}/>
       </Provider>
     </AppContainer>
     ,
