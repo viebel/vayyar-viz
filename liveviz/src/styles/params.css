@@ -1,4 +1,4 @@
-#root {
+#graph-params {
     padding-right: 0;
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
@@ -6,7 +6,7 @@
     transition: all 0.3s ease;
 }
 
-#root.toggled {
+#graph-params.paramsDisplayed {
     padding-right: 200px;
 }
 
@@ -29,7 +29,7 @@
     padding: 20px;
 }
  
-#sidebar-wrapper.toggled {
+#sidebar-wrapper {
     right: 0;
 }
 
@@ -57,7 +57,7 @@
     color: #BBBBBB;
 }
 
-#root.toggled #sidebar-wrapper {
+#graph-params.paramsDisplayed #sidebar-wrapper {
     width: 200px;
 }
 
@@ -67,7 +67,7 @@
     padding: 15px;
 }
 
-#root.toggled #page-content-wrapper {
+#graph-params.paramsDisplayed #page-content-wrapper {
     position: absolute;
     margin-left: -230px;
 }
@@ -93,23 +93,23 @@
 
 
 @media(min-width:768px) {
-    #root {
+    #graph-params {
         padding-right: 0;
     }
-    #root.toggled {
+    #graph-params.paramsDisplayed {
         padding-right: 200px;
     }
     #sidebar-wrapper {
         width: 0;
     }
-    #root.toggled #sidebar-wrapper {
+    #graph-params.paramsDisplayed #sidebar-wrapper {
         width: 200px;
     }
     #page-content-wrapper {
         padding: 0px;
         position: relative;
     }
-    #root .jumbotron {
+    #graph-params .jumbotron {
         padding-top: 80px;
     }
 }
