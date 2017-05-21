@@ -4,23 +4,19 @@ import GraphAndParamsUI from '../ui/GraphAndParamsUI';
 import { toggleParamsDisplay} from '../actions/ParamsScreenActions'
 
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    toggleRunning: () => {
-      dispatch(trackerScreenToggleRunning())
-    },
-    toggleParams: () => {
-      dispatch(toggleParamsDisplay())
-    },
-  }
-}
+const mapDispatchToProps = (dispatch) => ({
+  toggleRunning() {
+    dispatch(trackerScreenToggleRunning())
+  },
+  toggleParams() {
+    dispatch(toggleParamsDisplay())
+  },
+})
 
-const mapStateToProps = (state) => {
-  return {
-    running: state.screens.tracker.running,
-    displayParams: state.screens.params.display
-  }
-}
+const mapStateToProps = (state) => ({
+  running: state.screens.tracker.running,
+  displayParams: state.screens.params.display
+})
 
 const GraphAndParams = connect(
   mapStateToProps,

@@ -5,17 +5,15 @@ import { updateTrackerData } from '../actions/DataActions'
 import { setConnectionStatus} from '../actions/GlobalActions'
 
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onSuccess: (data) => {
-      dispatch(updateTrackerData(data))
-      dispatch(setConnectionStatus('connected'))
-    },
-    onError: (reason, url) => {
-      dispatch(trackerScreenSetError(reason, url))
-    }
-  }
-}
+const mapDispatchToProps = (dispatch) => ({
+  onSuccess(data) {
+    dispatch(updateTrackerData(data))
+    dispatch(setConnectionStatus('connected'))
+  },
+  onError(reason, url) {
+    dispatch(trackerScreenSetError(reason, url))
+  },
+})
 
 const mapStateToProps = (state) => {
   const localState = state.screens.tracker;

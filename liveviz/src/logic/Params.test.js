@@ -4,22 +4,20 @@ import ParamsFetchUI from '../ui/ParamsUI'
 import { Provider } from 'react-redux'
 import { mount } from 'enzyme'
 
-export const storeFake = (state) => {
-	return {
-		default: () => {},
-		subscribe: () => {},
-		dispatch: () => {},
-		getState: () => {
-			return { ...state }
-		},
-	}
-}
+export const storeFake = (state) => ({
+	default() {},
+	subscribe() {},
+	dispatch () {},
+	getState () {
+		return { ...state }
+	},
+})
 
 describe('Params', () => {
 	let LogicComponent,
-			UIComponent
+	UIComponent
 
-  beforeEach(() => {
+	beforeEach(() => {
 		const state = {
 			data: {
 				params: {
@@ -31,22 +29,22 @@ describe('Params', () => {
 			},
 			global: {
 				serverRoot: 'http://209.9.36.2:1234',
-			  connectionStatus: 'disconnected',
-			  graphKey: 0,
+				connectionStatus: 'disconnected',
+				graphKey: 0,
 			}
 		}
-    const store = storeFake(state)
-    const wrapper = mount(
-      <Provider store={ store }>
+		const store = storeFake(state)
+		const wrapper = mount(
+			<Provider store={ store }>
 				<Params
 					url="http://aa.com"
 					running={false}
 					status="connected"/>
-      </Provider>
-    )
+			</Provider>
+		)
 		LogicComponent = wrapper.find(Params)
 		UIComponent = LogicComponent.find(ParamsFetchUI)
-  })
+	})
 	it ('should render', () => {
 		expect(LogicComponent.length).toBeTruthy()
 		expect(UIComponent.length).toBeTruthy()

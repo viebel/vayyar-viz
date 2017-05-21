@@ -4,16 +4,14 @@ import { updateHeatMapData } from '../actions/DataActions'
 import { trackerScreenSetError} from '../actions/TrackerScreenActions'
 
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onSuccess: (data) => {
-      dispatch(updateHeatMapData(data))
-    },
-    onError: (reason, url) => {
-      dispatch(trackerScreenSetError(reason, url))
-    }
+const mapDispatchToProps = (dispatch) => ({
+  onSuccess(data) {
+    dispatch(updateHeatMapData(data))
+  },
+  onError(reason, url) {
+    dispatch(trackerScreenSetError(reason, url))
   }
-}
+})
 
 const mapStateToProps = (state) => {
   const localState = state.screens.tracker;

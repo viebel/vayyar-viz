@@ -1,18 +1,14 @@
 import { assoc, map } from 'ramda';
 
-export const paramsScreenSetError = (reason, url) => {
-  return {
-    type: 'PARAMS_SCREEN_SET_ERROR',
-    val: {reason, url},
-  }
-}
+export const paramsScreenSetError = (reason, url) => ({
+  type: 'PARAMS_SCREEN_SET_ERROR',
+  val: {reason, url},
+})
 
-export const paramsScreenTogglePreventFetch = (prevent) => {
-  return {
-    type: 'PARAMS_SCREEN_TOGGLE_PREVENT_FETCH',
-    val: prevent,
-  }
-}
+export const paramsScreenTogglePreventFetch = (prevent) => ({
+  type: 'PARAMS_SCREEN_TOGGLE_PREVENT_FETCH',
+  val: prevent,
+})
 
 const paramsForServer = (params) => {
   const paramsRequestId = 'UpdateConfigurationEditor';
@@ -69,12 +65,10 @@ export const debouncedSendParams = () => {
   return thunk
 }
 
-const updateParamInState = (name, value) => {
-  return {
-    type: 'DATA_UPDATE_PARAM',
-    val: {name, value}
-  }
-}
+const updateParamInState = (name, value) => ({
+  type: 'DATA_UPDATE_PARAM',
+  val: {name, value}
+})
 
 export const updateParam = (name, value) =>
 dispatch => {
@@ -82,7 +76,6 @@ dispatch => {
   dispatch(updateParamInState(name, value))
   dispatch(debouncedSendParams())
 }
-
 
 export const resetParams = () =>
 (dispatch, getState) => {
@@ -95,14 +88,10 @@ export const resetParams = () =>
 }
 
 
-export const toggleParamsStatus = () => {
-    return {
-        type: 'TOGGLE_PARAMS_STATUS'
-    }
-}
+export const toggleParamsStatus = () => ({
+  type: 'TOGGLE_PARAMS_STATUS'
+})
 
-export const toggleParamsDisplay = () => {
-  return {
-    type: 'TOGGLE_DISPLAY_PARAMS'
-  }
-}
+export const toggleParamsDisplay = () => ({
+  type: 'TOGGLE_DISPLAY_PARAMS'
+})
