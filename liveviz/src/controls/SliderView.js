@@ -4,10 +4,10 @@ import { ControlLabel, Row, Col} from 'react-bootstrap';
 const SliderView = ({args}) =>
 <Row >
   <Col componentClass={ControlLabel} sm={6} xs={6}>
-    {this.props.args.Description}
+    {args.Description}
   </Col>
   <Col componentClass={ControlLabel} sm={6} xs={6}>
-    {this.props.args.Value}
+    {args.Value}
   </Col>
 </Row>
 
