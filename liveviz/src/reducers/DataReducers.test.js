@@ -1,14 +1,8 @@
-import { data } from './DataReducers'
+import { data, defaultState } from './DataReducers'
 
 describe('data reducer', () => {
   it('should return the default state', () => {
-    expect(data(undefined, {})).toEqual(
-      {
-        tracker: {targets:[]},
-        heatmap: [],
-        params: {variables: []},
-      }
-    )
+    expect(data(undefined, {})).toEqual(defaultState)
   })
   it('should handle DATA_UPDATE_TRACKER', () => {
     expect(
