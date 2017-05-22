@@ -5,7 +5,96 @@ const heatmapData = {"DataType":"demoData2","Data":[[46.0,47.0,48.0,49.0,50.0,51
 
 const trackerData = {"targets":[{"TargetType":"triangle","Name":"","X":1.5,"Y":3.0,"Z":0.0},{"TargetType":"circle","Name":"Some Name","X":2.0,"Y":2.5,"Z":0.0},{"TargetType":"square","Name":"Other name","X":12.0,"Y":9.0,"Z":0.0}],"ID":"Targets","__jTypeID":"MatGUIInterfaces.TargetsDataBlock, MatGUIInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"}
 
-const paramsData = {"variables":[{"VisibleName":"Arena.X_Min","ActualName":"x.amin","VariableType":"Slider","Value":800.0,"Description":"Arena X min","Min":1.0,"Max":100.0,"DefaultValue":3.0,"Step":1.0,"ListValues":null},{"VisibleName":"Arena.X_Max","ActualName":"x.amax","VariableType":"Slider","Value":34,"Description":"Arena X max","Min":1.0,"Max":100.0,"DefaultValue":10.0,"Step":1.0,"ListValues":null},{"VisibleName":"Arena.Y_Min","ActualName":"x.bmin","VariableType":"Slider","Value":4,"Description":"Arena Y min","Min":1.0,"Max":100.0,"DefaultValue":4.0,"Step":1.0,"ListValues":null},{"VisibleName":"Arena.Y_Max","ActualName":"x.bmax","VariableType":"Slider","Value":8,"Description":"Arena Y max","Min":1.0,"Max":100.0,"DefaultValue":8.0,"Step":1.0,"ListValues":null},{"VisibleName":"Arena.Z_Min","ActualName":"x.cmin","VariableType":"Slider","Value":5,"Description":"Arena Z min","Min":1.0,"Max":100.0,"DefaultValue":5.0,"Step":1.0,"ListValues":null},{"VisibleName":"Arena.Z_Max","ActualName":"x.cmax","VariableType":"Slider","Value":50,"Description":"Arena Z max","Min":1.0,"Max":100.0,"DefaultValue":50.0,"Step":1.0,"ListValues":null},{"VisibleName":"BG Removal.MTI","ActualName":"x.boolv","VariableType":"Boolean","Value":1,"Description":"Background Removal","Min":0.0,"Max":1.0,"DefaultValue":1.0,"Step":1.0,"ListValues":null}],"ID":"UpdateConfigurationEditor","__jTypeID":"MatGUIInterfaces.UpdateConfigurationEditorDataBlock, MatGUIInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"}
+const paramsData = {
+  "variables":[
+    {
+      "VisibleName":"Arena.X_Min",
+      "ActualName":"x.amin",
+      "VariableType":"Number",
+      "Value":800.0,
+      "Description":"Arena X min",
+      "Min":1.0,
+      "Max":100.0,
+      "DefaultValue":3.0,
+      "Step":1.0,
+      "ListValues":null
+    },
+    {
+      "VisibleName":"Arena.X_Max",
+      "ActualName":"x.amax",
+      "VariableType":"Slider",
+      "Value":34,
+      "Description":"Arena X max",
+      "Min":1.0,
+      "Max":100.0,
+      "DefaultValue":10.0,
+      "Step":1.0,
+      "ListValues":null
+    },
+    {
+      "VisibleName":"Arena.Y_Min",
+      "ActualName":"x.bmin",
+      "VariableType":"Slider",
+      "Value":4,
+      "Description":"Arena Y min",
+      "Min":1.0,
+      "Max":100.0,
+      "DefaultValue":4.0,
+      "Step":1.0,
+      "ListValues":null
+    },
+    {
+      "VisibleName":"Arena.Y_Max",
+      "ActualName":"x.bmax",
+      "VariableType":"Slider",
+      "Value":8,
+      "Description":"Arena Y max",
+      "Min":1.0,
+      "Max":100.0,
+      "DefaultValue":8.0,
+      "Step":1.0,
+      "ListValues":null
+    },
+    {
+      "VisibleName":"Arena.Z_Min",
+      "ActualName":"x.cmin",
+      "VariableType":"Slider",
+      "Value":5,
+      "Description":"Arena Z min",
+      "Min":1.0,
+      "Max":100.0,
+      "DefaultValue":5.0,
+      "Step":1.0,
+      "ListValues":null
+    },
+    {
+      "VisibleName":"Arena.Z_Max",
+      "ActualName":"x.cmax",
+      "VariableType":"Slider",
+      "Value":50,
+      "Description":"Arena Z max",
+      "Min":1.0,
+      "Max":100.0,
+      "DefaultValue":50.0,
+      "Step":1.0,
+      "ListValues":null
+    },
+    {
+      "VisibleName":"BG Removal.MTI",
+      "ActualName":"x.boolv",
+      "VariableType":"Boolean",
+      "Value":1,
+      "Description":"Background Removal",
+      "Min":0.0,
+      "Max":1.0,
+      "DefaultValue":1.0,
+      "Step":1.0,
+      "ListValues":null
+    }
+  ],
+  "ID":"UpdateConfigurationEditor",
+  "__jTypeID":"MatGUIInterfaces.UpdateConfigurationEditorDataBlock, MatGUIInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+}
 
 export const defaultState = {
   tracker: trackerData,

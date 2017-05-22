@@ -20,6 +20,7 @@ const Param = (props) => {
       Boolean: Boolean,
       Slider: Slider,
       Checkbox: Boolean,
+      Number: Number
     };
      const viewComponent = {
        Boolean: BooleanView,

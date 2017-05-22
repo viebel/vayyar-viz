@@ -5,7 +5,6 @@ import 'bootstrap-slider/dist/css/bootstrap-slider.css';
 
 
 class Slider extends Component{
-
   render() {
     return (
       <FormGroup >
