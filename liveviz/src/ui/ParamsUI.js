@@ -1,12 +1,13 @@
-import React from 'react';
-import {Button, Form, ButtonToolbar} from 'react-bootstrap';
-import Boolean from '../controls/Boolean';
-import Slider from '../controls/Slider';
-import BooleanView from '../controls/BooleanView';
-import SliderView from '../controls/SliderView';
-import FetchPeriodic from '../common/FetchPeriodic';
-import {map, keys } from 'ramda';
-import '../styles/params.css';
+import React from 'react'
+import {Button, Form, ButtonToolbar} from 'react-bootstrap'
+import Boolean from '../controls/Boolean'
+import Slider from '../controls/Slider'
+import Number from '../controls/Number'
+import BooleanView from '../controls/BooleanView'
+import SliderView from '../controls/SliderView'
+import FetchPeriodic from '../common/FetchPeriodic'
+import {map, keys } from 'ramda'
+import '../styles/params.css'
 
 const DefaultControl = (props) =>
 <div> Unsupported Param: {props.type} <br/>
@@ -20,12 +21,13 @@ const Param = (props) => {
       Boolean: Boolean,
       Slider: Slider,
       Checkbox: Boolean,
-      Number: Number
+      Number: Number,
     };
      const viewComponent = {
        Boolean: BooleanView,
        Slider: SliderView,
        Checkbox: BooleanView,
+       Number: SliderView,
      };
     return (isEditable? editableComponent[type] : viewComponent[type]) || DefaultControl;
   }
