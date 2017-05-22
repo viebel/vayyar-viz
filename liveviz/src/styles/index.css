@@ -4,12 +4,7 @@ body {
   font-family: sans-serif;
   overflow-x: hidden;
 }
-
 .navbar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
     background: #fff;
     border: 0;
     border-bottom: 1px solid #ccc;
@@ -17,6 +12,10 @@ body {
     height: 60px;
     margin: 0;
     padding: 0;
+}
+.navbar > div {
+    padding-left: 45px;
+    padding-right: 45px;
 }
 .navbar-brand {
     height: 60px;

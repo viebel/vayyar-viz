@@ -1,5 +1,4 @@
 #graph-params {
-    padding-right: 0;
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
@@ -7,7 +6,7 @@
 }
 
 #graph-params.paramsDisplayed {
-    padding-right: 200px;
+
 }
 
 #sidebar-wrapper {
@@ -20,19 +19,12 @@
     overflow-y: auto;
     background: #555;
     color: #fff;
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    transition: all 0.3s ease;
 }
+
 #sidebar-wrapper > div {
     padding: 20px;
 }
  
-#sidebar-wrapper {
-    right: 0;
-}
-
 #sidebar-wrapper .form-control {
     background: #333;
     border-radius: 0;
@@ -63,13 +55,11 @@
 
 #page-content-wrapper {
     width: 100%;
-    position: absolute;
     padding: 15px;
 }
 
 #graph-params.paramsDisplayed #page-content-wrapper {
-    position: absolute;
-    margin-left: -230px;
+
 }
 
 
@@ -94,20 +84,17 @@
 
 @media(min-width:768px) {
     #graph-params {
-        padding-right: 0;
+
     }
     #graph-params.paramsDisplayed {
-        padding-right: 200px;
-    }
-    #sidebar-wrapper {
-        width: 0;
+        right: 200px;
+
     }
     #graph-params.paramsDisplayed #sidebar-wrapper {
         width: 200px;
     }
     #page-content-wrapper {
-        padding: 0px;
-        position: relative;
+
     }
     #graph-params .jumbotron {
         padding-top: 80px;
