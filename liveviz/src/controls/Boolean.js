@@ -20,3 +20,5 @@ const Boolean = ({args, onChange}) =>
     false
   </Radio>
 </FormGroup>
+
+export default Boolean
