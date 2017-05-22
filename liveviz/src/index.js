@@ -9,10 +9,18 @@ import { AppContainer } from 'react-hot-loader'
 import app  from './reducers/index'
 import './styles/index.css'
 import { v4 } from 'node-uuid'
+import { loadState, saveState } from './common/localStorage'
+import throttle from 'lodash/throttle'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-const store = createStore(app, composeEnhancers(
-  applyMiddleware(createDebounce(), thunkMiddleware))
+const enhancers = composeEnhancers(
+  applyMiddleware(createDebounce(), thunkMiddleware)
+)
+const persistedState = loadState()
+const store = createStore(app, persistedState, enhancers)
+store.subscribe(throttle(
+  () => saveState(store.getState(), ['screens', 'global']),
+  1000)
 )
 
 const render = Component => {
@@ -22,18 +30,18 @@ const render = Component => {
         <Component
           key={ //TODO Yehonathan 2017, May 19: get rid of the key - without it hot reload doesn't work
             v4()}/>
-      </Provider>
-    </AppContainer>
-    ,
-    document.getElementById('root')
-  )
-}
+        </Provider>
+      </AppContainer>
+      ,
+      document.getElementById('root')
+    )
+  }
 
-render(App)
+  render(App)
 
-if (module.hot) {
-  module.hot.accept('./logic/App', () => {
-    const NextApp = require('./logic/App').default
-    render(NextApp)
-  })
-}
+  if (module.hot) {
+    module.hot.accept('./logic/App', () => {
+      const NextApp = require('./logic/App').default
+      render(NextApp)
+    })
+  }
