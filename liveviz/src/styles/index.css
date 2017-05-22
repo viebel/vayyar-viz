@@ -14,8 +14,9 @@ body {
     padding: 0;
 }
 .navbar > div {
-    padding-left: 45px;
-    padding-right: 45px;
+    padding-left: 30px;
+    padding-right: 30px;
+    width: initial;
 }
 .navbar-brand {
     height: 60px;

@@ -67,7 +67,7 @@ const ParamsUI = ({params, paramsByCategory, updateParam, resetParams, sendParam
       className={keys(paramsByCategory).length > 0 ? "" : "hidden" }
       onClick={ changeParamsStatus }
       bsStyle="primary">
-      {isEditable ? "View Mode" : "Edit Mode"}
+      {isEditable ? <i className="glyphicon glyphicon-arrow-left"></i> : <i className="glyphicon glyphicon-pencil"></i>}
   </Button>
   <div> {error}</div>
   {
@@ -84,12 +84,12 @@ const ParamsUI = ({params, paramsByCategory, updateParam, resetParams, sendParam
     <Button
       onClick={ resetParams }
       bsStyle="primary">
-      Reset Params
+      Reset
     </Button>
     <Button
       onClick={ sendParams }
       bsStyle="primary">
-      Update Params
+      Update
     </Button>
   </ButtonToolbar>
 </div>

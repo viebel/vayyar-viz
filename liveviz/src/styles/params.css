@@ -13,6 +13,7 @@
     z-index: 1000;
     position: absolute !important;
     top: 60px;
+    bottom: 0;
     right: 200px;
     width: 0;
     margin-right: -200px;
@@ -20,11 +21,11 @@
     background: #555;
     color: #fff;
 }
-
 #sidebar-wrapper > div {
     padding: 20px;
 }
  
+
 #sidebar-wrapper .form-control {
     background: #333;
     border-radius: 0;
@@ -34,6 +35,14 @@
 
 #sidebar-wrapper h4 {
 
+}
+
+#sidebar-wrapper .btn {
+    margin-right: 9px;
+}
+
+#sidebar-wrapper .btn-toolbar > .btn {
+    margin-left: 0;
 }
 
 #sidebar-wrapper .form-horizontal .radio, 
@@ -80,7 +89,20 @@
     text-decoration: none;
 }
 
+.slider-track {
+    background: #333333;
+}
 
+.slider.slider-horizontal .slider-track {
+    height: 6px;
+    margin-top: -5px;
+}
+
+.slider-handle {
+    background: #fff;
+    width: 16px;
+    height: 16px;
+}
 
 @media(min-width:768px) {
     #graph-params {
