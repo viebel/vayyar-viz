@@ -5,7 +5,6 @@ import app  from '../reducers/index'
 import { loadState, saveState } from '../common/localStorage'
 import throttle from 'lodash/throttle'
 
-
 const configureStore = () => {
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
   const enhancers = composeEnhancers(

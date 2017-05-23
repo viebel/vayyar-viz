@@ -23,12 +23,12 @@ const Param = (props) => {
       Checkbox: Boolean,
       Number: Number,
     };
-     const viewComponent = {
-       Boolean: BooleanView,
-       Slider: SliderView,
-       Checkbox: BooleanView,
-       Number: SliderView,
-     };
+    const viewComponent = {
+      Boolean: BooleanView,
+      Slider: SliderView,
+      Checkbox: BooleanView,
+      Number: SliderView,
+    };
     return (isEditable? editableComponent[type] : viewComponent[type]) || DefaultControl;
   }
   const Component = typeToComponent(props.type, props.isEditable);
@@ -64,61 +64,63 @@ const ParamsGroup = ({group, updateParam, params, isEditable}) =>
 const ParamsUI = ({params, paramsByCategory, updateParam, resetParams, sendParams, status, error, url, isEditable, changeParamsStatus}) =>
 <div>
   <div className="mode-toggle">
-      <Button
-          className={keys(paramsByCategory).length > 0 ? "" : "hidden" }
-          onClick={ changeParamsStatus }
-          bsStyle="primary">
-          {isEditable ? <i className="glyphicon glyphicon-remove"></i> : <i className="glyphicon glyphicon-pencil"></i>}
+    <Button
+      className={keys(paramsByCategory).length > 0 ? "" : "hidden" }
+      onClick={ changeParamsStatus }
+      bsStyle="primary">
+      <i className={`glyphicon
+          ${isEditable? "glyphicon-sunglasses": "glyphicon-pencil"}`}
+          />
       </Button>
+    </div>
+    <div className="err-message"> {error}</div>
+    {
+      map( group =>
+        <ParamsGroup
+          key={group}
+          updateParam={updateParam}
+          group={group}
+          params={paramsByCategory[group]}
+          isEditable={isEditable}/>
+      )(keys(paramsByCategory))
+    }
+    <ButtonToolbar className={isEditable ? "" : "hidden" }>
+      <Button
+        onClick={ resetParams }
+        bsStyle="primary">
+        Reset
+      </Button>
+      <Button
+        onClick={ sendParams }
+        bsStyle="primary">
+        Update
+      </Button>
+    </ButtonToolbar>
   </div>
-  <div className="err-message"> {error}</div>
-  {
-    map( group =>
-      <ParamsGroup
-        key={group}
-        updateParam={updateParam}
-        group={group}
-        params={paramsByCategory[group]}
-        isEditable={isEditable}/>
-    )(keys(paramsByCategory))
-  }
-  <ButtonToolbar className={isEditable ? "" : "hidden" }>
-    <Button
-      onClick={ resetParams }
-      bsStyle="primary">
-      Reset
-    </Button>
-    <Button
-      onClick={ sendParams }
-      bsStyle="primary">
-      Update
-    </Button>
-  </ButtonToolbar>
-</div>
 
-const ParamsFetchUI = ({status, url, urlGetParams, isEditable, preventFetch, interval, onSuccess, onError, paramsByCategory, updateParam, resetParams, changeParamsStatus, sendParams, error}) =>
-<div>
-  {status === "disconnected"? null :
-    <FetchPeriodic
-      url={ urlGetParams }
-      interval={ interval }
-      prevent={ preventFetch}
-      onSuccess={ onSuccess}
-      onError={ onError }
+  const ParamsFetchUI = ({status, url, urlGetParams, isEditable, preventFetch, interval, onSuccess, onError, paramsByCategory, updateParam, resetParams, changeParamsStatus, sendParams, error}) =>
+  <div>
+    {status === "disconnected"? null :
+      <FetchPeriodic
+        url={ urlGetParams }
+        interval={ interval }
+        prevent={ preventFetch}
+        onSuccess={ onSuccess}
+        onError={ onError }
+        />
+    }
+    <ParamsUI
+      error={ error }
+      url={ url }
+      isEditable={isEditable}
+      paramsByCategory={ paramsByCategory }
+      updateParam={ updateParam }
+      changeParamsStatus={ changeParamsStatus }
+      resetParams={ resetParams }
+      sendParams={ sendParams }
       />
-  }
-  <ParamsUI
-    error={ error }
-    url={ url }
-    isEditable={isEditable}
-    paramsByCategory={ paramsByCategory }
-    updateParam={ updateParam }
-    changeParamsStatus={ changeParamsStatus }
-    resetParams={ resetParams }
-    sendParams={ sendParams }
-    />
-</div>
+  </div>
 
 
 
-export default ParamsFetchUI;
+  export default ParamsFetchUI;
