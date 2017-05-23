@@ -136,10 +136,15 @@ const paramsData = {
   "__jTypeID":"MatGUIInterfaces.UpdateConfigurationEditorDataBlock, MatGUIInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
 }
 
+const mergeParams = (serverParams) => {
+  const allVariables = concat(serverParams.variables, additionalVariables)
+  return assoc('variables', allVariables, serverParams)
+}
+
 export const defaultState = {
   tracker: trackerData,
   heatmap: heatmapData,
-  params: paramsData,
+  params: mergeParams(paramsData),
 }
 
 const updateParam = (params, name, value) => {
@@ -148,11 +153,6 @@ const updateParam = (params, name, value) => {
     return params
   }
   return adjust(assoc('Value',value), idx)(params)
-}
-
-const mergeParams = (serverParams) => {
-  const allVariables = concat(serverParams.variables, additionalVariables)
-  return assoc('variables', allVariables, serverParams)
 }
 
 export const data = (state=defaultState, action) => {
