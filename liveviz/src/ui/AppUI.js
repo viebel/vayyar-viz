@@ -12,7 +12,7 @@ const AppUI = ({url, status, graphKey, onConnect, updateStatus}) =>
     <Navbar inverse>
         <Navbar.Header>
           <Navbar.Brand>
-            <a href="/">ss Vayyar Live Visualization</a>
+            <a href="/">Vayyar Live Visualization</a>
           </Navbar.Brand>
         </Navbar.Header>
     </Navbar>
