@@ -8,7 +8,7 @@ import BooleanView from '../controls/BooleanView'
 import TextView from '../controls/TextView'
 import FetchPeriodic from '../common/FetchPeriodic'
 import {map, keys } from 'ramda'
-import '../styles/params.css'
+
 
 const DefaultControl = (props) =>
 <div> Unsupported Param: {props.type} <br/>
