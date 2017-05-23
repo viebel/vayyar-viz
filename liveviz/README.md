@@ -31,26 +31,6 @@ Run the docker image (e.g. on port 9999):
  docker run -p 9999:8080 vayyar/liveviz
 ```
 
-
-## TODO
-
-- automatic tests
-- redux: bindactioncreator
-
-## Bugs
-
-
-## DONE
-- separate ui and logic
-- handle errors while reading params
-- get/send params to server
-- read params every second
-- wait for connection before reading params
-- reset params
-- group parameters
-
-
-
 ## More info
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
