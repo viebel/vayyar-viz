@@ -1,13 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: "Open Sans", sans-serif;
   overflow-x: hidden;
+  background: #222736;
+  color: #fff;
 }
 .navbar {
-    background: #fff;
+    background: #f4f4f4;
     border: 0;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #e2e2e2;
     border-radius: 0;
     height: 60px;
     margin: 0;
@@ -33,15 +37,18 @@ body {
     padding: 8px 16px;
     text-shadow: none;
     margin-right: 15px;
+    box-shadow: none;
 }
 .btn:active,
 .btn:focus {
     outline: none;
 }
 .btn.btn-primary {
-    background: #222;
+    background: #3955a5;
     border: 0;
     font-size: 14px;
 }
+
+
 
 

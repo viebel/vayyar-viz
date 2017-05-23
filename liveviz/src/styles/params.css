@@ -5,44 +5,73 @@
     transition: all 0.3s ease;
 }
 
-#graph-params.paramsDisplayed {
-
-}
-
 #sidebar-wrapper {
     z-index: 1000;
-    position: absolute !important;
-    top: 60px;
+    position: fixed !important;
+    top: 0;
     bottom: 0;
-    right: 200px;
+    right: 220px;
     width: 0;
-    margin-right: -200px;
+    margin-right: -220px;
     overflow-y: auto;
-    background: #555;
+    background: #484d5d;
     color: #fff;
 }
+
 #sidebar-wrapper > div {
     padding: 20px;
 }
  
-
 #sidebar-wrapper .form-control {
-    background: #333;
+    background: #222736;
     border-radius: 0;
     border: 0;
     color: #fff;
 }
 
 #sidebar-wrapper h4 {
-
+    color: #adb0bb;
+    font-weight: 600;
+    text-transform: uppercase;
 }
 
 #sidebar-wrapper .btn {
     margin-right: 9px;
 }
 
+#sidebar-wrapper .btn.btn-primary {
+    background: #222736;
+}
+
 #sidebar-wrapper .btn-toolbar > .btn {
     margin-left: 0;
+}
+
+#sidebar-wrapper .mode-toggle {
+    margin-bottom: 15px;
+}
+
+#sidebar-wrapper .mode-toggle .btn {
+    margin: 0 auto;
+    display: block;
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    border: 0;
+}
+
+#sidebar-wrapper .mode-toggle .btn i.glyphicon {
+    font-size: 20px;
+    left: -5px;
+    top: 2px;
+}
+
+#sidebar-wrapper .err-message {
+    overflow: auto;
+    color: #fff;
+    font-size: 13px;
+    margin-bottom: 15px;
 }
 
 #sidebar-wrapper .form-horizontal .radio, 
@@ -54,12 +83,17 @@
     text-align: left;
     font-weight: 400;
     font-size: 13px;
+    padding-top: 0;
     margin-bottom: 5px;
-    color: #BBBBBB;
+    color: #eee;
+}
+
+#sidebar-wrapper .form-group {
+    margin-bottom: 10px;
 }
 
 #graph-params.paramsDisplayed #sidebar-wrapper {
-    width: 200px;
+    width: 220px;
 }
 
 #page-content-wrapper {
@@ -67,10 +101,14 @@
     padding: 15px;
 }
 
-#graph-params.paramsDisplayed #page-content-wrapper {
+#page-content-wrapper .btn.btn-primary {
 
 }
 
+
+#graph-params.paramsDisplayed #page-content-wrapper {
+
+}
 
 #sidebar-wrapper > div > div a {
     display: block;
@@ -90,7 +128,7 @@
 }
 
 .slider-track {
-    background: #333333;
+    background: #222736;
 }
 
 .slider.slider-horizontal .slider-track {
@@ -105,19 +143,6 @@
 }
 
 @media(min-width:768px) {
-    #graph-params {
-
-    }
-    #graph-params.paramsDisplayed {
-        right: 200px;
-
-    }
-    #graph-params.paramsDisplayed #sidebar-wrapper {
-        width: 200px;
-    }
-    #page-content-wrapper {
-
-    }
     #graph-params .jumbotron {
         padding-top: 80px;
     }
