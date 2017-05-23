@@ -63,13 +63,15 @@ const ParamsGroup = ({group, updateParam, params, isEditable}) =>
 
 const ParamsUI = ({params, paramsByCategory, updateParam, resetParams, sendParams, status, error, url, isEditable, changeParamsStatus}) =>
 <div>
-  <Button
-      className={keys(paramsByCategory).length > 0 ? "" : "hidden" }
-      onClick={ changeParamsStatus }
-      bsStyle="primary">
-      {isEditable ? "View Mode" : "Edit Mode"}
-  </Button>
-  <div> {error}</div>
+  <div className="mode-toggle">
+      <Button
+          className={keys(paramsByCategory).length > 0 ? "" : "hidden" }
+          onClick={ changeParamsStatus }
+          bsStyle="primary">
+          {isEditable ? <i className="glyphicon glyphicon-chevron-left"></i> : <i className="glyphicon glyphicon-pencil"></i>}
+      </Button>
+  </div>
+  <div className="err-message"> {error}</div>
   {
     map( group =>
       <ParamsGroup
@@ -84,12 +86,12 @@ const ParamsUI = ({params, paramsByCategory, updateParam, resetParams, sendParam
     <Button
       onClick={ resetParams }
       bsStyle="primary">
-      Reset Params
+      Reset
     </Button>
     <Button
       onClick={ sendParams }
       bsStyle="primary">
-      Update Params
+      Update
     </Button>
   </ButtonToolbar>
 </div>

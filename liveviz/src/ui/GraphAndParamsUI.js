@@ -4,11 +4,15 @@ import Graph from '../ui/GraphUI';
 import Params from '../logic/Params';
 
 
+
+    
+
+
 const playOrPauseButtonText = (running) =>
-running ? "Pause" : "Play"
+running ? <i className="glyphicon glyphicon-pause"></i> : <i className="glyphicon glyphicon-play"></i>
 
 const GraphAndParamsUI = ({ url, status, displayParams, running, updateStatus, toggleRunning, toggleParams }) =>
-<Grid id="graph-params" className={displayParams? "paramsDisplayed" : "paramsHidden"}>
+<Grid fluid="true" id="graph-params" className={displayParams? "paramsDisplayed" : "paramsHidden"}>
   <div id="page-content-wrapper">
     <Button
       onClick={ toggleRunning }
