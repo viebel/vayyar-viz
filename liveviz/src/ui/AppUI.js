@@ -4,6 +4,7 @@ import GraphAndParams from '../logic/GraphAndParams'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/css/bootstrap-theme.css'
 import '../styles/App.css'
+import VayyarLogo from '../styles/images/vayyar_icon.png'
 import { Navbar} from 'react-bootstrap'
 
 const AppUI = ({url, status, graphKey, onConnect, updateStatus}) =>

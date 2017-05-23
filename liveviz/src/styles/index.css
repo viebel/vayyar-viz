@@ -3,12 +3,12 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Open Sans", sans-serif !important;
   overflow-x: hidden;
-  background: #222736;
-  color: #fff;
+  background: #222736 !important;
+  color: #fff!important;
 }
-.navbar {
+#root .navbar {
     background: #f4f4f4;
     border: 0;
     border-bottom: 1px solid #e2e2e2;
@@ -17,33 +17,33 @@ body {
     margin: 0;
     padding: 0;
 }
-.navbar > div {
+#root .navbar > div {
     padding-left: 30px;
     padding-right: 30px;
     width: initial;
 }
-.navbar-brand {
+#root .navbar .navbar-brand {
     height: 60px;
-    padding: 20px;
+    padding: 0;
+    padding-top: 20px;
 }
-.navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav > li > a {
+#root .navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav > li > a {
     text-shadow: none;
     color: #555;
 }
-.navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus {
+#root .navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus {
     color: #555;
 }
-.btn {
+#root .btn {
     padding: 8px 16px;
     text-shadow: none;
-    margin-right: 15px;
     box-shadow: none;
 }
-.btn:active,
-.btn:focus {
+#root .btn:active,
+#root .btn:focus {
     outline: none;
 }
-.btn.btn-primary {
+#root .btn.btn-primary {
     background: #3955a5;
     border: 0;
     font-size: 14px;
