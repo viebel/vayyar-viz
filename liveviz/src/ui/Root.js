@@ -19,4 +19,11 @@ export const Root = ({Component, store}) =>
 
 export const App = AppLogic
 
-export const nextApp = () => require('../logic/App').default
+export const hotReload = (render) => {
+  if (module.hot) {
+    module.hot.accept('../logic/App', () => {
+      const NextApp = require('../logic/App').default
+      render(NextApp)
+    })
+  }
+}
