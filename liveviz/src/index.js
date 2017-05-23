@@ -2,26 +2,13 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './logic/App'
 import { Provider } from 'react-redux'
-import thunkMiddleware from 'redux-thunk'
-import createDebounce from 'redux-debounced'
-import { createStore, compose, applyMiddleware } from 'redux'
 import { AppContainer } from 'react-hot-loader'
-import app  from './reducers/index'
 import './styles/index.css'
 import { v4 } from 'node-uuid'
-import { loadState, saveState } from './common/localStorage'
-import throttle from 'lodash/throttle'
+import configureStore from './common/configureStore'
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-const enhancers = composeEnhancers(
-  applyMiddleware(createDebounce(), thunkMiddleware)
-)
-const persistedState = loadState()
-const store = createStore(app, persistedState, enhancers)
-store.subscribe(throttle(
-  () => saveState(store.getState(), ['screens', 'global']),
-  1000)
-)
+
+const store = configureStore()
 
 const render = Component => {
   ReactDOM.render(
