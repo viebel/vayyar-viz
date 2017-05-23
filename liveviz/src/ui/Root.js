@@ -1,12 +1,17 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import { AppContainer } from 'react-hot-loader'
+import { v4 } from 'node-uuid'
 import MainComponent from '../ui/Main'
 
 export const Root = ({Component, store}) =>
 <AppContainer>
   <Provider store={ store }>
-    <Component/>
+    <Component
+      key={
+        //TODO Yehonathan 2017, May 19: get rid of the key - without it hot reload doesn't work
+        v4()
+      }/>
   </Provider>
 </AppContainer>
 
