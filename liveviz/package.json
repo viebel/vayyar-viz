@@ -10,6 +10,7 @@
     "react": "^15.5.4",
     "react-bootstrap": "^0.31.0",
     "react-bootstrap-slider": "^2.0.0",
+    "react-bootstrap-switch": "^15.5.0-a",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.4",
     "redux": "^3.6.0",

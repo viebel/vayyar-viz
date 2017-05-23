@@ -1,10 +1,11 @@
 import React from 'react'
 import {Button, Form, ButtonToolbar} from 'react-bootstrap'
 import Boolean from '../controls/Boolean'
+import Switch from '../controls/Switch'
 import Slider from '../controls/Slider'
 import Number from '../controls/Number'
 import BooleanView from '../controls/BooleanView'
-import SliderView from '../controls/SliderView'
+import TextView from '../controls/TextView'
 import FetchPeriodic from '../common/FetchPeriodic'
 import {map, keys } from 'ramda'
 import '../styles/params.css'
@@ -19,16 +20,18 @@ const Param = (props) => {
   {
     const editableComponent = {
       Boolean: Boolean,
+      Switch:Switch,
       Slider: Slider,
       Checkbox: Boolean,
       Number: Number,
     };
-    const viewComponent = {
-      Boolean: BooleanView,
-      Slider: SliderView,
-      Checkbox: BooleanView,
-      Number: SliderView,
-    };
+
+     const viewComponent = {
+       Boolean: BooleanView,
+       Slider: TextView,
+       Checkbox: BooleanView,
+       Number: TextView,
+     };
     return (isEditable? editableComponent[type] : viewComponent[type]) || DefaultControl;
   }
   const Component = typeToComponent(props.type, props.isEditable);
