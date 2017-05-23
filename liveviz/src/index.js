@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import configureStore from './common/configureStore'
-import { hotReload, Root, App } from './ui/Root'
+import { hotReload, Root, Main } from './ui/Root'
 
 const render = Component => {
   ReactDOM.render(
@@ -13,5 +13,5 @@ const render = Component => {
   )
 }
 
-render(App)
+render(Main)
 hotReload(render)
