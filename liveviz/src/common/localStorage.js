@@ -14,7 +14,6 @@ export const loadState = () => {
 }
 
 export const saveState = (state, keys) => {
-  console.log('saveState')
   try {
     const substate = pick(keys, state)
     const serializedState = JSON.stringify(substate)

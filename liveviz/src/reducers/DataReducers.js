@@ -34,7 +34,7 @@ const additionalVariables = [
   {
     "VisibleName":"More BG Removal.MTI",
     "ActualName":"more.x.boolv",
-    "VariableType":"Boolean",
+    "VariableType":"Switch",
     "Value":1,
     "Description":"More Background Removal",
     "Min":0.0,
@@ -111,7 +111,7 @@ const paramsData = {
       "VisibleName":"Arena.Z_Max",
       "ActualName":"x.cmax",
       "VariableType":"Slider",
-      "Value":50,
+      "Value":[50, 60],
       "Description":"Arena Z max",
       "Min":1.0,
       "Max":100.0,
@@ -122,7 +122,7 @@ const paramsData = {
     {
       "VisibleName":"BG Removal.MTI",
       "ActualName":"x.boolv",
-      "VariableType":"Boolean",
+      "VariableType":"Switch",
       "Value":1,
       "Description":"Background Removal",
       "Min":0.0,
