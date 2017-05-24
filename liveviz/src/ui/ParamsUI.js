@@ -1,12 +1,11 @@
 import React from 'react'
 import {Button, Form, ButtonToolbar} from 'react-bootstrap'
 import Boolean from '../controls/Boolean'
-import Switch from '../controls/Switch'
 import Slider from '../controls/Slider'
 import Number from '../controls/Number'
 import Switch from '../controls/Switch'
 import BooleanView from '../controls/BooleanView'
-import TextView from '../controls/TextView'
+import SliderView from '../controls/SliderView'
 import FetchPeriodic from '../common/FetchPeriodic'
 import {map, keys } from 'ramda'
 
