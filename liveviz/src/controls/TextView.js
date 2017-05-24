@@ -2,7 +2,7 @@ import React from 'react';
 import { ControlLabel, Row, Col} from 'react-bootstrap';
 
 const SliderView = ({args}) =>
-<Row>
+<Row >
   <Col componentClass={ControlLabel} sm={6} xs={6}>
     {args.Description}
   </Col>
