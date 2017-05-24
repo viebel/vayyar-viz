@@ -3,6 +3,7 @@ import {Button, Form, ButtonToolbar} from 'react-bootstrap'
 import Boolean from '../controls/Boolean'
 import Slider from '../controls/Slider'
 import Number from '../controls/Number'
+import Switch from '../controls/Switch'
 import BooleanView from '../controls/BooleanView'
 import SliderView from '../controls/SliderView'
 import FetchPeriodic from '../common/FetchPeriodic'
@@ -19,6 +20,7 @@ const Param = (props) => {
   {
     const editableComponent = {
       Boolean: Boolean,
+      Switch: Switch,
       Slider: Slider,
       Checkbox: Boolean,
       Number: Number,
@@ -27,6 +29,7 @@ const Param = (props) => {
       Boolean: BooleanView,
       Slider: SliderView,
       Checkbox: BooleanView,
+      Switch: BooleanView,
       Number: SliderView,
     };
     return (isEditable? editableComponent[type] : viewComponent[type]) || DefaultControl;
