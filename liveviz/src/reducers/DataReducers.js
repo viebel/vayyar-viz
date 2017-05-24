@@ -32,17 +32,42 @@ const additionalVariables = [
   },
 
   {
-    "VisibleName":"More BG Removal.MTI",
+    "VisibleName":"More.MTI",
     "ActualName":"more.x.boolv",
     "VariableType":"Switch",
     "Value":1,
-    "Description":"More Background Removal",
+    "Description":"Background Removal (boolean)",
     "Min":0.0,
     "Max":1.0,
     "DefaultValue":1.0,
     "Step":1.0,
     "ListValues":null
   },
+
+    {
+      "VisibleName":"More.Notifications",
+      "ActualName":"more.Notifications",
+      "VariableType":"Switch",
+      "Value":1,
+      "Description":"Notifications (switch)",
+      "Min":0.0,
+      "Max":1.0,
+      "DefaultValue":1.0,
+      "Step":1.0,
+      "ListValues":null
+    },
+    {
+      "VisibleName":"More.SMS",
+      "ActualName":"more.SMS",
+      "VariableType":"Checkbox",
+      "Value":1,
+      "Description":"SMS (Checkbox)",
+      "Min":0.0,
+      "Max":1.0,
+      "DefaultValue":1.0,
+      "Step":1.0,
+      "ListValues":null
+    },
 ]
 
 const paramsData = {
