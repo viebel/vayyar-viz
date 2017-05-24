@@ -40,7 +40,7 @@ class TrackerUI extends Component {
     [arenaWidth, arenaHeight] = [20, 10]
 
     return (
-      <div className="tracker-arena"
+      <div className="graph-arena"
         ref={element => this.domElement = element}>
         {
           targets.map (target =>

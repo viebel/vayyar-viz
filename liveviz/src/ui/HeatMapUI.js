@@ -14,9 +14,9 @@ class HeatMapUI extends Component {
       this.draw(this.props.data);
     }
     return (
-      <canvas
-      className="tracker-arena"
-      ref={element => this.canvas = element}/>
+        <div className="graph-arena">
+          <canvas className="heatMap-canvas" ref={element => this.canvas = element}/>
+        </div>
     );
   }
 }

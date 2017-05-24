@@ -15,7 +15,7 @@ running ? <i className="glyphicon glyphicon-pause"></i> : <i className="glyphico
 
 const GraphAndParamsUI = ({ url, status, displayParams, running, updateStatus, toggleRunning, toggleParams }) =>
 <Grid fluid="true" id="graph-params" className={"" + displayParams? "paramsDisplayed" : "paramsHidden" }>
-  <div id="page-content-wrapper fullHeight">
+  <div id="page-content-wrapper" className="fullHeight">
     <div className="page-toolbar">
         <Button
           onClick={ toggleRunning }
@@ -30,8 +30,8 @@ const GraphAndParamsUI = ({ url, status, displayParams, running, updateStatus, t
         </Button>
     </div>
     <div className="graphSection">
-      <Row>
-        <Col md={6}>
+      <Row className="graphRow">
+        <Col md={6} className="fullHeight">
           <Graph
               url={url}
               running={running}
@@ -39,7 +39,7 @@ const GraphAndParamsUI = ({ url, status, displayParams, running, updateStatus, t
               updateStatus={updateStatus}
               status={status}/>
         </Col>
-        <Col md={6}>
+        <Col md={6} className="fullHeight">
           <Graph
               url={url}
               running={running}
@@ -48,8 +48,8 @@ const GraphAndParamsUI = ({ url, status, displayParams, running, updateStatus, t
               status={status}/>
         </Col>
       </Row>
-      <Row>
-        <Col md={6}>
+      <Row className="graphRow">
+        <Col md={6} className="fullHeight">
           <Graph
               url={url}
               running={running}
@@ -57,7 +57,7 @@ const GraphAndParamsUI = ({ url, status, displayParams, running, updateStatus, t
               updateStatus={updateStatus}
               status={status}/>
         </Col>
-        <Col md={6}>
+        <Col md={6} className="fullHeight">
           <Graph
               url={url}
               running={running}
