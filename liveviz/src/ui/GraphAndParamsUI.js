@@ -2,6 +2,8 @@ import React from 'react';
 import {Grid, Col, Row, Button} from 'react-bootstrap';
 import Graph from '../ui/GraphUI';
 import Params from '../logic/Params';
+import '../styles/params.css'
+import '../styles/graph.css'
 
 
 
@@ -12,8 +14,8 @@ const playOrPauseButtonText = (running) =>
 running ? <i className="glyphicon glyphicon-pause"></i> : <i className="glyphicon glyphicon-play"></i>
 
 const GraphAndParamsUI = ({ url, status, displayParams, running, updateStatus, toggleRunning, toggleParams }) =>
-<Grid fluid="true" id="graph-params" className={displayParams? "paramsDisplayed" : "paramsHidden"}>
-  <div id="page-content-wrapper">
+<Grid fluid="true" id="graph-params" className={"" + displayParams? "paramsDisplayed" : "paramsHidden" }>
+  <div id="page-content-wrapper fullHeight">
     <div className="page-toolbar">
         <Button
           onClick={ toggleRunning }
@@ -27,42 +29,44 @@ const GraphAndParamsUI = ({ url, status, displayParams, running, updateStatus, t
           {displayParams? "Hide Params" : "Show Params"}
         </Button>
     </div>
-    <Row>
-      <Col md={6}>
-        <Graph
-          url={url}
-          running={running}
-          type="Tracker"
-          updateStatus={updateStatus}
-          status={status}/>
-      </Col>
-      <Col md={6}>
-        <Graph
-          url={url}
-          running={running}
-          type="HeatMap"
-          updateStatus={updateStatus}
-          status={status}/>
-      </Col>
-    </Row>
-    <Row>
-      <Col md={6}>
-        <Graph
-          url={url}
-          running={running}
-          type="Tracker"
-          updateStatus={updateStatus}
-          status={status}/>
-      </Col>
-      <Col md={6}>
-        <Graph
-          url={url}
-          running={running}
-          type="HeatMap"
-          updateStatus={updateStatus}
-          status={status}/>
-      </Col>
-    </Row>
+    <div className="graphSection">
+      <Row>
+        <Col md={6}>
+          <Graph
+              url={url}
+              running={running}
+              type="Tracker"
+              updateStatus={updateStatus}
+              status={status}/>
+        </Col>
+        <Col md={6}>
+          <Graph
+              url={url}
+              running={running}
+              type="HeatMap"
+              updateStatus={updateStatus}
+              status={status}/>
+        </Col>
+      </Row>
+      <Row>
+        <Col md={6}>
+          <Graph
+              url={url}
+              running={running}
+              type="Tracker"
+              updateStatus={updateStatus}
+              status={status}/>
+        </Col>
+        <Col md={6}>
+          <Graph
+              url={url}
+              running={running}
+              type="HeatMap"
+              updateStatus={updateStatus}
+              status={status}/>
+        </Col>
+      </Row>
+    </div>
   </div>
   { displayParams?
     <div id="sidebar-wrapper">

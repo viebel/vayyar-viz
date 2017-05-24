@@ -8,7 +8,7 @@ import { Navbar} from 'react-bootstrap'
 
 const AppUI = ({url, status, graphKey, onConnect, updateStatus}) =>
 (
-  <div>
+  <div className="fullHeight">
     <Navbar inverse>
         <Navbar.Header>
           <Navbar.Brand>
