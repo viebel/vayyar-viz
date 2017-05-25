@@ -34,7 +34,7 @@ const additionalVariables = [
   {
     "VisibleName":"More.MTI",
     "ActualName":"more.x.boolv",
-    "VariableType":"Switch",
+    "VariableType":"Boolean",
     "Value":1,
     "Description":"Background Removal (boolean)",
     "Min":0.0,

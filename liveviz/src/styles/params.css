@@ -24,14 +24,14 @@
 }
 
 #graph-params.paramsDisplayed #sidebar-wrapper {
-    width: 240px;
+    width: 100%;
     margin-right: 0;
 }
 
 #sidebar-wrapper > div {
     padding: 20px 15px;
 }
- 
+
 #sidebar-wrapper .form-control {
     background: #222736;
     border-radius: 0;
@@ -84,7 +84,7 @@
     margin-bottom: 15px;
 }
 
-#sidebar-wrapper .form-horizontal .radio, 
+#sidebar-wrapper .form-horizontal .radio,
 #sidebar-wrapper .form-horizontal .checkbox {
     padding: 0 15px;
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid } from 'react-bootstrap'
+import { Grid, Col } from 'react-bootstrap'
 import TitleBarUI from './TitleBarUI'
 import GraphSectionUI from './GraphSectionUI'
 import Params from '../logic/Params'
@@ -9,24 +9,28 @@ import '../styles/graph.css'
 
 const GraphAndParamsUI = ({ url, status, displayParams, running, updateStatus, toggleRunning, toggleParams }) =>
 <Grid fluid={true} id="graph-params" className={"" + (displayParams? "paramsDisplayed" : "paramsHidden") }>
-  <div id="page-content-wrapper" className="fullHeight">
-    <TitleBarUI
-      displayParams={displayParams}
-      running={toggleRunning}
-      toggleRunning={toggleRunning}
-      toggleParams={toggleParams}
-      />
-    <GraphSectionUI
-      url={url}
-      running={running}
-      status={status}
-      updateStatus={updateStatus}
-      />
-  </div>
+  <Col md={displayParams? 10 : 12}>
+    <div id="page-content-wrapper" className="fullHeight">
+      <TitleBarUI
+        displayParams={displayParams}
+        running={toggleRunning}
+        toggleRunning={toggleRunning}
+        toggleParams={toggleParams}
+        />
+      <GraphSectionUI
+        url={url}
+        running={running}
+        status={status}
+        updateStatus={updateStatus}
+        />
+    </div>
+  </Col>
   { displayParams?
-    <div id="sidebar-wrapper">
-      <Params url={url} status={status} running={running}/>
-    </div> : null
+    <Col md={2}>
+      <div id="sidebar-wrapper">
+        <Params url={url} status={status} running={running}/>
+      </div>
+    </Col> : null
   }
 </Grid>
 
