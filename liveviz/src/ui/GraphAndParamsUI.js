@@ -27,7 +27,7 @@ const GraphAndParamsUI = ({ url, status, displayParams, running, updateStatus, t
   </Col>
   { displayParams?
     <Col md={2}>
-      <div id="sidebar-wrapper">
+      <div id="sidebar-wrapper" className="fullHeight">
         <Params url={url} status={status} running={running}/>
       </div>
     </Col> : null
