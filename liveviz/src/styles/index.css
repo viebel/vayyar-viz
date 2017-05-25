@@ -12,7 +12,15 @@ body {
   overflow-x: hidden;
   background: #222736 !important;
   color: #fff!important;
+  height: 100%;
+  width: 100%;
+  position: absolute;
 }
+
+.fullHeight{
+    height: 100%;
+}
+
 #root .navbar {
     background: #f4f4f4;
     border: 0;
@@ -52,4 +60,13 @@ body {
     background: #3955a5;
     border: 0;
     font-size: 14px;
+}
+
+.graphCol{
+    height: 50%;
+}
+
+div.page-toolbar{
+    height:70px;
+    padding:15px;
 }

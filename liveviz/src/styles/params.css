@@ -6,6 +6,11 @@
     display: flex;
     padding-left: 0;
     padding-right: 0;
+    position: absolute;
+    top: 60px;
+    bottom: 0;
+    right:0;
+    left:0;
 }
 
 #sidebar-wrapper {
@@ -15,17 +20,18 @@
     overflow-y: auto;
     background: #484d5d;
     color: #fff;
+    overflow-y: auto;
 }
 
 #graph-params.paramsDisplayed #sidebar-wrapper {
-    width: 240px;
+    width: 100%;
     margin-right: 0;
 }
 
 #sidebar-wrapper > div {
     padding: 20px 15px;
 }
- 
+
 #sidebar-wrapper .form-control {
     background: #222736;
     border-radius: 0;
@@ -78,7 +84,7 @@
     margin-bottom: 15px;
 }
 
-#sidebar-wrapper .form-horizontal .radio, 
+#sidebar-wrapper .form-horizontal .radio,
 #sidebar-wrapper .form-horizontal .checkbox {
     padding: 0 15px;
 }
@@ -98,7 +104,6 @@
 
 #page-content-wrapper {
     width: 100%;
-    padding: 15px;
 }
 
 #page-content-wrapper .page-toolbar #menu-toggle {

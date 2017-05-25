@@ -8,7 +8,7 @@ import BooleanView from '../controls/BooleanView'
 import SliderView from '../controls/SliderView'
 import FetchPeriodic from '../common/FetchPeriodic'
 import {map, keys } from 'ramda'
-import '../styles/params.css'
+
 
 const DefaultControl = (props) =>
 <div> Unsupported Param: {props.type} <br/>
@@ -25,6 +25,7 @@ const Param = (props) => {
       Checkbox: Boolean,
       Number: Number,
     };
+
     const viewComponent = {
       Boolean: BooleanView,
       Slider: SliderView,

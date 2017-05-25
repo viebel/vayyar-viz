@@ -147,7 +147,7 @@ const paramsData = {
     {
       "VisibleName":"BG Removal.MTI",
       "ActualName":"x.boolv",
-      "VariableType":"Boolean",
+      "VariableType":"Switch",
       "Value":1,
       "Description":"Background Removal",
       "Min":0.0,

@@ -1,0 +1,22 @@
+div.graphSection{
+    position: absolute;
+    top: 70px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+div.graphRow{
+    height: 50%;
+}
+
+.graph-arena {
+    background-color: #3B4154;
+    margin-bottom: 10px;
+    margin-right: 20px;
+    position: absolute;
+    top: 70px;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+}
