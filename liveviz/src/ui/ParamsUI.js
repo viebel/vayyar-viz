@@ -4,6 +4,7 @@ import Boolean from '../controls/Boolean'
 import Slider from '../controls/Slider'
 import Number from '../controls/Number'
 import Switch from '../controls/Switch'
+import Dropdown from '../controls/Dropdown'
 import BooleanView from '../controls/BooleanView'
 import SliderView from '../controls/SliderView'
 import FetchPeriodic from '../common/FetchPeriodic'
@@ -19,11 +20,12 @@ const Param = (props) => {
   const typeToComponent = (type, isEditable) =>
   {
     const editableComponent = {
-      Boolean: Boolean,
-      Switch: Switch,
-      Slider: Slider,
+      Boolean,
+      Switch,
+      Slider,
       Checkbox: Boolean,
-      Number: Number,
+      Number,
+      Dropdown,
     };
 
     const viewComponent = {

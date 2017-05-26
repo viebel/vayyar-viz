@@ -68,6 +68,23 @@ const additionalVariables = [
       "Step":1.0,
       "ListValues":null
     },
+    {
+        "VisibleName":"More.Dropdown",
+        "ActualName":"more.Dropdown",
+        "VariableType":"Dropdown",
+        "Value":3,
+        "Description":"Test (Dropdown)",
+        "Min":null,
+        "Max":null,
+        "DefaultValue":1,
+        "Step":null,
+        "ListValues":[
+            {label:"one", value:1},
+            {label:"two", value:2},
+            {label:"three", value:3},
+            {label:"four", value:4},
+        ]
+    },
 ]
 
 const paramsData = {
