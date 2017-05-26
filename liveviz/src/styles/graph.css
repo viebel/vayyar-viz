@@ -2,8 +2,8 @@ div.graphSection{
     position: absolute;
     top: 70px;
     bottom: 0;
-    left:0;
-    right:240px;
+    left: 0;
+    right: 0;
 }
 
 div.graphRow{
@@ -17,6 +17,6 @@ div.graphRow{
     position: absolute;
     top: 70px;
     bottom: 10px;
-    left:0;
-    right:0px;
+    left: 0;
+    right: 0;
 }

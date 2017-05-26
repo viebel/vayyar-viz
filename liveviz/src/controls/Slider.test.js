@@ -53,6 +53,7 @@ describe('Slider', () => {
     expect(elem.props().max).toBe(args.Max)
     expect(elem.props().value).toBe(args.Value)
     expect(elem.props().tooltip).toBe("hide")
+    expect(elem.props().change).toBeDefined()
   })
   it('should call ReactBootstrapSlider onChange with proper value', () => {
     const elem = wrapper.find('ReactBootstrapSlider')

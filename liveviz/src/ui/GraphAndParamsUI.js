@@ -1,77 +1,36 @@
-import React from 'react';
-import {Grid, Col, Row, Button} from 'react-bootstrap';
-import Graph from '../ui/GraphUI';
-import Params from '../logic/Params';
+import React from 'react'
+import { Grid, Col } from 'react-bootstrap'
+import TitleBarUI from './TitleBarUI'
+import GraphSectionUI from './GraphSectionUI'
+import Params from '../logic/Params'
+
 import '../styles/params.css'
 import '../styles/graph.css'
 
-
-
-    
-
-
-const playOrPauseButtonText = (running) =>
-running ? <i className="glyphicon glyphicon-pause"></i> : <i className="glyphicon glyphicon-play"></i>
-
 const GraphAndParamsUI = ({ url, status, displayParams, running, updateStatus, toggleRunning, toggleParams }) =>
-<Grid fluid="true" id="graph-params" className={"" + displayParams? "paramsDisplayed" : "paramsHidden" }>
-  <div id="page-content-wrapper" className="fullHeight">
-    <div className="page-toolbar">
-        <Button
-          onClick={ toggleRunning }
-          bsStyle="primary">
-          { playOrPauseButtonText(running) }
-        </Button>
-        <Button
-          id="menu-toggle"
-          onClick={ toggleParams }
-          bsStyle="primary">
-          {displayParams? "Hide Params" : "Show Params"}
-        </Button>
+<Grid fluid={true} id="graph-params" className={"" + (displayParams? "paramsDisplayed" : "paramsHidden") }>
+  <Col md={displayParams? 10 : 12}>
+    <div id="page-content-wrapper" className="fullHeight">
+      <TitleBarUI
+        displayParams={displayParams}
+        running={toggleRunning}
+        toggleRunning={toggleRunning}
+        toggleParams={toggleParams}
+        />
+      <GraphSectionUI
+        url={url}
+        running={running}
+        status={status}
+        updateStatus={updateStatus}
+        />
     </div>
-    <div className="graphSection">
-      <Row className="graphRow">
-        <Col md={6} className="fullHeight">
-          <Graph
-              url={url}
-              running={running}
-              type="Tracker"
-              updateStatus={updateStatus}
-              status={status}/>
-        </Col>
-        <Col md={6} className="fullHeight">
-          <Graph
-              url={url}
-              running={running}
-              type="HeatMap"
-              updateStatus={updateStatus}
-              status={status}/>
-        </Col>
-      </Row>
-      <Row className="graphRow">
-        <Col md={6} className="fullHeight">
-          <Graph
-              url={url}
-              running={running}
-              type="Tracker"
-              updateStatus={updateStatus}
-              status={status}/>
-        </Col>
-        <Col md={6} className="fullHeight">
-          <Graph
-              url={url}
-              running={running}
-              type="HeatMap"
-              updateStatus={updateStatus}
-              status={status}/>
-        </Col>
-      </Row>
-    </div>
-  </div>
+  </Col>
   { displayParams?
-    <div id="sidebar-wrapper">
-      <Params url={url} status={status} running={running}></Params>
-    </div> : null
+    <Col md={2}>
+      <div id="sidebar-wrapper" className="fullHeight">
+        <Params url={url} status={status} running={running}/>
+      </div>
+    </Col> : null
   }
 </Grid>
 
