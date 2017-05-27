@@ -6,18 +6,36 @@ const heatmapData = {"DataType":"demoData2","Data":[[46.0,47.0,48.0,49.0,50.0,51
 const trackerData = {"targets":[{"TargetType":"triangle","Name":"","X":1.5,"Y":3.0,"Z":0.0},{"TargetType":"circle","Name":"Some Name","X":2.0,"Y":2.5,"Z":0.0},{"TargetType":"square","Name":"Other name","X":12.0,"Y":9.0,"Z":0.0}],"ID":"Targets","__jTypeID":"MatGUIInterfaces.TargetsDataBlock, MatGUIInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"}
 
 const additionalVariables = [
-  {
-    "VisibleName":"More.X_Min",
-    "ActualName":"more.x.amin",
-    "VariableType":"Slider",
-    "Value":10.0,
-    "Description":"X min (slider)",
-    "Min":1.0,
-    "Max":100.0,
-    "DefaultValue":3.0,
-    "Step":1.0,
-    "ListValues":null
-  },
+    {
+      "VisibleName":"More.Text",
+      "ActualName":"more.text",
+      "VariableType":"TextInput",
+      "Value":"allo",
+       "Description":"More Text Input"
+    },
+    {
+        "VisibleName":"More.Min Max Slider",
+        "ActualName":"More.min.max.slider",
+        "VariableType":"MinMaxSlider",
+        "Value":[4, 80.0],
+        "Description":"X (min max slider)",
+        "Min":1.0,
+        "Max":100.0,
+        "DefaultValue":3.0,
+        "Step":1.0
+    },
+    {
+        "VisibleName":"More.X_Min",
+        "ActualName":"more.x.amin",
+        "VariableType":"Slider",
+        "Value":10.0,
+        "Description":"X min (slider)",
+        "Min":1.0,
+        "Max":100.0,
+        "DefaultValue":3.0,
+        "Step":1.0,
+        "ListValues":null
+    },
   {
     "VisibleName":"More.X_Max",
     "ActualName":"more.x.amax",
