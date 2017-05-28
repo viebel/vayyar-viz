@@ -116,14 +116,6 @@
     margin-bottom: 10px;
 }
 
-#page-content-wrapper {
-    width: 100%;
-}
-
-#page-content-wrapper .page-toolbar #menu-toggle {
-    float: right;
-}
-
 #sidebar-wrapper > div > div a {
     display: block;
     text-decoration: none;
@@ -139,6 +131,23 @@
 #sidebar-wrapper > div > div a:active,
 #sidebar-wrapper > div > div a:focus {
     text-decoration: none;
+}
+
+#page-content-wrapper {
+    width: 100%;
+}
+
+#page-content-wrapper .page-toolbar #menu-toggle {
+    float: right;
+}
+
+#page-content-wrapper .graphSection {
+    padding-left: 15px;
+}
+
+#page-content-wrapper .graphSection > div.row {
+    margin-right: 0;
+    margin-left: 0;
 }
 
 .slider-track {
