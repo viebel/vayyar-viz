@@ -1,5 +1,6 @@
-import React from 'react';
-import {FormGroup, FormControl, ControlLabel, Col} from 'react-bootstrap';
+import React from 'react'
+import {FormGroup, FormControl, ControlLabel, Col} from 'react-bootstrap'
+import { defaultStep } from './utils'
 
 const Number = ({args, onChange}) =>
 <FormGroup >
@@ -12,8 +13,9 @@ const Number = ({args, onChange}) =>
       min={args.Min}
       max={args.Max}
       value={args.Value}
+      step={defaultStep(args)}
       onChange={(e) => onChange(e.target.value)}/>
-  </Col>  
+  </Col>
 </FormGroup>
 
 export default Number

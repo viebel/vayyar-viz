@@ -4,8 +4,11 @@ import Boolean from '../controls/Boolean'
 import Slider from '../controls/Slider'
 import Number from '../controls/Number'
 import Switch from '../controls/Switch'
+import TextInput from '../controls/TextInput'
+import MinMaxSlider from '../controls/MinMaxSlider'
 import BooleanView from '../controls/BooleanView'
-import SliderView from '../controls/SliderView'
+import TextView from '../controls/TextView'
+import MinMaxSliderView from '../controls/MinMaxSliderView'
 import FetchPeriodic from '../common/FetchPeriodic'
 import {map, keys } from 'ramda'
 
@@ -24,14 +27,18 @@ const Param = (props) => {
       Slider: Slider,
       Checkbox: Boolean,
       Number: Number,
+      TextInput:TextInput,
+      MinMaxSlider:MinMaxSlider
     };
 
     const viewComponent = {
       Boolean: BooleanView,
-      Slider: SliderView,
+      Slider: TextView,
       Checkbox: BooleanView,
       Switch: BooleanView,
-      Number: SliderView,
+      Number: TextView,
+      TextInput: TextView,
+      MinMaxSlider: MinMaxSliderView
     };
     return (isEditable? editableComponent[type] : viewComponent[type]) || DefaultControl;
   }
