@@ -16,7 +16,6 @@ const MinMaxSlider = ({args, onChange}) => {
     const onChangeValMax = (e) => {
       onChange([args.Value[0], e.target.value*1])
     }
-    const step = () => args.Step || (args.Max - args.Min)/100
 
     return(
         <FormGroup>
