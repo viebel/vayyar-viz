@@ -1,4 +1,4 @@
-div.graphSection{
+div.graphSection {
     position: absolute;
     top: 70px;
     bottom: 0;
@@ -6,8 +6,27 @@ div.graphSection{
     right: 0;
 }
 
-div.graphRow{
+div.graphRow {
     height: 50%;
+}
+
+#graph-params > div.col-md-12 {
+    width: 100%;
+}
+
+#graph-params > div.col-md-10 {
+    width: 83.33333333%;
+    float: left;
+}
+
+#graph-params > div.col-md-2 {
+    width: 16.66666667%;
+    float: left;
+}
+
+div.graphSection div.graphRow div.col-md-6 {
+    width: 50%;
+    float: left;
 }
 
 .graph-arena {
@@ -20,3 +39,4 @@ div.graphRow{
     left: 0;
     right: 0;
 }
+
