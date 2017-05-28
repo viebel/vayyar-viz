@@ -25,13 +25,12 @@ const GraphAndParamsUI = ({ url, status, displayParams, running, updateStatus, t
         />
     </div>
   </Col>
-  { displayParams?
-    <Col md={2}>
+    <Col md={displayParams? 2 : 0}>
       <div id="sidebar-wrapper" className="fullHeight">
-        <Params url={url} status={status} running={running}/>
+        { displayParams? 
+        <Params url={url} status={status} running={running}/> : null}
       </div>
-    </Col> : null
-  }
+    </Col>
 </Grid>
 
 export default GraphAndParamsUI;

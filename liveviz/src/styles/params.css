@@ -1,8 +1,4 @@
 #graph-params {
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    transition: all 0.3s ease;
     display: flex;
     padding-left: 0;
     padding-right: 0;
@@ -16,16 +12,34 @@
 #sidebar-wrapper {
     z-index: 1000;
     width: 0;
-    margin-right: -240px;
-    overflow-y: auto;
     background: #484d5d;
     color: #fff;
     overflow-y: auto;
+    width: 100%;
+}
+
+#graph-params > div {
+    padding: 0;
+}
+
+#graph-params > .col-md-0 {
+  /* Yehonathan - we need to modify the width in order to make the animation work */
+  width: 0
+}
+
+#graph-params > div {
+     -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+#graph-params.paramsDisplayed > div:last-child {
+
 }
 
 #graph-params.paramsDisplayed #sidebar-wrapper {
     width: 100%;
-    margin-right: 0;
 }
 
 #sidebar-wrapper > div {
