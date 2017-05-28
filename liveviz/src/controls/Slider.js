@@ -1,11 +1,12 @@
-import React from 'react';
-import {FormGroup, FormControl, ControlLabel, Col} from 'react-bootstrap';
-import ReactBootstrapSlider from 'react-bootstrap-slider';
-import 'bootstrap-slider/dist/css/bootstrap-slider.css';
+import React from 'react'
+import {FormGroup, FormControl, ControlLabel, Col} from 'react-bootstrap'
+import ReactBootstrapSlider from 'react-bootstrap-slider'
+import { defaultStep } from './utils'
+import 'bootstrap-slider/dist/css/bootstrap-slider.css'
 
 const Slider = ({args, onChange}) => {
-  function onChangeVal(e) {
-    onChange(e.target.value)
+  const onChangeVal = (e) => {
+    onChange(e.target.value*1)
     // TODO: 2017, May 25 - Yehonahtan find a way to prevent out of bound values
   }
 
@@ -17,6 +18,7 @@ const Slider = ({args, onChange}) => {
       <Col xs={12}>
         <FormControl
           type="number"
+          step={defaultStep(args)}
           min={args.Min}
           max={args.Max}
           value={args.Value}
@@ -26,6 +28,7 @@ const Slider = ({args, onChange}) => {
       <Col xs={12}>
         <ReactBootstrapSlider
           value={args.Value}
+          step={defaultStep(args)}
           min={args.Min}
           max={args.Max}
           tooltip="hide"

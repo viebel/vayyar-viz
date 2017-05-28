@@ -22,7 +22,7 @@ const additionalVariables = [
         "Min":1.0,
         "Max":100.0,
         "DefaultValue":3.0,
-        "Step":1.0
+        "Step":0.5,
     },
     {
         "VisibleName":"More.X_Min",
@@ -33,26 +33,26 @@ const additionalVariables = [
         "Min":1.0,
         "Max":100.0,
         "DefaultValue":3.0,
-        "Step":1.0,
+        "Step":0.5,
         "ListValues":null
     },
   {
     "VisibleName":"More.X_Max",
     "ActualName":"more.x.amax",
     "VariableType":"Number",
-    "Value":100.0,
+    "Value":95.2,
     "Description":"X max (number)",
     "Min":1.0,
     "Max":100.0,
     "DefaultValue":3.0,
-    "Step":1.0,
+    "Step":0.5,
     "ListValues":null
   },
 
   {
     "VisibleName":"More.MTI",
     "ActualName":"more.x.boolv",
-    "VariableType":"Switch",
+    "VariableType":"Boolean",
     "Value":1,
     "Description":"Background Removal (boolean)",
     "Min":0.0,
@@ -154,7 +154,7 @@ const paramsData = {
       "VisibleName":"Arena.Z_Max",
       "ActualName":"x.cmax",
       "VariableType":"Slider",
-      "Value":[50, 60],
+      "Value":50,
       "Description":"Arena Z max",
       "Min":1.0,
       "Max":100.0,
