@@ -9,7 +9,7 @@ import '../styles/graph.css'
 
 const GraphAndParamsUI = ({ url, status, displayParams, running, updateStatus, toggleRunning, toggleParams }) =>
 <Grid fluid={true} id="graph-params" className={"" + (displayParams? "paramsDisplayed" : "paramsHidden") }>
-  <Col md={displayParams? 10 : 12}>
+  <Col xs={displayParams? 10 : 12}>
     <div id="page-content-wrapper" className="fullHeight">
       <TitleBarUI
         displayParams={displayParams}
@@ -25,7 +25,7 @@ const GraphAndParamsUI = ({ url, status, displayParams, running, updateStatus, t
         />
     </div>
   </Col>
-    <Col md={displayParams? 2 : 0}>
+    <Col xs={displayParams? 2 : 0}>
       <div id="sidebar-wrapper" className="fullHeight">
         { displayParams? 
         <Params url={url} status={status} running={running}/> : null}
