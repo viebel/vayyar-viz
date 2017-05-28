@@ -6,7 +6,7 @@ import Graph from '../ui/GraphUI'
 const GraphSectionUI = ({ url, running, status, updateStatus}) =>
 <div className="graphSection">
   <Row className="graphRow">
-    <Col md={6} className="fullHeight">
+    <Col xs={6} className="fullHeight">
       <Graph
           url={url}
           running={running}
@@ -14,7 +14,7 @@ const GraphSectionUI = ({ url, running, status, updateStatus}) =>
           updateStatus={updateStatus}
           status={status}/>
     </Col>
-    <Col md={6} className="fullHeight">
+    <Col xs={6} className="fullHeight">
       <Graph
           url={url}
           running={running}
@@ -24,7 +24,7 @@ const GraphSectionUI = ({ url, running, status, updateStatus}) =>
     </Col>
   </Row>
   <Row className="graphRow">
-    <Col md={6} className="fullHeight">
+    <Col xs={6} className="fullHeight">
       <Graph
           url={url}
           running={running}
@@ -32,7 +32,7 @@ const GraphSectionUI = ({ url, running, status, updateStatus}) =>
           updateStatus={updateStatus}
           status={status}/>
     </Col>
-    <Col md={6} className="fullHeight">
+    <Col xs={6} className="fullHeight">
       <Graph
           url={url}
           running={running}
