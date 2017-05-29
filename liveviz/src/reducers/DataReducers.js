@@ -144,7 +144,7 @@ const paramsData = {
       "VisibleName":"Arena.Z_Max",
       "ActualName":"x.cmax",
       "VariableType":"Slider",
-      "Value":50,
+      "Value":[50, 60],
       "Description":"Arena Z max",
       "Min":1.0,
       "Max":100.0,
