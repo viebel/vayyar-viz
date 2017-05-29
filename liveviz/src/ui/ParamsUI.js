@@ -80,7 +80,7 @@ const ParamsUI = ({params, paramsByCategory, updateParam, resetParams, sendParam
       onClick={ changeParamsStatus }
       bsStyle="primary">
       <i className={`glyphicon
-          ${isEditable? "glyphicon-sunglasses": "glyphicon-pencil"}`}
+          ${isEditable? "glyphicon-ok": "glyphicon-pencil"}`}
           />
       </Button>
     </div>
