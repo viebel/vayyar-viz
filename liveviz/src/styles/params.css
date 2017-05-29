@@ -97,11 +97,6 @@
     margin-bottom: 15px;
 }
 
-#sidebar-wrapper .form-horizontal .radio,
-#sidebar-wrapper .form-horizontal .checkbox {
-    padding: 0 15px;
-}
-
 #sidebar-wrapper .form-horizontal .control-label {
     text-align: left;
     font-weight: 400;
