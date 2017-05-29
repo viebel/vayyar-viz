@@ -68,7 +68,7 @@ const ParamsUI = ({params, paramsByCategory, updateParam, resetParams, sendParam
           className={keys(paramsByCategory).length > 0 ? "" : "hidden" }
           onClick={ changeParamsStatus }
           bsStyle="primary">
-          {isEditable ? <i className="glyphicon glyphicon-chevron-left"></i> : <i className="glyphicon glyphicon-pencil"></i>}
+          {isEditable ? <i className="glyphicon glyphicon-ok"></i> : <i className="glyphicon glyphicon-pencil"></i>}
       </Button>
   </div>
   <div className="err-message"> {error}</div>
