@@ -43,7 +43,7 @@ describe('GraphAndParamsUI', () => {
     const Grid = wrapper.find('Grid').first()
     expect(Grid.props().className).toBe("paramsDisplayed")
     expect(wrapper.find('TitleBarUI')).toHaveLength(1)
-    expect(wrapper.find('#sidebar-wrapper')).toHaveLength(1)
+    expect(wrapper.find('Connect(ParamsFetchUI)')).toHaveLength(1)
   })
   it('should hide params when displayParams is false', () => {
     const myProps = assoc('displayParams', false, someProps)
@@ -51,6 +51,6 @@ describe('GraphAndParamsUI', () => {
     const Grid = wrapper.find('Grid').first()
     expect(Grid.props().className).toBe("paramsHidden")
     expect(wrapper.find('TitleBarUI')).toHaveLength(1)
-    expect(wrapper.find('#sidebar-wrapper')).toHaveLength(0)
+    expect(wrapper.find('Connect(ParamsFetchUI)')).toHaveLength(0)
   })
 })
