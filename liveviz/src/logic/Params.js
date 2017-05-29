@@ -25,7 +25,6 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(paramsScreenSetError(reason, url))
   },
   updateParam(name, value) {
-    console.log(name, value)
     dispatch(debouncedSendParams())
     dispatch(updateParam(name, value))
   },
