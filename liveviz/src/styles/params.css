@@ -164,6 +164,51 @@
     height: 16px;
 }
 
+#graph-params .bootstrap-switch-on .bootstrap-switch-container {
+    background: #2d9a81;
+}
+
+#graph-params .bootstrap-switch-off .bootstrap-switch-container {
+    background: #222736;
+}
+
+#graph-params .bootstrap-switch-label {
+    border-radius: 100%;
+    width: 32px !important;
+    height: 32px;
+    line-height: 23px;
+}
+
+#graph-params .bootstrap-switch {
+    border-radius: 100px;
+    width: 76px !important;
+}
+
+#graph-params .bootstrap-switch:outline {
+    outline: none;
+}
+
+#graph-params .bootstrap-switch-handle-on,
+#graph-params .bootstrap-switch-handle-off {
+    background: none;
+    text-shadow: none;
+}
+
+#graph-params .bootstrap-switch-handle-off {
+    color: #adb0bb;
+}
+
+#graph-params .bootstrap-switch-handle-on {
+    padding: 4px 10px;
+}
+
+#graph-params .bootstrap-switch .bootstrap-switch-handle-off, 
+#graph-params .bootstrap-switch .bootstrap-switch-handle-on, 
+#graph-params .bootstrap-switch .bootstrap-switch-label {
+    line-height: 24px;
+    display: inline-flex !important;
+}
+
 @media(min-width:768px) {
     #graph-params .jumbotron {
         padding-top: 80px;
