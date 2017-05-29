@@ -10,7 +10,7 @@ const additionalVariables = [
       "VisibleName":"More.Text",
       "ActualName":"more.text",
       "VariableType":"TextInput",
-      "Value":"allo",
+      "Value":"Hello World",
        "Description":"More Text Input"
     },
     {
@@ -25,16 +25,13 @@ const additionalVariables = [
         "Step":0.5,
     },
     {
-        "VisibleName":"More.X_Checkbox",
-        "ActualName":"more.x.checkbox",
+        "VisibleName":"More.Color_Checkbox",
+        "ActualName":"more.color.checkbox",
         "VariableType":"Checkbox",
-        "Value":["1", "7"],
-        "Description":"X min (Checkbox)",
-        "Min":1.0,
-        "Max":100.0,
-        "DefaultValue":3.0,
-        "Step":0.5,
-        "ListValues":["1","2","3","4","5","6","7","8","9"],
+        "Value":["Red", "Black"],
+        "Description":"Color (Checkbox)",
+        "DefaultValue":["Red", "Black"],
+        "ListValues":["Red","Green","Blue","Black"],
     },
     {
         "VisibleName":"More.X_Dropdown",

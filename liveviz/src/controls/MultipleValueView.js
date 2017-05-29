@@ -1,5 +1,6 @@
-import React from 'react';
-import { ControlLabel, Row, Col} from 'react-bootstrap';
+import React from 'react'
+import { ControlLabel, Row, Col} from 'react-bootstrap'
+import '../styles/params.css'
 
 const MultipleValueView = ({args}) =>
     <Row>
@@ -7,9 +8,14 @@ const MultipleValueView = ({args}) =>
             {args.Description}
         </Col>
         <Col componentClass={ControlLabel} sm={6} xs={6}>
+          <div className="multiple-values">
             {args.Value.map(item =>
-                <span key={item.value}>{item + ", "}</span>
+                <span className="value"
+                      key={item.value || item}>
+                      {item}
+                </span>
             )}
+          </div>
         </Col>
     </Row>
 

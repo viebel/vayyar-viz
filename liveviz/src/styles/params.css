@@ -112,6 +112,10 @@
     color: #eee;
 }
 
+#sidebar-wrapper .multiple-values .value {
+  padding: 5px;
+}
+
 #sidebar-wrapper .form-group {
     margin-bottom: 10px;
 }
