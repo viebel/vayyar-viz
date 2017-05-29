@@ -6,51 +6,42 @@ const heatmapData = {"DataType":"demoData2","Data":[[46.0,47.0,48.0,49.0,50.0,51
 const trackerData = {"targets":[{"TargetType":"triangle","Name":"","X":1.5,"Y":3.0,"Z":0.0},{"TargetType":"circle","Name":"Some Name","X":2.0,"Y":2.5,"Z":0.0},{"TargetType":"square","Name":"Other name","X":12.0,"Y":9.0,"Z":0.0}],"ID":"Targets","__jTypeID":"MatGUIInterfaces.TargetsDataBlock, MatGUIInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"}
 
 const additionalVariables = [
-    {
-      "VisibleName":"More.Text",
-      "ActualName":"more.text",
-      "VariableType":"TextInput",
-      "Value":"Hello World",
-       "Description":"More Text Input"
-    },
-    {
-        "VisibleName":"More.Min Max Slider",
-        "ActualName":"More.min.max.slider",
-        "VariableType":"MinMaxSlider",
-        "Value":[4, 80.0],
-        "Description":"X (min max slider)",
-        "Min":1.0,
-        "Max":100.0,
-        "DefaultValue":3.0,
-        "Step":0.5,
-    },
-    {
-        "VisibleName":"More.Color_Checkbox",
-        "ActualName":"more.color.checkbox",
-        "VariableType":"Checkbox",
-        "Value":["Red", "Black"],
-        "Description":"Color (Checkbox)",
-        "DefaultValue":["Red", "Black"],
-        "ListValues":["Red","Green","Blue","Black"],
-    },
-    {
-        "VisibleName":"More.X_Dropdown",
-        "ActualName":"more.x.dropdown",
-        "VariableType":"Dropdown",
-        "Value":3,
-        "Description":"X min (Dropdown)",
-        "Min":1.0,
-        "Max":100.0,
-        "DefaultValue":3.0,
-        "Step":0.5,
-        "ListValues":[
-            {"label" : "One", "value":"1"},
-            {"label" : "Two", "value":"2"},
-            {"label" : "Three", "value":"3"},
-            {"label" : "Four", "value":"4"},
-        ]
-    },
-
+  {
+    "VisibleName":"More.Text",
+    "ActualName":"more.text",
+    "VariableType":"TextInput",
+    "Value":"Hello World",
+    "Description":"More Text Input"
+  },
+  {
+    "VisibleName":"More.Min Max Slider",
+    "ActualName":"More.min.max.slider",
+    "VariableType":"MinMaxSlider",
+    "Value":[4, 80.0],
+    "Description":"X (min max slider)",
+    "Min":1.0,
+    "Max":100.0,
+    "DefaultValue":3.0,
+    "Step":0.5,
+  },
+  {
+    "VisibleName":"More.Color_Checkbox",
+    "ActualName":"more.color.checkbox",
+    "VariableType":"Checkbox",
+    "Value":["Red", "Black"],
+    "Description":"Color (Checkbox)",
+    "DefaultValue":["Red", "Black"],
+    "ListValues":["Red","Green","Blue","Black"],
+  },
+  {
+    "VisibleName":"More.bgColor_Checkbox",
+    "ActualName":"more.bgcolor.checkbox",
+    "VariableType":"Dropdown",
+    "Value":"Red",
+    "Description":"Background Color (Dropdown)",
+    "DefaultValue":"Black",
+    "ListValues":["Red","Green","Blue","Black"],
+  },
   {
     "VisibleName":"More.X_Max",
     "ActualName":"more.x.amax",
@@ -67,7 +58,7 @@ const additionalVariables = [
   {
     "VisibleName":"More.MTI",
     "ActualName":"more.x.boolv",
-    "VariableType":"Switch",
+    "VariableType":"Boolean",
     "Value":1,
     "Description":"Background Removal (boolean)",
     "Min":0.0,
@@ -77,18 +68,18 @@ const additionalVariables = [
     "ListValues":null
   },
 
-    {
-      "VisibleName":"More.Notifications",
-      "ActualName":"more.Notifications",
-      "VariableType":"Switch",
-      "Value":1,
-      "Description":"Notifications (switch)",
-      "Min":0.0,
-      "Max":1.0,
-      "DefaultValue":1.0,
-      "Step":1.0,
-      "ListValues":null
-    },
+  {
+    "VisibleName":"More.Notifications",
+    "ActualName":"more.Notifications",
+    "VariableType":"Switch",
+    "Value":1,
+    "Description":"Notifications (switch)",
+    "Min":0.0,
+    "Max":1.0,
+    "DefaultValue":1.0,
+    "Step":1.0,
+    "ListValues":null
+  },
 ]
 
 const paramsData = {

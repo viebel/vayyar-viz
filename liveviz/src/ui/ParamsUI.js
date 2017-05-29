@@ -8,7 +8,6 @@ import TextInput from '../controls/TextInput'
 import MinMaxSlider from '../controls/MinMaxSlider'
 import Dropdown from '../controls/Dropdown'
 import Checkbox from '../controls/Checkbox'
-
 import BooleanView from '../controls/BooleanView'
 import TextView from '../controls/TextView'
 import MinMaxSliderView from '../controls/MinMaxSliderView'

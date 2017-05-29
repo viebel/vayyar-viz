@@ -11,7 +11,7 @@ const MultipleValueView = ({args}) =>
           <div className="multiple-values">
             {args.Value.map(item =>
                 <span className="value"
-                      key={item.value || item}>
+                      key={item}>
                       {item}
                 </span>
             )}

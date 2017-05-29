@@ -13,7 +13,7 @@ const Dropdown = ({args, onChange}) =>
                 value={args.Value}
                 onChange={(e) => onChange(e.target.value)}>
                 {args.ListValues.map(item =>
-                    <option key={item.value} value={item.value}>{item.label}</option>
+                    <option key={item} value={item}>{item}</option>
                 )}
             </FormControl>
         </Col>

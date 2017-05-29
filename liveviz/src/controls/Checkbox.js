@@ -16,7 +16,6 @@ const CheckboxItem = ({args, onChange}) => {
         }
         onChange(args.Value)
     }
-    console.log(args)
     return (
          <FormGroup >
             <Col componentClass={ControlLabel} xs={12}>
