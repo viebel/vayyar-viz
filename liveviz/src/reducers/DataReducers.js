@@ -61,11 +61,7 @@ const additionalVariables = [
     "VariableType":"Boolean",
     "Value":1,
     "Description":"Background Removal (boolean)",
-    "Min":0.0,
-    "Max":1.0,
     "DefaultValue":1.0,
-    "Step":1.0,
-    "ListValues":null
   },
 
   {
