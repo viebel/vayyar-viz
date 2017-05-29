@@ -22,7 +22,10 @@
     padding: 0;
 }
 
-#graph-params > .col-md-0 {
+#graph-params > .col-xs-0,
+#graph-params > .col-sm-0,
+#graph-params > .col-md-0,
+#graph-params > .col-lg-0 {
   /* Yehonathan - we need to modify the width in order to make the animation work */
   width: 0
 }
@@ -32,10 +35,6 @@
     -moz-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
     transition: all 0.3s ease;
-}
-
-#graph-params.paramsDisplayed > div:last-child {
-
 }
 
 #graph-params.paramsDisplayed #sidebar-wrapper {
