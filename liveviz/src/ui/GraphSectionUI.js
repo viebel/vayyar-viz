@@ -1,46 +1,33 @@
 import React from 'react'
 import { Col, Row } from 'react-bootstrap'
 
-import Graph from '../ui/GraphUI'
+import MultipleMapsUI from '../ui/MultipleMapsUI'
+import SingleMapUI from '../ui/SingleMapUI'
+
 
 const GraphSectionUI = ({ url, running, status, updateStatus}) =>
-<div className="graphSection">
-  <Row className="graphRow">
-    <Col xs={6} className="fullHeight">
-      <Graph
-          url={url}
-          running={running}
-          type="Tracker"
-          updateStatus={updateStatus}
-          status={status}/>
-    </Col>
-    <Col xs={6} className="fullHeight">
-      <Graph
-          url={url}
-          running={running}
-          type="HeatMap"
-          updateStatus={updateStatus}
-          status={status}/>
-    </Col>
-  </Row>
-  <Row className="graphRow">
-    <Col xs={6} className="fullHeight">
-      <Graph
-          url={url}
-          running={running}
-          type="Tracker"
-          updateStatus={updateStatus}
-          status={status}/>
-    </Col>
-    <Col xs={6} className="fullHeight">
-      <Graph
-          url={url}
-          running={running}
-          type="HeatMap"
-          updateStatus={updateStatus}
-          status={status}/>
-    </Col>
-  </Row>
+<div>
+  {
+    url ?
+    <SingleMapUI
+      slice={"XY"}
+      layers={{raw:true, tracker:true}}
+      url={url}
+      running={running}
+      updateStatus={updateStatus}
+      status={status}
+      />
+    :
+    <MultipleMapsUI
+      sliceArray={["XY", "XY", "XZ", "XZ"]}
+      layersArray={[{raw: true}, {tracker:true}, {tracker:true}, {raw:true, tracker:true}]}
+      url={url}
+      running={running}
+      updateStatus={updateStatus}
+      status={status}
+      />
+  }
 </div>
+
 
 export default GraphSectionUI
