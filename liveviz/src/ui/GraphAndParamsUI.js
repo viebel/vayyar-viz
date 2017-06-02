@@ -7,17 +7,19 @@ import Params from '../logic/Params'
 import '../styles/params.css'
 import '../styles/graph.css'
 
-const GraphAndParamsUI = ({ url, status, displayParams, running, updateStatus, toggleRunning, toggleParams }) =>
+const GraphAndParamsUI = ({ view, url, status, displayParams, running, updateStatus, setViewMode, toggleRunning, toggleParams }) =>
 <Grid fluid={true} id="graph-params" className={"" + (displayParams? "paramsDisplayed" : "paramsHidden") }>
   <Col xs={displayParams? 10 : 12}>
     <div id="page-content-wrapper" className="fullHeight">
       <TitleBarUI
+        setViewMode={setViewMode}
         displayParams={displayParams}
         running={toggleRunning}
         toggleRunning={toggleRunning}
         toggleParams={toggleParams}
         />
       <GraphSectionUI
+        view={view}
         url={url}
         running={running}
         status={status}
@@ -27,7 +29,7 @@ const GraphAndParamsUI = ({ url, status, displayParams, running, updateStatus, t
   </Col>
     <Col xs={displayParams? 2 : 0}>
       <div id="sidebar-wrapper" className="fullHeight">
-        { displayParams? 
+        { displayParams?
         <Params url={url} status={status} running={running}/> : null}
       </div>
     </Col>

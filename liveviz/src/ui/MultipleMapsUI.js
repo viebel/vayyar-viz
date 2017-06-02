@@ -7,10 +7,15 @@ const MultipleMapsUI = ({ sliceArray, layersArray, url, running, status, updateS
 <div className="graphSection">
 {
   [[0,1],[2,3]].map(indexArr =>
-    <Row className="graphRow">
+    <Row
+      key={indexArr.toString()}
+      className="graphRow">
     {
       indexArr.map((i) =>
-      <Col xs={6} className="fullHeight">
+      <Col
+      key={i}
+      xs={6}
+      className="fullHeight">
       <LayeredMapUI
       slice={sliceArray[i]}
       layers={layersArray[i]}

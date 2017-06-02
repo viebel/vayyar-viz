@@ -4,17 +4,31 @@ import { Button } from 'react-bootstrap'
 const playOrPauseButtonText = (running) =>
 running ? <i className="glyphicon glyphicon-pause"></i> : <i className="glyphicon glyphicon-play"></i>
 
-const TitleBarUI = ({ displayParams, running, toggleRunning, toggleParams }) =>
+const TitleBarUI = ({ setViewMode, displayParams, running, toggleRunning, toggleParams }) =>
 <div className="page-toolbar">
     <Button
       onClick={ toggleRunning }
-      bsStyle="primary">
+      bsStyle="primary"
+      >
       { playOrPauseButtonText(running) }
+    </Button>
+    <Button
+      onClick={ () => setViewMode('singleMap') }
+      bsStyle="primary"
+      >
+      Single
+    </Button>
+    <Button
+      onClick={ () => setViewMode('multipleMap') }
+      bsStyle="primary"
+      >
+      Multiple
     </Button>
     <Button
       id="menu-toggle"
       onClick={ toggleParams }
-      bsStyle="primary">
+      bsStyle="primary"
+      >
       {displayParams? "Hide Params" : "Show Params"}
     </Button>
 </div>

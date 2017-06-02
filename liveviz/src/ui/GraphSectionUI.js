@@ -1,14 +1,13 @@
 import React from 'react'
-import { Col, Row } from 'react-bootstrap'
 
 import MultipleMapsUI from '../ui/MultipleMapsUI'
 import SingleMapUI from '../ui/SingleMapUI'
 
 
-const GraphSectionUI = ({ url, running, status, updateStatus}) =>
+const GraphSectionUI = ({ view, url, running, status, updateStatus}) =>
 <div>
   {
-    url ?
+    view === 'singleMap' ?
     <SingleMapUI
       slice={"XY"}
       layers={{raw:true, tracker:true}}
