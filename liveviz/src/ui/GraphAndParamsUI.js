@@ -7,7 +7,7 @@ import Params from '../logic/Params'
 import '../styles/params.css'
 import '../styles/graph.css'
 
-const GraphAndParamsUI = ({ view, url, status, displayParams, running, updateStatus, setViewMode, toggleRunning, toggleParams }) =>
+const GraphAndParamsUI = ({ multipleMapView, singleMapView, view, url, status, displayParams, running, updateStatus, setViewMode, toggleRunning, toggleParams }) =>
 <Grid fluid={true} id="graph-params" className={"" + (displayParams? "paramsDisplayed" : "paramsHidden") }>
   <Col xs={displayParams? 10 : 12}>
     <div id="page-content-wrapper" className="fullHeight">
@@ -20,6 +20,8 @@ const GraphAndParamsUI = ({ view, url, status, displayParams, running, updateSta
         />
       <GraphSectionUI
         view={view}
+        singleMapView={singleMapView}
+        multipleMapView={multipleMapView}
         url={url}
         running={running}
         status={status}

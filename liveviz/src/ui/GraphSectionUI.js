@@ -4,13 +4,13 @@ import MultipleMapsUI from '../ui/MultipleMapsUI'
 import SingleMapUI from '../ui/SingleMapUI'
 
 
-const GraphSectionUI = ({ view, url, running, status, updateStatus}) =>
+const GraphSectionUI = ({ multipleMapView, singleMapView, view, url, running, status, updateStatus}) =>
 <div>
   {
     view === 'singleMap' ?
     <SingleMapUI
-      slice={"XY"}
-      layers={{raw:true, tracker:true}}
+      slice={singleMapView.slice}
+      layers={singleMapView.layers}
       url={url}
       running={running}
       updateStatus={updateStatus}
@@ -18,8 +18,8 @@ const GraphSectionUI = ({ view, url, running, status, updateStatus}) =>
       />
     :
     <MultipleMapsUI
-      sliceArray={["XY", "XY", "XZ", "XZ"]}
-      layersArray={[{raw: true}, {tracker:true}, {tracker:true}, {raw:true, tracker:true}]}
+      sliceArray={multipleMapView.slices}
+      layersArray={multipleMapView.layers}
       url={url}
       running={running}
       updateStatus={updateStatus}

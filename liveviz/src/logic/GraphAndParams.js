@@ -20,6 +20,8 @@ const mapStateToProps = (state) => ({
   running: state.screens.tracker.running,
   displayParams: state.screens.params.display,
   view: state.screens.trackerApp.view,
+  singleMapView: state.screens.trackerApp.singleMapView,
+  multipleMapView: state.screens.trackerApp.multipleMapView,
 })
 
 const GraphAndParams = connect(

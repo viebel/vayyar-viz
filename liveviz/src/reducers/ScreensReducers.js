@@ -4,4 +4,4 @@ import { trackerApp } from './TrackerAppReducers'
 
 import { combineReducers } from 'redux'
 
-export const screens =  combineReducers({tracker, params, trackerApp})
+export const screens =  combineReducers({tracker, params, trackerApp: trackerApp})
