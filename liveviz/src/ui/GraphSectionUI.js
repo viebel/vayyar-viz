@@ -1,46 +1,32 @@
 import React from 'react'
-import { Col, Row } from 'react-bootstrap'
 
-import Graph from '../ui/GraphUI'
+import MultipleMapsUI from '../ui/MultipleMapsUI'
+import SingleMapUI from '../ui/SingleMapUI'
 
-const GraphSectionUI = ({ url, running, status, updateStatus}) =>
-<div className="graphSection">
-  <Row className="graphRow">
-    <Col xs={6} className="fullHeight">
-      <Graph
-          url={url}
-          running={running}
-          type="Tracker"
-          updateStatus={updateStatus}
-          status={status}/>
-    </Col>
-    <Col xs={6} className="fullHeight">
-      <Graph
-          url={url}
-          running={running}
-          type="HeatMap"
-          updateStatus={updateStatus}
-          status={status}/>
-    </Col>
-  </Row>
-  <Row className="graphRow">
-    <Col xs={6} className="fullHeight">
-      <Graph
-          url={url}
-          running={running}
-          type="Tracker"
-          updateStatus={updateStatus}
-          status={status}/>
-    </Col>
-    <Col xs={6} className="fullHeight">
-      <Graph
-          url={url}
-          running={running}
-          type="HeatMap"
-          updateStatus={updateStatus}
-          status={status}/>
-    </Col>
-  </Row>
+
+const GraphSectionUI = ({ multipleMapView, singleMapView, view, url, running, status, updateStatus}) =>
+<div>
+  {
+    view === 'singleMap' ?
+    <SingleMapUI
+      slice={singleMapView.slice}
+      layers={singleMapView.layers}
+      url={url}
+      running={running}
+      updateStatus={updateStatus}
+      status={status}
+      />
+    :
+    <MultipleMapsUI
+      sliceArray={multipleMapView.slices}
+      layersArray={multipleMapView.layers}
+      url={url}
+      running={running}
+      updateStatus={updateStatus}
+      status={status}
+      />
+  }
 </div>
+
 
 export default GraphSectionUI
