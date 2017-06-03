@@ -6,9 +6,12 @@ import Number from '../controls/Number'
 import Switch from '../controls/Switch'
 import TextInput from '../controls/TextInput'
 import MinMaxSlider from '../controls/MinMaxSlider'
+import Dropdown from '../controls/Dropdown'
+import Checkbox from '../controls/Checkbox'
 import BooleanView from '../controls/BooleanView'
 import TextView from '../controls/TextView'
 import MinMaxSliderView from '../controls/MinMaxSliderView'
+import MultipleValueView from '../controls/MultipleValueView'
 import FetchPeriodic from '../common/FetchPeriodic'
 import {map, keys } from 'ramda'
 
@@ -25,20 +28,23 @@ const Param = (props) => {
       Boolean: Boolean,
       Switch: Switch,
       Slider: Slider,
-      Checkbox: Boolean,
       Number: Number,
       TextInput:TextInput,
-      MinMaxSlider:MinMaxSlider
+      MinMaxSlider:MinMaxSlider,
+      Dropdown:Dropdown,
+      Checkbox:Checkbox,
     };
 
     const viewComponent = {
       Boolean: BooleanView,
       Slider: TextView,
-      Checkbox: BooleanView,
+
       Switch: BooleanView,
       Number: TextView,
       TextInput: TextView,
-      MinMaxSlider: MinMaxSliderView
+      MinMaxSlider: MinMaxSliderView,
+      Dropdown: TextView,
+      Checkbox:MultipleValueView,
     };
     return (isEditable? editableComponent[type] : viewComponent[type]) || DefaultControl;
   }
@@ -80,7 +86,7 @@ const ParamsUI = ({params, paramsByCategory, updateParam, resetParams, sendParam
       onClick={ changeParamsStatus }
       bsStyle="primary">
       <i className={`glyphicon
-          ${isEditable? "glyphicon-sunglasses": "glyphicon-pencil"}`}
+          ${isEditable? "glyphicon-ok": "glyphicon-pencil"}`}
           />
       </Button>
     </div>

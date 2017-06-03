@@ -8,11 +8,10 @@ import 'react-bootstrap-switch/dist/css/bootstrap2/react-bootstrap-switch.min.cs
 import {truthy} from './utils'
 
 const SwitchComponent = ({args, onChange}) =>
-    <FormGroup>
-        <Col componentClass={ControlLabel} xs={12}>
+    <FormGroup className="col-xs-12">
+        <ControlLabel>
             {args.Description + ' '}
-        </Col>
-
+        </ControlLabel>
         <Switch
             value={truthy(args.Value)}
             onChange={(e, state) => onChange(state)}

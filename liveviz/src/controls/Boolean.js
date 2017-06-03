@@ -3,10 +3,10 @@ import {FormGroup, ControlLabel, Radio, Col} from 'react-bootstrap'
 import {truthy} from './utils'
 
 const Boolean = ({args, onChange}) =>
-<FormGroup>
-  <Col componentClass={ControlLabel} xs={12}>
+<FormGroup className="col-xs-12">
+  <ControlLabel>
     {args.Description + ' '}
-  </Col>
+  </ControlLabel>
   <Radio
     checked={truthy(args.Value)}
     name={args.ActualName}

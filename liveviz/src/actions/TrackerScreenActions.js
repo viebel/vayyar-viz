@@ -6,3 +6,8 @@ export const trackerScreenSetError = (reason, url) => ({
   type: 'TRACKER_SCREEN_SET_ERROR',
   val: {reason, url},
 })
+
+export const trackerAppScreenSetView = (viewMode) => ({
+  type: 'TRACKER_APP_SCREEN_SET_VIEW',
+  val: viewMode,
+})
