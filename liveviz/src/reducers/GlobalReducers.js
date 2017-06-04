@@ -6,7 +6,7 @@ const defaultState = {
   graphKey: 0,
 }
 
-export const global = (state=defaultState, action) => {
+const g = (state=defaultState, action) => {
   switch(action.type) {
     case 'SET_SERVER_ROOT':
     return merge(state, {serverRoot: action.val, graphKey: state.graphKey + 1});
@@ -16,3 +16,5 @@ export const global = (state=defaultState, action) => {
     return state
   }
 }
+
+export default g

@@ -1,15 +1,14 @@
 import React from 'react'
 import { Col, Row } from 'react-bootstrap'
-import LayeredMapUI from '../ui/LayeredMapUI'
+import LayeredMap from '../logic/LayeredMap'
 
 
-const SingleMapUI = ({ slice, layers, url, running, status, updateStatus}) =>
+const SingleMapUI = ({url, running, status, updateStatus}) =>
 <div className="graphSection">
-  <Row className="grapRow100">
+  <Row className="graphRow100">
     <Col xs={12} className="fullHeight">
-      <LayeredMapUI
-        slice={slice}
-        layers={layers}
+      <LayeredMap
+        view="singleMap"
         url={url}
         running={running}
         updateStatus={updateStatus}

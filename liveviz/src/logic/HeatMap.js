@@ -3,16 +3,6 @@ import { connect } from 'react-redux'
 import { updateHeatMapData } from '../actions/DataActions'
 import { trackerScreenSetError} from '../actions/TrackerScreenActions'
 
-
-const mapDispatchToProps = (dispatch) => ({
-  onSuccess(data) {
-    dispatch(updateHeatMapData(data))
-  },
-  onError(reason, url) {
-    dispatch(trackerScreenSetError(reason, url))
-  }
-})
-
 const mapStateToProps = (state) => {
   const localState = state.screens.tracker;
   return {
@@ -26,7 +16,10 @@ const mapStateToProps = (state) => {
 
 const HeatMap = connect(
   mapStateToProps,
-  mapDispatchToProps
+  {
+    onSuccess: updateHeatMapData,
+    onError: trackerScreenSetError,
+  }
 )(HeatMapFetchUI)
 
-export default HeatMap;
+export default HeatMap

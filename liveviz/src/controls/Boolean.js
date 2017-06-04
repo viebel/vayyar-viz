@@ -1,5 +1,5 @@
 import React from 'react'
-import {FormGroup, ControlLabel, Radio, Col} from 'react-bootstrap'
+import {FormGroup, ControlLabel, Radio} from 'react-bootstrap'
 import {truthy} from './utils'
 
 const Boolean = ({args, onChange}) =>

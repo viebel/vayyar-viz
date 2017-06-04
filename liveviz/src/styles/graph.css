@@ -1,4 +1,4 @@
-div.graphSection{
+.graphSection {
     position: absolute;
     top: 70px;
     bottom: 0;
@@ -6,10 +6,10 @@ div.graphSection{
     right: 0;
 }
 
-div.graphRow{
+.graphRow {
     height: 50%;
 }
 
-.grapRow100 {
+.graphRow100 {
   height: 100%;
 }
