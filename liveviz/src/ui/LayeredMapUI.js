@@ -13,7 +13,7 @@ const LayeredMapUI = ({setLayers, layers, slice, availableLayers, url, running, 
         <Col xs={2}>
           <LayerSelectorUI
             setLayers={setLayers}
-            layers={Object.keys(layers)}
+            layers={layers}
             availableLayers={availableLayers}/>
         </Col>
         <Col xs={10} className="layered-map fullHeight">

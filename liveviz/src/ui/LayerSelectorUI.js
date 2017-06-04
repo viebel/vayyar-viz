@@ -6,7 +6,7 @@ const LayerSelectorUI = ({layers, availableLayers, setLayers}) =>
   onChange={setLayers}
   args={{
     Description: "",
-    Value:layers,
+    Value:Object.keys(layers),
     ListValues:availableLayers
   }}/>
 
