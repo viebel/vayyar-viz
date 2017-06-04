@@ -1,9 +1,9 @@
 import React from 'react'
 import { Col, Row } from 'react-bootstrap'
-import LayeredMapUI from '../ui/LayeredMapUI'
+import LayeredMap from '../logic/LayeredMap'
 
 
-const MultipleMapsUI = ({ sliceArray, layersArray, url, running, status, updateStatus}) =>
+const MultipleMapsUI = ({ url, running, status, updateStatus}) =>
 <div className="graphSection">
 {
   [[0,1],[2,3]].map(indexArr =>
@@ -16,11 +16,9 @@ const MultipleMapsUI = ({ sliceArray, layersArray, url, running, status, updateS
       key={i}
       xs={6}
       className="fullHeight">
-      <LayeredMapUI
+      <LayeredMap
       view="multipleMap"
       mapIdx={i}
-      slice={sliceArray[i]}
-      layers={layersArray[i]}
       url={url}
       running={running}
       updateStatus={updateStatus}

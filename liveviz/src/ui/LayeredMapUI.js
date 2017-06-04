@@ -5,17 +5,16 @@ import LayerSelectorUI from '../ui/LayerSelectorUI'
 import '../styles/layeredMap.css'
 
 
-const LayeredMapUI = ({view, mapIdx, toggleLayer, layers, slice, url, running, updateStatus}) => {
+const LayeredMapUI = ({setLayers, layers, slice, availableLayers, url, running, updateStatus}) => {
   return (
     <div className="fullHeight">
       <div>slice: {slice} </div>
       <Row className="fullHeight">
         <Col xs={2}>
           <LayerSelectorUI
-            view={view}
-            toggleLayer={toggleLayer}
-            mapIdx={mapIdx}
-            layers={layers}/>
+            setLayers={setLayers}
+            layers={Object.keys(layers)}
+            availableLayers={availableLayers}/>
         </Col>
         <Col xs={10} className="layered-map fullHeight">
             {

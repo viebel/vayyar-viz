@@ -23,7 +23,7 @@ function setup({ status, running, displayParams }) {
 }
 
 describe('GraphAndParamsUI', () => {
-  let wrapper, props
+  let wrapper
   const someProps = {
     status: "connected",
     running: true,
@@ -32,7 +32,6 @@ describe('GraphAndParamsUI', () => {
   beforeEach(() => {
     const s = setup(someProps)
     wrapper = s.wrapper
-    props = s.props
   })
   it('should render a Grid', () => {
     const Grid = wrapper.find('Grid').first()

@@ -1,13 +1,13 @@
 import React from 'react'
-import {partial} from 'ramda'
 import CheckboxChoices from '../controls/Checkbox'
 
-const LayerSelectorUI = ({view, mapIdx, layers, toggleLayer}) =>
+const LayerSelectorUI = ({layers, availableLayers, setLayers}) =>
 <CheckboxChoices
-  onChange={partial(toggleLayer, [view, mapIdx])}
-  args={{Description: "Layer selector",
-    Value:["raw", "tracker"],
-    ListValues:["raw", "tracker", "posture", "dead zones"]}}
-    />
+  onChange={setLayers}
+  args={{
+    Description: "",
+    Value:layers,
+    ListValues:availableLayers
+  }}/>
 
   export default LayerSelectorUI
