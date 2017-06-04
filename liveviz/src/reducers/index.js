@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
-import { global } from './GlobalReducers'
+import global from './GlobalReducers'
 import { screens } from './ScreensReducers'
-import { data } from './DataReducers'
+import { data, paramsByCategory } from './DataReducers'
 
 const app = combineReducers({
   global,
@@ -11,3 +11,6 @@ const app = combineReducers({
 
 
 export default app
+
+export const getParamsByCategory = state =>
+paramsByCategory(state.data)

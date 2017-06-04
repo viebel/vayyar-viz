@@ -1,12 +1,10 @@
-import { groupBy, split, head} from 'ramda'
 import { connect } from 'react-redux'
 import { toggleParamsStatus, paramsScreenSetError } from '../actions/ParamsScreenActions'
 import { updateParamsData } from '../actions/DataActions'
 import { debouncedSendParams, sendParams, resetParams, updateParam } from '../actions/ParamsScreenActions'
-
+import { getParamsByCategory } from '../reducers'
 import ParamsFetchUI from '../ui/ParamsUI'
 
-const paramsByCategory = params => groupBy(p => head(split('.', p.VisibleName)))(params)
 
 const mapDispatchToProps = (dispatch) => ({
   sendParams() {
@@ -40,7 +38,7 @@ const mapStateToProps = (state) => {
     preventFetch: localState.preventFetch,
     interval: FETCH_PARAMS_INTERVAL,
     params: state.data.params,
-    paramsByCategory: paramsByCategory(state.data.params.variables),
+    paramsByCategory: getParamsByCategory(state),
     isEditable: localState.isParamEditable,
     url: `${state.global.serverRoot}/post`,
     urlGetParams: `${state.global.serverRoot}/UpdateConfigurationEditor`,
