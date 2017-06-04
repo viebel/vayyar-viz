@@ -1,6 +1,6 @@
 import React from 'react'
 import '../styles/index.css'
-import App from '../logic/App'
+import App from '../app/App'
 import Connection from '../logic/Connection'
 import createHistory from 'history/createBrowserHistory'
 import { Route } from 'react-router'

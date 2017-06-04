@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import GraphAndParams from '../logic/GraphAndParams'
+import TrackerApp from './trackerApp/TrackerApp'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/css/bootstrap-theme.css'
 import '../styles/App.css'
@@ -16,7 +16,7 @@ const AppUI = ({url, status, graphKey, onConnect, updateStatus}) =>
           </Navbar.Brand>
         </Navbar.Header>
     </Navbar>
-    <GraphAndParams
+    <TrackerApp
       key={ graphKey  /* use key in order to force re-mounting each time we re-connect */ }
       url={ url }
       status={ status }

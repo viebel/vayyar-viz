@@ -1,6 +1,6 @@
 import React from 'react'
 import Params from './Params'
-import ParamsFetchUI from '../ui/ParamsUI'
+import ParamsFetchUI from '../ui/ParamsFechUI'
 import { Provider } from 'react-redux'
 import { mount } from 'enzyme'
 
