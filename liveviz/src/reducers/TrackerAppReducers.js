@@ -1,4 +1,4 @@
-import { assoc, assocPath, reduce } from 'ramda'
+import { assoc, assocPath } from 'ramda'
 
 const defaultState = {
   view: 'singleMap',
@@ -20,20 +20,14 @@ const defaultState = {
   }
 }
 
-const arrToObj = arr =>
-reduce((acc,value) => {
-  acc[value] = true
-  return acc
-},
-{},
-arr)
+
 
 const setLayers = (state, {view, mapIdx, layers}) => {
   switch(view) {
     case 'singleMap':
-    return assocPath(['singleMapView', 'layers'], arrToObj(layers), state)
+    return assocPath(['singleMapView', 'layers'], layers, state)
     case 'multipleMap':
-    return assocPath(['multipleMapView', 'layers', mapIdx], arrToObj(layers), state)
+    return assocPath(['multipleMapView', 'layers', mapIdx], layers, state)
     default: throw(new Error(`trackerAppLayers called with invalid view: ${view}`))
   }
 }
