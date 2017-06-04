@@ -28,7 +28,7 @@ describe('Boolean', () => {
     props = s.props
   })
   it('should render with proper title', () => {
-    expect(wrapper.find('Col').first().children().first().text())
+    expect(wrapper.find('ControlLabel').childAt(0).text())
     .toBe(`${args.Description} `)
   })
   it('should render the 1st option as true', () => {
