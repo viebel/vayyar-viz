@@ -11,3 +11,12 @@ export const trackerAppScreenSetView = (viewMode) => ({
   type: 'TRACKER_APP_SCREEN_SET_VIEW',
   val: viewMode,
 })
+
+export const setTrackerAppLayers = (view, mapIdx, layers) => ({
+  type: 'TRACKER_APP_SCREEN_SET_LAYERS',
+  val: {
+    view,
+    mapIdx,
+    layers,
+  }
+})

@@ -22,4 +22,4 @@ const HeatMap = connect(
   }
 )(HeatMapFetchUI)
 
-export default HeatMap;
+export default HeatMap
