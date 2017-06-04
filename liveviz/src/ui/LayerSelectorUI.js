@@ -1,5 +1,5 @@
 import React from 'react'
-import {compose, reduce} from 'ramda'
+import {compose, reduce, filter} from 'ramda'
 import CheckboxChoices from '../controls/Checkbox'
 
 
