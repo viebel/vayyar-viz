@@ -17,6 +17,8 @@ const MultipleMapsUI = ({ sliceArray, layersArray, url, running, status, updateS
       xs={6}
       className="fullHeight">
       <LayeredMapUI
+      view="multipleMap"
+      mapIdx={i}
       slice={sliceArray[i]}
       layers={layersArray[i]}
       url={url}

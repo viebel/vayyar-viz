@@ -5,7 +5,7 @@ const defaultState = {
   singleMapView : {
     layers: {
       raw: true,
-      tracker: true,
+      tracker: false,
     },
     slice: "XY",
   },
