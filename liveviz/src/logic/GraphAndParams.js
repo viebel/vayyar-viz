@@ -4,18 +4,6 @@ import GraphAndParamsUI from '../ui/GraphAndParamsUI';
 import { toggleParamsDisplay } from '../actions/ParamsScreenActions'
 
 
-const mapDispatchToProps = (dispatch) => ({
-  toggleRunning() {
-    dispatch(trackerScreenToggleRunning())
-  },
-  toggleParams() {
-    dispatch(toggleParamsDisplay())
-  },
-  setViewMode(viewMode) {
-    dispatch(trackerAppScreenSetView(viewMode))
-  },
-})
-
 const mapStateToProps = (state) => ({
   running: state.screens.tracker.running,
   displayParams: state.screens.params.display,
@@ -26,7 +14,11 @@ const mapStateToProps = (state) => ({
 
 const GraphAndParams = connect(
   mapStateToProps,
-  mapDispatchToProps
+  {
+    toggleRunning: trackerScreenToggleRunning,
+    toggleParams: toggleParamsDisplay,
+    setViewMode: trackerAppScreenSetView
+  }
 )(GraphAndParamsUI)
 
 export default GraphAndParams;
