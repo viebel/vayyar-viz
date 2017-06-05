@@ -20,3 +20,12 @@ export const setTrackerAppLayers = (view, mapIdx, layers) => ({
     layers,
   }
 })
+
+export const setTrackerAppSlice = (view, mapIdx, slice) => ({
+  type: 'TRACKER_APP_SCREEN_SET_SLICE',
+  val: {
+    view,
+    mapIdx,
+    slice,
+  }
+})

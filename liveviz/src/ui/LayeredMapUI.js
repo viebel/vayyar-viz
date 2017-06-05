@@ -2,13 +2,18 @@ import React from 'react'
 import { Col, Row } from 'react-bootstrap'
 import Graph from '../ui/GraphUI'
 import LayerSelectorUI from '../ui/LayerSelectorUI'
+import SliceSelectorUI from '../ui/SliceSelectorUI'
+
 import '../styles/layeredMap.css'
 
 
-const LayeredMapUI = ({setLayers, layers, slice, availableLayers, url, running, updateStatus}) => {
+const LayeredMapUI = ({setLayers, setSlice, layers, slice, availableLayers, availableSlices, url, running, updateStatus}) => {
   return (
     <div className="fullHeight">
-      <div>slice: {slice} </div>
+      <SliceSelectorUI
+        setSlice={setSlice}
+        slice={slice}
+        availableSlices={availableSlices}/>
       <Row className="fullHeight">
         <Col xs={2}>
           <LayerSelectorUI

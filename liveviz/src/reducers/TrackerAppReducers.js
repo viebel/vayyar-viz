@@ -1,6 +1,8 @@
 import { assoc, assocPath } from 'ramda'
 
-const defaultState = {
+const validViews = new Set(['singleMap', 'multipleMap'])
+
+export const defaultState = {
   view: 'singleMap',
   singleMapView : {
     layers: {
@@ -20,24 +22,41 @@ const defaultState = {
   }
 }
 
-
-
 const setLayers = (state, {view, mapIdx, layers}) => {
   switch(view) {
     case 'singleMap':
     return assocPath(['singleMapView', 'layers'], layers, state)
     case 'multipleMap':
     return assocPath(['multipleMapView', 'layers', mapIdx], layers, state)
-    default: throw(new Error(`trackerAppLayers called with invalid view: ${view}`))
+    default: throw(new Error(`setLayers called with invalid view: ${view}`))
   }
+}
+
+const setSlice = (state, {view, mapIdx, slice}) => {
+  switch(view) {
+    case 'singleMap':
+    return assocPath(['singleMapView', 'slice'], slice, state)
+    case 'multipleMap':
+    return assocPath(['multipleMapView', 'slices', mapIdx], slice, state)
+    default: throw(new Error(`setSlice called with invalid view: ${view}`))
+  }
+}
+
+const setView = (state, view) => {
+  if(!validViews.has(view)) {
+    throw new Error(`setView called with invalid view ${view}. Valid views: ${validViews}`)
+  }
+  return assoc('view', view, state)
 }
 
 export const trackerApp = (state=defaultState, action) => {
   switch(action.type) {
     case 'TRACKER_APP_SCREEN_SET_VIEW':
-    return assoc('view', action.val, state)
+    return setView(state, action.val)
     case 'TRACKER_APP_SCREEN_SET_LAYERS':
     return setLayers(state, action.val)
+    case 'TRACKER_APP_SCREEN_SET_SLICE':
+    return setSlice(state, action.val)
     default:
     return state
   }
