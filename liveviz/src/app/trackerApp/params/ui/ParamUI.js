@@ -1,16 +1,16 @@
 import React from 'react';
-import Boolean from '../../../../controls/Boolean'
-import Slider from '../../../../controls/Slider'
-import Number from '../../../../controls/Number'
-import Switch from '../../../../controls/Switch'
-import TextInput from '../../../../controls/TextInput'
-import MinMaxSlider from '../../../../controls/MinMaxSlider'
-import Dropdown from '../../../../controls/Dropdown'
-import Checkbox from '../../../../controls/Checkbox'
-import BooleanView from '../../../../controls/BooleanView'
-import TextView from '../../../../controls/TextView'
-import MinMaxSliderView from '../../../../controls/MinMaxSliderView'
-import MultipleValueView from '../../../../controls/MultipleValueView'
+import Boolean from 'controls/Boolean'
+import Slider from 'controls/Slider'
+import Number from 'controls/Number'
+import Switch from 'controls/Switch'
+import TextInput from 'controls/TextInput'
+import MinMaxSlider from 'controls/MinMaxSlider'
+import Dropdown from 'controls/Dropdown'
+import Checkbox from 'controls/Checkbox'
+import BooleanView from 'controls/BooleanView'
+import TextView from 'controls/TextView'
+import MinMaxSliderView from 'controls/MinMaxSliderView'
+import MultipleValueView from 'controls/MultipleValueView'
 
 
 const DefaultControl = (props) =>

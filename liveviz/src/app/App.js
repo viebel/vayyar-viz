@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import AppUI from './AppUI'
-import { setServerRoot, setConnectionStatus } from '../actions/GlobalActions'
+import AppUI from 'app/AppUI'
+import { setServerRoot, setConnectionStatus } from 'actions/GlobalActions'
 
 const mapDispatchToProps = (dispatch) => ({
     onConnect(url)  {

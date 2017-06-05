@@ -1,6 +1,6 @@
 import React from 'react'
 import {compose, reduce, filter, identity} from 'ramda'
-import CheckboxChoices from '../controls/Checkbox'
+import CheckboxChoices from 'controls/Checkbox'
 
 
 const arrToObj = arr =>

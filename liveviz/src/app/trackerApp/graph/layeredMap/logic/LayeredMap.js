@@ -1,6 +1,6 @@
 import LayeredMapUI from '../ui/LayeredMapUI'
-import {getTrackerAppLayers, getTrackerAppSlice} from '../reducers'
-import {setTrackerAppLayers, setTrackerAppSlice} from '../actions/TrackerScreenActions'
+import {getTrackerAppLayers, getTrackerAppSlice} from 'reducers'
+import {setTrackerAppLayers, setTrackerAppSlice} from 'actions/TrackerScreenActions'
 import { connect } from 'react-redux'
 
 const mapStateToProps = (state, {view, mapIdx}) => ({

@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import TrackerApp from './trackerApp/TrackerApp'
+import TrackerApp from 'app/trackerApp/logic/TrackerApp'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/css/bootstrap-theme.css'
-import '../styles/App.css'
+import 'styles/App.css'
 import { Navbar} from 'react-bootstrap'
 
 const AppUI = ({url, status, graphKey, onConnect, updateStatus}) =>

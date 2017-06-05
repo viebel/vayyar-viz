@@ -1,7 +1,7 @@
-import HeatMapFetchUI from '../ui/HeatMapUI';
+import HeatMapFetchUI from './HeatMapUI';
 import { connect } from 'react-redux'
-import { updateHeatMapData } from '../actions/DataActions'
-import { trackerScreenSetError} from '../actions/TrackerScreenActions'
+import { updateHeatMapData } from '../../actions/DataActions'
+import { trackerScreenSetError} from '../../actions/TrackerScreenActions'
 
 const mapStateToProps = (state) => {
   const localState = state.screens.tracker;

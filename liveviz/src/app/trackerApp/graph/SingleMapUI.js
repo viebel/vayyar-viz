@@ -1,6 +1,6 @@
 import React from 'react'
 import { Col, Row } from 'react-bootstrap'
-import LayeredMap from '../logic/LayeredMap'
+import LayeredMap from './layeredMap/logic/LayeredMap'
 
 
 const SingleMapUI = ({url, running, status, updateStatus}) =>

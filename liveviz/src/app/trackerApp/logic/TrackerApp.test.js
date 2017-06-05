@@ -1,5 +1,5 @@
 import React from 'react'
-import GraphAndParamsUI from './TrackerAppUI'
+import GraphAndParamsUI from '../ui/TrackerAppUI'
 import { shallow } from 'enzyme'
 import { assoc } from 'ramda'
 

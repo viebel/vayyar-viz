@@ -1,8 +1,8 @@
-import TrackerFetchUI from '../ui/TrackerUI'
+import TrackerFetchUI from './TrackerUI'
 import { connect } from 'react-redux'
-import { trackerScreenSetError} from '../actions/TrackerScreenActions'
-import { updateTrackerData } from '../actions/DataActions'
-import { setConnectionStatus} from '../actions/GlobalActions'
+import { trackerScreenSetError} from '../../actions/TrackerScreenActions'
+import { updateTrackerData } from '../../actions/DataActions'
+import { setConnectionStatus} from '../../actions/GlobalActions'
 
 
 const mapDispatchToProps = (dispatch) => ({
