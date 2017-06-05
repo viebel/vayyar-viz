@@ -1,9 +1,9 @@
 import { connect } from 'react-redux'
-import { toggleParamsStatus, paramsScreenSetError } from '../actions/ParamsScreenActions'
-import { updateParamsData } from '../actions/DataActions'
-import { debouncedSendParams, sendParams, resetParams, updateParam } from '../actions/ParamsScreenActions'
-import { getParamsByCategory } from '../reducers'
-import ParamsFetchUI from '../ui/ParamsUI'
+import { toggleParamsStatus, paramsScreenSetError } from '../../../../actions/ParamsScreenActions'
+import { updateParamsData } from '../../../../actions/DataActions'
+import { debouncedSendParams, sendParams, resetParams, updateParam } from '../../../../actions/ParamsScreenActions'
+import { getParamsByCategory } from '../../../../reducers'
+import ParamsFetchUI from '../ui/ParamsFechUI'
 
 
 const mapDispatchToProps = (dispatch) => ({
@@ -40,7 +40,6 @@ const mapStateToProps = (state) => {
     params: state.data.params,
     paramsByCategory: getParamsByCategory(state),
     isEditable: localState.isParamEditable,
-    url: `${state.global.serverRoot}/post`,
     urlGetParams: `${state.global.serverRoot}/UpdateConfigurationEditor`,
   }
 }

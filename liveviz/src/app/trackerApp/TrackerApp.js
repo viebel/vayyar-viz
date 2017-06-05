@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
-import { trackerScreenToggleRunning, trackerAppScreenSetView} from '../actions/TrackerScreenActions'
-import GraphAndParamsUI from '../ui/GraphAndParamsUI';
-import { toggleParamsDisplay } from '../actions/ParamsScreenActions'
+import { trackerScreenToggleRunning, trackerAppScreenSetView} from '../../actions/TrackerScreenActions'
+import TrackerAppUI from './TrackerAppUI';
+import { toggleParamsDisplay } from '../../actions/ParamsScreenActions'
 
 
 const mapStateToProps = (state) => ({
@@ -12,13 +12,13 @@ const mapStateToProps = (state) => ({
   multipleMapView: state.screens.trackerApp.multipleMapView,
 })
 
-const GraphAndParams = connect(
+const TrackerApp = connect(
   mapStateToProps,
   {
     toggleRunning: trackerScreenToggleRunning,
     toggleParams: toggleParamsDisplay,
     setViewMode: trackerAppScreenSetView
   }
-)(GraphAndParamsUI)
+)(TrackerAppUI)
 
-export default GraphAndParams;
+export default TrackerApp;
