@@ -1,5 +1,5 @@
 import React from 'react'
-import {compose, reduce, filter} from 'ramda'
+import {compose, reduce, filter, identity} from 'ramda'
 import CheckboxChoices from '../controls/Checkbox'
 
 
@@ -11,13 +11,15 @@ reduce((acc,value) => {
 {},
 arr)
 
+const objToArr = compose(Object.keys, filter(identity))
+
 const LayerSelectorUI = ({layers, availableLayers, setLayers}) =>
 <CheckboxChoices
   onChange={compose(setLayers, arrToObj)}
   args={{
     Description: "",
-    Value:Object.keys(layers),
-    ListValues:availableLayers
+    Value: objToArr(layers),
+    ListValues: availableLayers
   }}/>
 
   export default LayerSelectorUI
