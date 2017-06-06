@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import drawHeatMap from './HeatmapUtils';
+import {drawHeatMap} from './HeatmapUtils';
 
 import '../../styles/heatMap.css';
-
 
 class HeatMapUI extends Component {
   draw (data) {
@@ -21,4 +20,3 @@ class HeatMapUI extends Component {
 }
 
 export default HeatMapUI;
-
