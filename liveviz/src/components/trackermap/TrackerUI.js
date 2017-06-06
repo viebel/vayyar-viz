@@ -1,21 +1,10 @@
 import React, {Component} from 'react';
 import {merge} from 'ramda';
-import FetchPeriodic from '../common/FetchPeriodic';
-import '../styles/tracker.css';
 
-const Target = ({x, y, type, posture}) => {
-  const targetClasses = {
-    "circle": "blue-target",
-    "square": "orange-target",
-    "triangle": "green-target",
-  };
-  const targetClass = targetClasses[type] || "target-unknown";
-  return (
-      <div className={`target-arena ${targetClass}`} style={{top: y, left: x}}>
-          <div className={`target-arena-posture target-arena-${posture}`}/>
-      </div>
-  );
-}
+import TargetUI from './TargetUI';
+
+import '../../styles/tracker.css';
+
 
 const postures =  {
   triangle: "sitting",
@@ -44,7 +33,7 @@ class TrackerUI extends Component {
         ref={element => this.domElement = element}>
         {
           targets.map (target =>
-            <Target
+            <TargetUI
               key={target.TargetType + "__" + target.Name}
               type={target.TargetType}
               x={(target.X + Math.random())* width/arenaWidth}
@@ -58,19 +47,6 @@ class TrackerUI extends Component {
   }
 }
 
-const TrackerFetchUI = ({error, status, running, url, targets, onSuccess, onError}) =>
-<div>
-  <div>{error}</div>
-  {status === "disconnected"? null :
-    <FetchPeriodic
-      url={ url }
-      onAnimationFrame={true}
-      prevent={ !running }
-      onSuccess={ onSuccess }
-      onError={ onError }
-      />
-  }
-  <TrackerUI targets={targets}/>
-</div>
+export default TrackerUI;
 
-export default TrackerFetchUI;
+

@@ -1,7 +1,7 @@
 import React from 'react'
 
-import MultipleMapsUI from '../ui/MultipleMapsUI'
-import SingleMapUI from '../ui/SingleMapUI'
+import MultipleMapsUI from './MultipleMapsUI'
+import SingleMapUI from './SingleMapUI'
 
 
 const GraphSectionUI = ({ multipleMapView, singleMapView, view, url, running, status, updateStatus}) =>

@@ -1,4 +1,4 @@
-import { sendParams, paramsScreenTogglePreventFetch } from './ParamsScreenActions'
+import { sendParams, paramsScreenTogglePreventFetch } from 'actions/ParamsScreenActions'
 import thunk from 'redux-thunk'
 import fetchMock from 'fetch-mock'
 import configureMockStore from 'redux-mock-store'

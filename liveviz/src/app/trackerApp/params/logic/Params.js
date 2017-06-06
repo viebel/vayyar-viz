@@ -1,8 +1,8 @@
 import { connect } from 'react-redux'
-import { toggleParamsStatus, paramsScreenSetError } from '../../../../actions/ParamsScreenActions'
-import { updateParamsData } from '../../../../actions/DataActions'
-import { debouncedSendParams, sendParams, resetParams, updateParam } from '../../../../actions/ParamsScreenActions'
-import { getParamsByCategory } from '../../../../reducers'
+import { toggleParamsStatus, paramsScreenSetError } from 'actions/ParamsScreenActions'
+import { updateParamsData } from 'actions/DataActions'
+import { debouncedSendParams, sendParams, resetParams, updateParam } from 'actions/ParamsScreenActions'
+import { getParamsByCategory } from 'reducers'
 import ParamsFetchUI from '../ui/ParamsFechUI'
 
 
