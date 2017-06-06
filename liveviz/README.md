@@ -5,6 +5,11 @@
 yarn start
 ```
 
+## Test
+```bash
+yarn test
+```
+
 ## Deploy
 
 ```sh
