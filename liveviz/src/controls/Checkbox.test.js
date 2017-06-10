@@ -1,5 +1,6 @@
 import React from 'react'
 import CheckboxChoices from './Checkbox'
+import {assoc} from 'ramda'
 import { shallow } from 'enzyme'
 
 function setup(args) {
@@ -41,6 +42,21 @@ describe('CheckboxChoices', () => {
     expect(wrapper.find('Checkbox').at(1).children().text()).toBe("Jim")
     expect(wrapper.find('Checkbox').at(2).children().text()).toBe("Ed")
     expect(wrapper.find('Checkbox').at(3).children().text()).toBe("Dave")
+  })
+  describe('inline', () => {
+    it('should create by default Checkbox inline=false', () => {
+      expect(wrapper.find('Checkbox').at(0).props().inline).toBeFalsy()
+      expect(wrapper.find('Checkbox').at(1).props().inline).toBeFalsy()
+      expect(wrapper.find('Checkbox').at(2).props().inline).toBeFalsy()
+      expect(wrapper.find('Checkbox').at(3).props().inline).toBeFalsy()
+    })
+    it('should create Checkbox inline=true according to args', () => {
+      const wrapper = setup(assoc('DisplayInline', true, args)).wrapper
+      expect(wrapper.find('Checkbox').at(0).props().inline).toBeTruthy()
+      expect(wrapper.find('Checkbox').at(1).props().inline).toBeTruthy()
+      expect(wrapper.find('Checkbox').at(2).props().inline).toBeTruthy()
+      expect(wrapper.find('Checkbox').at(3).props().inline).toBeTruthy()
+    })
   })
   it('should select only Jim and Paul', () => {
     expect(wrapper.find('Checkbox').at(0).props().checked).toBeTruthy()

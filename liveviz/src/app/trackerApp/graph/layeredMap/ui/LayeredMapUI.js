@@ -12,9 +12,8 @@ import Tracker from 'components/trackermap/Tracker';
 const LayeredMapUI = ({setLayers, setSlice, layers, slice, availableLayers, availableSlices}) => {
   return (
     <div className="fullHeight">
-      <div>slice: {slice} </div>
-      <Row className="fullHeight">
-        <Col xs={2}>
+      <Row className="layered-graph">
+        <Col xs={2} className="pr-0 pl-0">
           <SliceSelectorUI
             slice={slice}
             setSlice={setSlice}
@@ -25,13 +24,15 @@ const LayeredMapUI = ({setLayers, setSlice, layers, slice, availableLayers, avai
             layers={layers}
             availableLayers={availableLayers}/>
         </Col>
-        <Col xs={10} className="layered-map fullHeight">
+        <Col xs={10}  className="fullHeight graph-col pr-0 pl-0">
+          <div className="layered-map fullHeight">
             {
               layers.raw ? <HeatMap/> : null
             }
             {
               layers.tracker ? <Tracker/> : null
             }
+          </div>
         </Col>
       </Row>
     </div>
