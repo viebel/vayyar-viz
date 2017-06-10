@@ -1,18 +1,25 @@
 import React from 'react'
 import { Col, Row } from 'react-bootstrap'
 import LayerSelectorUI from './LayerSelectorUI'
+import SliceSelectorUI from './SliceSelectorUI'
+
 import 'styles/layeredMap.css'
 
 import HeatMap from 'components/heatmap/HeatMap';
 import Tracker from 'components/trackermap/Tracker';
 
 
-const LayeredMapUI = ({setLayers, layers, slice, availableLayers}) => {
+const LayeredMapUI = ({setLayers, setSlice, layers, slice, availableLayers, availableSlices}) => {
   return (
     <div className="fullHeight">
       <div>slice: {slice} </div>
       <Row className="fullHeight">
         <Col xs={2}>
+          <SliceSelectorUI
+            slice={slice}
+            setSlice={setSlice}
+            availableSlices={availableSlices}
+            />
           <LayerSelectorUI
             setLayers={setLayers}
             layers={layers}

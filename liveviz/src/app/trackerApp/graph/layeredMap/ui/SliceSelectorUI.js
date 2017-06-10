@@ -1,5 +1,5 @@
 import React from 'react'
-import Dropdown from '../controls/Dropdown'
+import Dropdown from 'controls/Dropdown'
 
 
 const SliceSelectorUI = ({slice, availableSlices, setSlice}) =>
