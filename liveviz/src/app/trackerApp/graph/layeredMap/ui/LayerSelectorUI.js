@@ -14,12 +14,13 @@ arr)
 const objToArr = compose(Object.keys, filter(identity))
 
 const LayerSelectorUI = ({layers, availableLayers, setLayers}) =>
-<CheckboxChoices
-  onChange={compose(setLayers, arrToObj)}
-  args={{
-    Description: "",
-    Value: objToArr(layers),
-    ListValues: availableLayers
-  }}/>
+    <CheckboxChoices
+        onChange={compose(setLayers, arrToObj)}
+        args={{
+            Description: "",
+            Value: objToArr(layers),
+            ListValues: availableLayers
+        }}
+    />
 
   export default LayerSelectorUI

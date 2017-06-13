@@ -15,7 +15,7 @@ const MultipleMapsUI = ({ url, running, status, updateStatus}) =>
       <Col
       key={i}
       xs={6}
-      className="fullHeight">
+      className="fullHeight pr-0 pl-0">
       <LayeredMap
       view="multipleMap"
       mapIdx={i}

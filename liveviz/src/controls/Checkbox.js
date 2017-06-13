@@ -3,6 +3,7 @@ import {FormGroup, ControlLabel, Col, Checkbox} from 'react-bootstrap'
 import {append, without, contains } from 'ramda'
 
 const CheckboxChoices = ({args, onChange}) => {
+
   const isCheckedValue = (currentVal) =>{
     return contains(currentVal, args.Value)
   }
@@ -32,7 +33,7 @@ const CheckboxChoices = ({args, onChange}) => {
             checked={isCheckedValue(item)}
             onChange={(e) => onChangeCheckboxVal(e, item)}
             key={item}
-            inline>
+            inline={args.DisplayInline}>
             {item}
           </Checkbox>
         )}

@@ -1,3 +1,18 @@
 .layered-map {
   background-color: #3B4154;
 }
+
+.layered-graph{
+  margin-left: 0 !important;
+  margin-right: 15px !important;
+  position:absolute;
+  right: 0;
+  left: 0;
+  top: 20px;
+  bottom: 0;
+}
+
+.graph-col{
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+}

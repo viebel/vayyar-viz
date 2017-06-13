@@ -70,3 +70,12 @@ div.page-toolbar{
     height:70px;
     padding:15px;
 }
+
+
+.pl-0{
+    padding-left: 0 !important;
+}
+
+.pr-0{
+    padding-right: 0 !important;
+}

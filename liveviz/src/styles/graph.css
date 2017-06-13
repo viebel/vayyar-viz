@@ -1,4 +1,5 @@
 .graphSection {
+    padding: 0 !important;
     position: absolute;
     top: 70px;
     bottom: 0;
