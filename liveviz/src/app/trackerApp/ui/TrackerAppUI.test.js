@@ -38,10 +38,12 @@ describe('TrackerAppUI', () => {
     expect(Grid.props().fluid).toBe(true)
     expect(Grid.props().className).toBe("paramsDisplayed")
   })
+
   it('should show params when displayParams is true', () => {
     const Grid = wrapper.find('Grid').first()
     expect(Grid.props().className).toBe("paramsDisplayed")
     expect(wrapper.find('TitleBarUI')).toHaveLength(1)
+    expect(wrapper.find('Connect(GraphSectionUI)')).toHaveLength(1)
     expect(wrapper.find('Connect(ParamsFetchUI)')).toHaveLength(1)
   })
   it('should hide params when displayParams is false', () => {
@@ -50,6 +52,7 @@ describe('TrackerAppUI', () => {
     const Grid = wrapper.find('Grid').first()
     expect(Grid.props().className).toBe("paramsHidden")
     expect(wrapper.find('TitleBarUI')).toHaveLength(1)
+    expect(wrapper.find('Connect(GraphSectionUI)')).toHaveLength(1)
     expect(wrapper.find('Connect(ParamsFetchUI)')).toHaveLength(0)
   })
 })

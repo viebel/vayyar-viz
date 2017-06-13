@@ -1,7 +1,7 @@
 import React from 'react'
 import { Grid, Col } from 'react-bootstrap'
 import TitleBarUI from './TitleBarUI'
-import GraphSectionUI from '../graph/GraphSectionUI'
+import GraphSection from '../graph/GraphSection'
 import Params from '../params/logic/Params'
 
 import 'styles/params.css'
@@ -14,19 +14,11 @@ const TrackerAppUI = ({ multipleMapView, singleMapView, view, url, status, displ
       <TitleBarUI
         setViewMode={setViewMode}
         displayParams={displayParams}
-        running={toggleRunning}
+        running={running}
         toggleRunning={toggleRunning}
         toggleParams={toggleParams}
         />
-      <GraphSectionUI
-        view={view}
-        singleMapView={singleMapView}
-        multipleMapView={multipleMapView}
-        url={url}
-        running={running}
-        status={status}
-        updateStatus={updateStatus}
-        />
+      <GraphSection/>
     </div>
   </Col>
     <Col xs={displayParams? 2 : 0}>
