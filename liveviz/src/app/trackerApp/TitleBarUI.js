@@ -4,7 +4,7 @@ import { Button } from 'react-bootstrap'
 const playOrPauseButtonText = (running) =>
 running ? <i className="glyphicon glyphicon-pause"></i> : <i className="glyphicon glyphicon-play"></i>
 
-const TitleBarUI = ({ setViewMode, displayParams, running, toggleRunning, toggleParams }) =>
+const TitleBarUI = ({ setViewMode, displayParams, running, status, toggleRunning, toggleParams }) =>
 <div className="page-toolbar">
     <Button
       onClick={ toggleRunning }
@@ -24,6 +24,7 @@ const TitleBarUI = ({ setViewMode, displayParams, running, toggleRunning, toggle
       >
       Multiple
     </Button>
+    <span> status: {status} </span>
     <Button
       id="menu-toggle"
       onClick={ toggleParams }

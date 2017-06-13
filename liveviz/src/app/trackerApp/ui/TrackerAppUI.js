@@ -1,6 +1,6 @@
 import React from 'react'
 import { Grid, Col } from 'react-bootstrap'
-import TitleBarUI from './TitleBarUI'
+import TitleBar from '../TitleBar'
 import GraphSection from '../graph/GraphSection'
 import Params from '../params/logic/Params'
 
@@ -11,13 +11,7 @@ const TrackerAppUI = ({ multipleMapView, singleMapView, view, url, status, displ
 <Grid fluid={true} id="graph-params" className={"" + (displayParams? "paramsDisplayed" : "paramsHidden") }>
   <Col xs={displayParams? 10 : 12}>
     <div id="page-content-wrapper" className="fullHeight">
-      <TitleBarUI
-        setViewMode={setViewMode}
-        displayParams={displayParams}
-        running={running}
-        toggleRunning={toggleRunning}
-        toggleParams={toggleParams}
-        />
+      <TitleBar/>
       <GraphSection/>
     </div>
   </Col>
