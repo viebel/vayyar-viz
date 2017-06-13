@@ -7,7 +7,7 @@ import Params from '../params/logic/Params'
 import 'styles/params.css'
 import 'styles/graph.css'
 
-const GraphAndParamsUI = ({ multipleMapView, singleMapView, view, url, status, displayParams, running, updateStatus, setViewMode, toggleRunning, toggleParams }) =>
+const TrackerAppUI = ({ multipleMapView, singleMapView, view, url, status, displayParams, running, updateStatus, setViewMode, toggleRunning, toggleParams }) =>
 <Grid fluid={true} id="graph-params" className={"" + (displayParams? "paramsDisplayed" : "paramsHidden") }>
   <Col xs={displayParams? 10 : 12}>
     <div id="page-content-wrapper" className="fullHeight">
@@ -37,4 +37,4 @@ const GraphAndParamsUI = ({ multipleMapView, singleMapView, view, url, status, d
     </Col>
 </Grid>
 
-export default GraphAndParamsUI;
+export default TrackerAppUI;

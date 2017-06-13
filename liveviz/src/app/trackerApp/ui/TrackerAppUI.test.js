@@ -1,5 +1,5 @@
 import React from 'react'
-import GraphAndParamsUI from '../ui/TrackerAppUI'
+import TrackerAppUI from './TrackerAppUI'
 import { shallow } from 'enzyme'
 import { assoc } from 'ramda'
 
@@ -15,14 +15,14 @@ function setup({ status, running, displayParams }) {
     displayParams,
   }
 
-  const wrapper = shallow(<GraphAndParamsUI {...props}/>)
+  const wrapper = shallow(<TrackerAppUI {...props}/>)
   return {
     props,
     wrapper
   }
 }
 
-describe('GraphAndParamsUI', () => {
+describe('TrackerAppUI', () => {
   let wrapper
   const someProps = {
     status: "connected",
