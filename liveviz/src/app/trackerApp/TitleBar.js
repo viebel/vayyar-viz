@@ -8,6 +8,7 @@ const mapStateToProps = (state) => ({
   running: state.screens.tracker.running,
   displayParams: state.screens.params.display,
   status: state.global.connectionStatus,
+  error: state.screens.tracker.error,
   view: state.screens.trackerApp.view,
 })
 
