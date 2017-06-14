@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import TitleBarUI from './TitleBarUI';
+import TitleBarUI from '../ui/TitleBarUI';
 import { trackerScreenToggleRunning, trackerAppScreenSetView} from 'actions/TrackerScreenActions'
 import { toggleParamsDisplay } from 'actions/ParamsScreenActions'
 

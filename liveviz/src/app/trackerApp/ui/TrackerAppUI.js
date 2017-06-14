@@ -1,6 +1,6 @@
 import React from 'react'
 import { Grid, Col } from 'react-bootstrap'
-import TitleBar from '../TitleBar'
+import TitleBar from '../logic/TitleBar'
 import GraphSection from '../graph/GraphSection'
 import Params from '../params/logic/Params'
 

@@ -1,0 +1,28 @@
+.titleBar__iconBtn{
+    border-width:0 !important;
+    position: relative;
+    width: 40px;
+    height:40px;
+}
+
+.titleBar__btnImg{
+    position: absolute;
+    top:0;
+    bottom:0;
+    right:0;
+    left:0;
+
+    background-position: center;
+}
+
+.titleBar__multipleGraphBtn{
+    background-image: url("./images/multipleGraph.png");
+}
+
+.titleBar__singleGraphBtn{
+    background-image: url("./images/singleMap.png");
+}
+
+.titleBar__toggleParams{
+    margin-left: 40px;
+}
