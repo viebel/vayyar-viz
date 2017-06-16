@@ -14,8 +14,8 @@ const mapDispatchToProps = (dispatch, {view, mapIdx}) => ({
   setLayers(layers) {
     dispatch(setTrackerAppLayers(view, mapIdx, layers))
   },
-  setSlice(layers) {
-    dispatch(setTrackerAppSlice(view, mapIdx, layers))
+  setSlice(slice) {
+    dispatch(setTrackerAppSlice(view, mapIdx, slice))
   },
 })
 
