@@ -17,8 +17,10 @@ const LayerSelectorUI = ({layers, availableLayers, setLayers}) =>
     <div className="layerSelector layeredMap_btnBlock">
         {
             availableLayers.map((item) => {
+                console.log(layers);
                     var isSelectedClass = layers[item]? 'selected' : "";
-                   return (<Button key={item} className="layeredMap_layerIcons" bsStyle="primary">
+                   return (<Button key={item} className="layeredMap_layerIcons" bsStyle="primary"
+                                   onClick={ () => { layers[item] = !layers[item]; return setLayers(layers)}}>
                         <div className={isSelectedClass + " layerSelector__btnImg layeredMap_projection_" + item.replace(" ", "")}/>
                     </Button>)
                 }
