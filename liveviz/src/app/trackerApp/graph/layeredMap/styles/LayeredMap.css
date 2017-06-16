@@ -14,7 +14,7 @@
 }
 
 .layeredMap_btnBlock{
-    opacity: 1;
+    opacity: 0.2;
     -o-transition:.8s;
     -ms-transition:.8s;
     -moz-transition:.8s;
