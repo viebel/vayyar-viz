@@ -12,31 +12,27 @@ import Tracker from 'components/trackermap/Tracker';
 
 const LayeredMapUI = ({setLayers, setSlice, layers, slice, availableLayers}) => {
   return (
-    <div className="fullHeight">
-      <Row className="layered-graph">
-        <Col xs={12}  className="fullHeight graph-col pr-0 pl-0">
-          <div className="layered-map fullHeight">
-            {
-              layers.raw ? <HeatMap/> : null
-            }
-            {
-              layers.tracker ? <Tracker/> : null
-            }
-            <div className="layeredMap__toolbar">
-              <div className="layeredMap_btnBlock">
-                  <Button className="layeredMap_projectionIcons" bsStyle="primary"
-                      onClick={ () => setSlice(slice == "XY" ? "XZ" : "XY")} >
+    <div className="layered-map">
+        <div className="layeredMap__toolbar fullHeight">
+            <div className="layeredMap_btnBlock">
+                <Button className="layeredMap_projectionIcons" bsStyle="primary"
+                        onClick={ () => setSlice(slice == "XY" ? "XZ" : "XY")} >
                     <div className={"layeredMap__btnImg layeredMap_projection" + slice}/>
-                  </Button>
-              </div>
-              <LayerSelectorUI
-                  setLayers={setLayers}
-                  layers={layers}
-                  availableLayers={availableLayers}/>
+                </Button>
             </div>
-          </div>
-        </Col>
-      </Row>
+            <LayerSelectorUI
+                setLayers={setLayers}
+                layers={layers}
+                availableLayers={availableLayers}/>
+        </div>
+        <div className="layeredMap__graph">
+            {
+                layers.raw ? <HeatMap/> : null
+            }
+            {
+                layers.tracker ? <Tracker/> : null
+            }
+        </div>
     </div>
   )
 }
