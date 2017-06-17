@@ -1,5 +1,24 @@
+.layered-map{
+    position:absolute;
+    background-color: #3B4154;
+    top:10px;
+    left:10px;
+    right:10px;
+    bottom:10px;
+}
+
 .layeredMap__toolbar{
+    float:left;
     width: 44px;
+}
+
+.layeredMap__graph{
+    border: 1px dashed #979797;
+    position:absolute;
+    top:45px;
+    bottom:45px;
+    right:45px;
+    left:45px;
 }
 
 .layeredMap_projectionIcons,
