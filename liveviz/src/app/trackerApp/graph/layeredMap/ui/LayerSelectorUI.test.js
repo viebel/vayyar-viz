@@ -49,17 +49,20 @@ describe('LayerSelectorUI', () => {
     wrapper = s.wrapper
     props = s.props
   })
-  it('should render with proper props', () => {
-    const props = wrapper.find('CheckboxChoices').props()
-    expect(props.args.Value.length).toEqual(2)
-    expect(props.args.Value).toEqual(expect.arrayContaining(['c', 'a']))
-    expect(props.args.Description).toEqual("")
-    expect(props.args.ListValues).toEqual(args.availableLayers)
+  it('should render 5 buttons - two of them with the selected class', () => {
+    expect(wrapper.find('Button')).toHaveLength(5)
+    expect(wrapper.find('.selected')).toHaveLength(2)
+    })
+  it('should call update layers on click', () => {
+    const firstButton = wrapper.find('Button').first()
+    firstButton.props().onClick()
+    expect(props.setLayers.mock.calls.length).toBe(1)
+    expect(props.setLayers.mock.calls[0]).toEqual([{a: false, b: false, c: true}])
   })
   it('should call `setLayers` with the proper layers', () => {
-    const checkBoxChoices = wrapper.find('CheckboxChoices')
-    checkBoxChoices.props().onChange(['a', 'e'])
+    const firstButton = wrapper.find('Button').at(1)
+    firstButton.props().onClick()
     expect(props.setLayers.mock.calls.length).toBe(1)
-    expect(props.setLayers.mock.calls[0]).toEqual([{a: true, e: true}])
+    expect(props.setLayers.mock.calls[0]).toEqual([{a: true, b: true, c: true}])
   })
 })

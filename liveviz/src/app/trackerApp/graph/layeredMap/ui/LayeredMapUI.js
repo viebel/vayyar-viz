@@ -1,37 +1,33 @@
 import React from 'react'
-import { Button, Col, Row } from 'react-bootstrap'
-import LayerSelectorUI from './LayerSelectorUI'
-import SliceSelectorUI from './SliceSelectorUI'
+import LayerMapToolbarUI from './LayerMapToolbarUI'
+
 
 import '../styles/LayeredMap.css';
 import 'styles/layeredMap.css'
 
 import HeatMap from 'components/heatmap/HeatMap';
-import Tracker from 'components/trackermap/Tracker';
+import Tracker from 'components/trackermap/logic/Tracker';
 
 
 const LayeredMapUI = ({setLayers, setSlice, layers, slice, availableLayers}) => {
   return (
     <div className="layered-map">
-        <div className="layeredMap__toolbar fullHeight">
-            <div className="layeredMap_btnBlock">
-                <Button className="layeredMap_projectionIcons" bsStyle="primary"
-                        onClick={ () => setSlice(slice == "XY" ? "XZ" : "XY")} >
-                    <div className={"layeredMap__btnImg layeredMap_projection" + slice}/>
-                </Button>
-            </div>
-            <LayerSelectorUI
-                setLayers={setLayers}
-                layers={layers}
-                availableLayers={availableLayers}/>
-        </div>
+        <LayerMapToolbarUI
+            layers={layers}
+            slice={slice}
+            setLayers={setLayers}
+            setSlice={setSlice}
+            availableLayers={availableLayers}/>
+
         <div className="layeredMap__graph">
             {
-                layers.raw ? <HeatMap/> : null
+                layers.heatmap ? <HeatMap/> : null
             }
             {
-                layers.tracker ? <Tracker/> : null
+                layers.target ? <Tracker showPosition={layers.position}/> : null
             }
+
+
         </div>
     </div>
   )

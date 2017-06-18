@@ -7,7 +7,7 @@
     bottom:10px;
 }
 
-.layeredMap__toolbar{
+.layeredMapToolbar{
     float:left;
     width: 44px;
 }
@@ -32,7 +32,7 @@
     background-color: #1e1e1e !important;
 }
 
-.layeredMap_btnBlock{
+.layeredMapToolbar_btnBlock{
     opacity: 0.2;
     -o-transition:.8s;
     -ms-transition:.8s;
@@ -42,7 +42,7 @@
     border-radius: 50px;
 }
 
-.layeredMap_btnBlock:hover{
+.layeredMapToolbar_btnBlock:hover{
     opacity: 1;
 }
 
@@ -71,21 +71,37 @@
     margin-top: 20px;
 }
 
+.layeredMap_projection_target{
+    background-image: url("./images/layer_icons/target.png");
+}
+
+.layeredMap_projection_heatmap{
+    background-image: url("./images/layer_icons/heatmap.png");
+}
+
+.layeredMap_projection_position{
+    background-image: url("./images/layer_icons/position.png");
+}
+
 .layeredMap_projection_raw{
     background-image: url("./images/layer_icons/raw.png");
 }
 
-.layeredMap_projection_tracker{
+.layeredMap_projection_sensor{
+    background-image: url("./images/layer_icons/sensor.png");
+}
+
+.layeredMap_projection_sensor{
+    background-image: url("./images/layer_icons/sensor.png");
+}
+
+.layeredMap_projection_height{
     background-image: url("./images/layer_icons/height.png");
 }
 
-.layeredMap_projection_posture{
-    background-image: url("./images/layer_icons/position.png");
-}
 
-.layeredMap_projection_deadzones{
-    background-image: url("./images/layer_icons/heatmap.png");
-}
+
+
 
 .layerSelector__btnImg{
     width:35px;
