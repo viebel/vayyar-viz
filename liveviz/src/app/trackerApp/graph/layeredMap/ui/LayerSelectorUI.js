@@ -1,10 +1,11 @@
 import React from 'react'
 import { Button, } from 'react-bootstrap'
+import {assoc} from 'ramda';
 
 
 const LayerSelectorUI = ({layers, setLayers, availableLayers}) => {
     const setLayer = (layerItem)=>{
-        var newLayers = Object.assign({}, layers, layers[layerItem] = !layers[layerItem]);
+        var newLayers = assoc(layerItem, !layers[layerItem], layers);
         return setLayers(newLayers);
     }
 

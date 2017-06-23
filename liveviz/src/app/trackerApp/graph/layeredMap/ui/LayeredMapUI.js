@@ -24,10 +24,8 @@ const LayeredMapUI = ({setLayers, setSlice, layers, slice, availableLayers}) => 
                 layers.heatmap ? <HeatMap/> : null
             }
             {
-                layers.target ? <Tracker showPosition={layers.position}/> : null
+                layers.target || layers.position ? <Tracker showPosition={layers.position}/> : null
             }
-
-
         </div>
     </div>
   )
