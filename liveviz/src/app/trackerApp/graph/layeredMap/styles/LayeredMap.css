@@ -1,0 +1,116 @@
+.layered-map{
+    position:absolute;
+    background-color: #3B4154;
+    top:10px;
+    left:10px;
+    right:10px;
+    bottom:10px;
+}
+
+.layeredMapToolbar{
+    float:left;
+    width: 44px;
+}
+
+.layeredMap__graph{
+    border: 1px dashed #979797;
+    position:absolute;
+    top:45px;
+    bottom:45px;
+    right:45px;
+    left:45px;
+}
+
+.layeredMap_projectionIcons,
+.layeredMap_layerIcons{
+    border-radius: 0px!important;
+    border-collapse: separate;
+    border-width:0 !important;
+    position: relative;
+    width: 100%;
+    height: 44px;
+    background-color: #1e1e1e !important;
+}
+
+.layeredMapToolbar_btnBlock{
+    opacity: 0.2;
+    -o-transition:.8s;
+    -ms-transition:.8s;
+    -moz-transition:.8s;
+    -webkit-transition:.8s;
+    transition:.8s;
+    border-radius: 50px;
+}
+
+.layeredMapToolbar_btnBlock:hover{
+    opacity: 1;
+}
+
+.layeredMap_projectionIcons div,
+.layeredMap_layerIcons div{
+    position: absolute;
+    top:0;
+    bottom:0;
+    right:0;
+    left:0;
+
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.layeredMap_projectionXY{
+    background-image: url("./images/projection_icons/side_view.png");
+}
+
+.layeredMap_projectionXZ{
+    background-image: url("./images/projection_icons/top_view.png");
+}
+
+
+.layerSelector{
+    margin-top: 20px;
+}
+
+.layeredMap_projection_target{
+    background-image: url("./images/layer_icons/target.png");
+}
+
+.layeredMap_projection_heatmap{
+    background-image: url("./images/layer_icons/heatmap.png");
+}
+
+.layeredMap_projection_position{
+    background-image: url("./images/layer_icons/position.png");
+}
+
+.layeredMap_projection_raw{
+    background-image: url("./images/layer_icons/raw.png");
+}
+
+.layeredMap_projection_sensor{
+    background-image: url("./images/layer_icons/sensor.png");
+}
+
+.layeredMap_projection_sensor{
+    background-image: url("./images/layer_icons/sensor.png");
+}
+
+.layeredMap_projection_height{
+    background-image: url("./images/layer_icons/height.png");
+}
+
+
+
+
+
+.layerSelector__btnImg{
+    width:35px;
+    height:35px;
+    margin: auto;
+    border-radius: 22px;
+}
+
+.layeredMap_layerIcons .selected{
+    border: 1px solid #85F4FF;
+}
+

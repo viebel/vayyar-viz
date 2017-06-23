@@ -1,40 +1,32 @@
 import React from 'react'
-import { Col, Row } from 'react-bootstrap'
-import LayerSelectorUI from './LayerSelectorUI'
-import SliceSelectorUI from './SliceSelectorUI'
+import LayerMapToolbarUI from './LayerMapToolbarUI'
 
+
+import '../styles/LayeredMap.css';
 import 'styles/layeredMap.css'
 
 import HeatMap from 'components/heatmap/HeatMap';
-import Tracker from 'components/trackermap/Tracker';
+import Tracker from 'components/trackermap/logic/Tracker';
 
 
-const LayeredMapUI = ({setLayers, setSlice, layers, slice, availableLayers, availableSlices}) => {
+const LayeredMapUI = ({setLayers, setSlice, layers, slice, availableLayers}) => {
   return (
-    <div className="fullHeight">
-      <Row className="layered-graph">
-        <Col xs={2} className="pr-0 pl-0">
-          <SliceSelectorUI
-            slice={slice}
-            setSlice={setSlice}
-            availableSlices={availableSlices}
-            />
-          <LayerSelectorUI
-            setLayers={setLayers}
+    <div className="layered-map">
+        <LayerMapToolbarUI
             layers={layers}
+            slice={slice}
+            setLayers={setLayers}
+            setSlice={setSlice}
             availableLayers={availableLayers}/>
-        </Col>
-        <Col xs={10}  className="fullHeight graph-col pr-0 pl-0">
-          <div className="layered-map fullHeight">
+
+        <div className="layeredMap__graph">
             {
-              layers.raw ? <HeatMap/> : null
+                layers.heatmap ? <HeatMap/> : null
             }
             {
-              layers.tracker ? <Tracker/> : null
+                layers.target || layers.position ? <Tracker showPosition={layers.position}/> : null
             }
-          </div>
-        </Col>
-      </Row>
+        </div>
     </div>
   )
 }
