@@ -1,46 +1,47 @@
-/**
- * Created by eliebuff on 23/06/2017.
- */
 import React from 'react'
+import {range, map} from 'ramda'
 
+const getItemHorizontal = index =>
+(index % 5 === 0)? index : "|"
 
-const RulerUI = ({maxVerticalValue, maxHorizontalValue}) => {
+const getItemVertical = index =>
+(index % 5 === 0)? index : "__";
 
-   var getItemTitle = (index)=>{
-       return (index%5 == 0)? index : "-";
-   }
+const getVerticalItems = (maxVerticalValue) =>
+map(i =>
+  <div
+    style={{height: 100/maxVerticalValue + '%'}}
+    className='rulerItem rulerItem_vertical'
+    key={i}
+    >
+    {getItemVertical(maxVerticalValue - i)}
+  </div>,
+  range(0, maxVerticalValue)
+)
 
-    var getVerticalItems = ()=>{
-        var itemSize = 100/(maxVerticalValue);
-        for (var i = 0; i < maxVerticalValue ; i++) {
-            rulerVerticalItems.push(<div style={{'height': itemSize + '%'}} className='rulerItem rulerItem_vertical' key={i}>{getItemTitle(maxVerticalValue - i)}</div>);
-        }
-    }
+const getHorizontalItems = (maxHorizontalValue) =>
+map(i =>
+  <div
+    style={{width: 100/maxHorizontalValue + '%'}}
+    className='rulerItem rulerItem_horizontal'
+    key={i}
+    >
+    {getItemHorizontal(i)}
+  </div>,
+  range(1, maxHorizontalValue + 1)
+)
 
-    var getHorizontalItems = ()=>{
-        var itemSize = 100/(maxHorizontalValue);
-        for (var i = 1; i < maxHorizontalValue + 1; i++) {
-            rulerHorizontalItems.push(<div style={{width: itemSize + '%'}} className='rulerItem rulerItem_horizontal' key={i}>{getItemTitle(i)}</div>);
-        }
-    }
+const RulerUI = ({maxVerticalValue, maxHorizontalValue}) =>
+<div className="rulerUI">
+  <div className="rulerUI_origin">
+    0
+  </div>
+  <div className="rulerUI_vertical">
+    {getVerticalItems(maxVerticalValue)}
+  </div>
+  <div className="rulerUI_horizontal">
+    {getHorizontalItems(maxHorizontalValue)}
+  </div>
+</div>
 
-    var rulerVerticalItems = [];
-    var rulerHorizontalItems = [];
-    getVerticalItems()
-    getHorizontalItems()
-
-    return (
-        <div className="rulerUI">
-            <div className="rulerUI_origin">
-                0
-            </div>
-            <div className="rulerUI_vertical">
-                {rulerVerticalItems}
-            </div>
-            <div className="rulerUI_horizontal">
-                {rulerHorizontalItems}
-            </div>
-        </div>
-    )
-}
 export default RulerUI
