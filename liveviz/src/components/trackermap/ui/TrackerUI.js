@@ -3,14 +3,8 @@ import {merge} from 'ramda';
 
 import TargetUI from './TargetUI';
 
-import '../../styles/tracker.css';
+import '../../../styles/tracker.css';
 
-
-const postures =  {
-  triangle: "sitting",
-  square: "standing",
-  circle: "lying",
-}
 class TrackerUI extends Component {
   constructor(props) {
     super(props);
@@ -38,7 +32,8 @@ class TrackerUI extends Component {
               type={target.TargetType}
               x={(target.X + Math.random())* width/arenaWidth}
               y={(target.Y + Math.random())* height/arenaHeight}
-              posture={ postures[target.TargetType] /* TODO: read from serve when it returns the posture*/}
+              showPosition={this.props.showPosition}
+              /* TODO: read from serve when it returns the posture*/
               />
           )
         }

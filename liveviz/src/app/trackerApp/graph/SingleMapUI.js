@@ -6,7 +6,7 @@ import LayeredMap from './layeredMap/logic/LayeredMap'
 const SingleMapUI = ({url, running, status, updateStatus}) =>
 <div className="graphSection">
   <Row className="graphRow100">
-    <Col xs={12} className="fullHeight">
+    <Col xs={12} className="fullHeight pr-0 pl-0">
       <LayeredMap
         view="singleMap"
         url={url}

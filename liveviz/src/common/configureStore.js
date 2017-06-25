@@ -4,7 +4,6 @@ import { createStore, compose, applyMiddleware } from 'redux'
 import app  from '../reducers/index'
 import { loadState, saveState } from '../common/localStorage'
 import throttle from 'lodash/throttle'
-import { routerReducer, routerMiddleware, push } from 'react-router-redux'
 
 const configureStore = () => {
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose

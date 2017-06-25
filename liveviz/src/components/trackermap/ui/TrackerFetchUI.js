@@ -1,5 +1,5 @@
 import React from 'react';
-import FetchPeriodic from '../../common/FetchPeriodic';
+import FetchPeriodic from '../../../common/FetchPeriodic';
 
 import TrackerUI from './TrackerUI';
 
