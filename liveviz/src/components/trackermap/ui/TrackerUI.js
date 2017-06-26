@@ -32,7 +32,10 @@ class TrackerUI extends Component {
               type={target.TargetType}
               x={(target.X + Math.random())* width/arenaWidth}
               y={(target.Y + Math.random())* height/arenaHeight}
+              z={target.Z}
               showPosition={this.props.showPosition}
+              showZLayer={this.props.showZLayer}
+              showShadow={this.props.showShadow}
               /* TODO: read from serve when it returns the posture*/
               />
           )
