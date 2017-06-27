@@ -7,13 +7,22 @@
     right: 0;
 }
 
+.targetUI-block{
+    position: absolute;
+}
+
+.z-layer{
+    height: 16px;
+    width: 40px;
+    margin: 0 auto;
+    text-align: center;
+}
+
 .target-arena {
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  max-width: 30px;
-  max-height: 30px;
-  border-radius: 50%;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
 }
 
 .target-arena-posture {
