@@ -36,7 +36,7 @@ class TrackerUI extends Component {
               showPosition={this.props.showPosition}
               showZLayer={this.props.showZLayer}
               showShadow={this.props.showShadow}
-              /* TODO: read from serve when it returns the posture*/
+              /* TODO: read from server when it returns the posture*/
               />
           )
         }
@@ -46,5 +46,3 @@ class TrackerUI extends Component {
 }
 
 export default TrackerUI;
-
-
