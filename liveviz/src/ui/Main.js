@@ -1,5 +1,6 @@
 import React from 'react'
 import '../styles/index.css'
+import 'ionicons-npm/css/ionicons.min.css'
 import App from '../app/App'
 import createHistory from 'history/createBrowserHistory'
 import { Route } from 'react-router'
