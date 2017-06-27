@@ -1,4 +1,4 @@
-import HeatMapFetchUI from './HeatMapUI';
+import HeatMapFetchUI from './HeatMapFetchUI';
 import { connect } from 'react-redux'
 import { updateHeatMapData } from '../../actions/DataActions'
 import { trackerScreenSetError} from '../../actions/TrackerScreenActions'
