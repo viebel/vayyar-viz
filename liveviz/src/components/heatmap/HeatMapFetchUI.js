@@ -6,7 +6,6 @@ import HeatMapUI from './HeatMapUI';
 
 const HeatMapFetchUI = ({error, status, running, url, data, onSuccess, onError}) =>
     <div>
-        <div> {error} </div>
         {status === "disconnected"? null :
             <div>
                 <FetchPeriodic

@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import TrackerApp from 'app/trackerApp/logic/TrackerApp'
 import Connection from './Connection';
+import Errors from './Errors';
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/css/bootstrap-theme.css'
 import 'styles/App.css'
@@ -18,6 +19,7 @@ const AppUI = ({url, status, graphKey, onConnect, updateStatus}) =>
 
         </Navbar.Header>
         <Connection/>
+        <Errors/>
     </Navbar>
     <TrackerApp
       key={ graphKey  /* use key in order to force re-mounting each time we re-connect */ }

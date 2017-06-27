@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Button, FormGroup, FormControl, Form} from 'react-bootstrap';
+import { Button, FormGroup, FormControl, Form} from 'react-bootstrap';
 import {merge} from 'ramda';
 
 
