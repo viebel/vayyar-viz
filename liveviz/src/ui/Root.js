@@ -1,28 +1,17 @@
 import React from 'react'
 import { Provider } from 'react-redux'
-import { AppContainer } from 'react-hot-loader'
-import { v4 } from 'node-uuid'
-import MainComponent from '../ui/Main'
-
-export const Root = ({Component, store}) =>
-<AppContainer>
-  <Provider store={ store }>
-    <Component
-      key={
-        //TODO Yehonathan 2017, May 19: get rid of the key - without it hot reload doesn't work
-        v4()
-      }/>
-  </Provider>
-</AppContainer>
+import {BrowserRouter} from 'react-router-dom';
+import Routes from './Routes'
 
 
-export const hotReload = (render) => {
-  if (module.hot) {
-    module.hot.accept('../ui/Main', () => {
-      const NextApp = require('../ui/Main').default
-      render(NextApp)
-    })
-  }
-}
+const Root = ({Component, store}) =>
+    <Provider store={ store }>
+        <BrowserRouter>
+            <Routes/>
+        </BrowserRouter>
+    </Provider>
 
-export const Main = MainComponent
+export default Root;
+
+
+

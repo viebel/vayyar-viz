@@ -1,17 +1,18 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import {render} from 'react-dom'
 import configureStore from './common/configureStore'
-import { hotReload, Root, Main } from './ui/Root'
+import Root from './ui/Root'
 
-const render = Component => {
-  ReactDOM.render(
-    <Root
-      Component={ Component }
-      store={  configureStore() }
-      />,
+import { AppContainer } from 'react-hot-loader';
+
+render(
+    <AppContainer>
+        <Root store={  configureStore() } />
+    </AppContainer>,
     document.getElementById('root')
-  )
+);
+
+if (module.hot) {
+    module.hot.accept()
 }
 
-render(Main)
-hotReload(render)
