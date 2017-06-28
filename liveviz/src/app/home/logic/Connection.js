@@ -1,9 +1,10 @@
 import { connect } from 'react-redux'
-import ConnectionUI from './ConnectionUI'
-import { setServerRoot, setConnectionStatus } from '../actions/GlobalActions'
+import ConnectionUI from '../ui/ConnectionUI'
+import { setServerRoot, setConnectionStatus } from '../../../actions/GlobalActions'
 
 const mapDispatchToProps = (dispatch) => ({
     onConnect(url)  {
+
       dispatch(setServerRoot(url))
       dispatch(setConnectionStatus("connecting"))
     },
@@ -11,6 +12,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = (state) => ({
     url: state.global.serverRoot,
+    status: state.global.connectionStatus,
   })
 
 const Connection = connect(
