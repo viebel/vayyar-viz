@@ -30,8 +30,8 @@ class TrackerUI extends Component {
             <TargetUI
               key={target.TargetType + "__" + target.Name}
               type={target.TargetType}
-              x={(target.X + Math.random())* width/arenaWidth}
-              y={(target.Y + Math.random())* height/arenaHeight}
+              x={target.X* width/arenaWidth}
+              y={target.Y/100* height/arenaHeight}
               z={target.Z}
               showPosition={this.props.showPosition}
               showZLayer={this.props.showZLayer}

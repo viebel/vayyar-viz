@@ -1,4 +1,4 @@
-import TrackerFetchUI from '../ui/TrackerUI'
+import TrackerFetchUI from '../ui/TrackerFetchUI'
 import { connect } from 'react-redux'
 import { trackerScreenSetError} from '../../../actions/TrackerScreenActions'
 import { updateTrackerData } from '../../../actions/DataActions'
