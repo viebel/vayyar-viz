@@ -20,7 +20,7 @@ class ConnectionUI extends Component {
   }
   render() {
     return (
-        <div className="connection navbar-form navbar-left">
+        <div className="connection">
             <Form className="form-inline">
                 <FormGroup controlId="url" className="connectionTitle">
                     Connect to a sensor:

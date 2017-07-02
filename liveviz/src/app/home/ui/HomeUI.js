@@ -13,9 +13,9 @@ const HomeUI = () =>
     )
 
 HomeUI.propTypes = {
-    url: PropTypes.string.isRequired,
-    status: PropTypes.string.isRequired,
-    graphKey: PropTypes.number.isRequired,
+    url: PropTypes.string,
+    status: PropTypes.string,
+    graphKey: PropTypes.number,
 }
 
 export default HomeUI

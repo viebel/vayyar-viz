@@ -18,7 +18,7 @@ const AppUI = ({url, status, graphKey, onConnect, updateStatus}) =>
           </Navbar.Brand>
 
         </Navbar.Header>
-        <Connection/>
+
         <Errors/>
     </Navbar>
     <TrackerApp
@@ -30,7 +30,7 @@ const AppUI = ({url, status, graphKey, onConnect, updateStatus}) =>
 )
 
 AppUI.propTypes = {
-  url: PropTypes.string.isRequired,
+  url: PropTypes.string,
   status: PropTypes.string.isRequired,
   graphKey: PropTypes.number.isRequired,
 }
