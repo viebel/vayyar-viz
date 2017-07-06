@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import TrackerApp from 'app/trackerApp/logic/TrackerApp'
-import Connection from './home/logic/Connection';
 import Errors from './Errors';
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/css/bootstrap-theme.css'
