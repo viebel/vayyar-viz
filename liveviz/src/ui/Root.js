@@ -10,7 +10,7 @@ import {BrowserRouter} from 'react-router-dom';
 export const Root = ({Component, store}) =>
     <BrowserRouter>
         <AppContainer>
-            <Provider store={ store }>
+            <Provider store={ store } key={v4()}>
 
                 <Component key={
                     //TODO Yehonathan 2017, May 19: get rid of the key - without it hot reload doesn't work
