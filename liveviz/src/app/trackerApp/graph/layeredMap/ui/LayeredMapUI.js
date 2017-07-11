@@ -29,8 +29,8 @@ const LayeredMapUI = ({setLayers, setSlice, layers, slice, availableLayers}) =>
       {
         (layers.target || layers.position || layers.raw || layers.height) &&
         <Tracker
-          showPosition={layers.position}
-          showZLayer={layers.raw }
+          showPosture={layers.position}
+          showZLayer={layers.raw}
           showShadow={layers.height}
           />
       }
