@@ -1,12 +1,16 @@
 {
-  "main.css": "static/css/main.62d8d824.css",
-  "main.css.map": "static/css/main.62d8d824.css.map",
-  "main.js": "static/js/main.fc7c46c0.js",
-  "main.js.map": "static/js/main.fc7c46c0.js.map",
+  "main.css": "static/css/main.34ae23ac.css",
+  "main.css.map": "static/css/main.34ae23ac.css.map",
+  "main.js": "static/js/main.a0173e7b.js",
+  "main.js.map": "static/js/main.a0173e7b.js.map",
   "static/media/glyphicons-halflings-regular.eot": "static/media/glyphicons-halflings-regular.f4769f9b.eot",
   "static/media/glyphicons-halflings-regular.svg": "static/media/glyphicons-halflings-regular.89889688.svg",
   "static/media/glyphicons-halflings-regular.ttf": "static/media/glyphicons-halflings-regular.e18bbf61.ttf",
   "static/media/glyphicons-halflings-regular.woff": "static/media/glyphicons-halflings-regular.fa277232.woff",
   "static/media/glyphicons-halflings-regular.woff2": "static/media/glyphicons-halflings-regular.448c34a5.woff2",
+  "static/media/ionicons.eot?v=2.0.1": "static/media/ionicons.19e65b89.eot",
+  "static/media/ionicons.svg?v=2.0.1": "static/media/ionicons.28df6ee7.svg",
+  "static/media/ionicons.ttf?v=2.0.1": "static/media/ionicons.dd4781d1.ttf",
+  "static/media/ionicons.woff?v=2.0.1": "static/media/ionicons.2c159d0d.woff",
   "static/media/opensans.ttf": "static/media/opensans.953de7ba.ttf"
 }
