@@ -5,8 +5,7 @@ import TrackerUI from './TrackerUI';
 
 const TrackerFetchUI = ({error, status, running, url, targets, onSuccess, onError}) =>
     <div>
-        <div>{error}</div>
-        {status === "disconnected"? null :
+        {status !== "disconnected" && 
             <FetchPeriodic
                 url={ url }
                 onAnimationFrame={true}

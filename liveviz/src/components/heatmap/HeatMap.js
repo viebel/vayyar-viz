@@ -9,7 +9,7 @@ const mapStateToProps = (state) => {
     status: state.global.connectionStatus,
     error: localState.error,
     data: state.data.heatmap,
-    url: `${state.global.serverRoot}/demoData2`,
+    url: `${state.global.serverRoot}/rawImage_YZ`,
     running: localState.running,
   }
 }
