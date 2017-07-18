@@ -2,18 +2,18 @@ import React from 'react';
 import {map, range, join} from 'ramda';
 
 
-const TargetUI = ({x, y, z, type, showPosition, showZLayer, showShadow}) => {
+const TargetUI = ({x, y, z, color, posture, showPosture, showZLayer, showShadow}) => {
     const targetClasses = {
-        "circle": "blue-target",
-        "square": "orange-target",
-        "triangle": "green-target",
+        "blue": "blue-target",
+        "orange": "orange-target",
+        "green": "green-target",
     };
     const postures =  {
-        triangle: "sitting",
-        square: "standing",
-        circle: "lying",
+        Sitting: "sitting",
+        Standing: "standing",
+        Lying: "lying",
     }
-    const targetClass = targetClasses[type] || "target-unknown";
+    const targetClass = targetClasses[color] || "blue-target";
 
     const getShadow = () => {
         if (!showShadow){
@@ -40,7 +40,7 @@ const TargetUI = ({x, y, z, type, showPosition, showZLayer, showShadow}) => {
               className={`target-arena ${targetClass}`}
               style={{"box-shadow": getShadow()}}>
                 <div
-                  className={`target-arena-posture target-arena-${showPosition ? postures[type] : ''}`}/>
+                  className={`target-arena-posture target-arena-${showPosture ? postures[posture] : ''}`}/>
             </div>
         </div>
     )

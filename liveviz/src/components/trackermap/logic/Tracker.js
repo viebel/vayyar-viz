@@ -20,8 +20,8 @@ const mapStateToProps = (state) => {
   return {
     status: state.global.connectionStatus,
     error: localState.error,
-    targets: state.data.tracker.targets,
-    url: `${state.global.serverRoot}/Targets`,
+    targets: state.data.tracker,
+    url: `${state.global.serverRoot}/Tracker_Update`,
     running: localState.running,
   }
 }
