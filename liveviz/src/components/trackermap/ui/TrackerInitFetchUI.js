@@ -1,11 +1,11 @@
 import React from 'react';
 import FetchPeriodic from '../../../common/FetchPeriodic';
 
-const TrackerInitFetchUI = ({error, status, room, running, urlGetTrackerInit, onSuccess, onError}) =>
+const TrackerInitFetchUI = ({error, status, room, running, url, onSuccess, onError}) =>
     <div>
         {status !== "disconnected" &&
             <FetchPeriodic
-                url={ urlGetTrackerInit }
+                url={ url }
                 onAnimationFrame={true}
                 prevent={ !running }
                 onSuccess={ onSuccess }
