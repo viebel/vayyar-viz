@@ -21,7 +21,7 @@ const mapStateToProps = (state) => {
     status: state.global.connectionStatus,
     error: localState.error,
     room: state.data.trackerInit,
-    url: `${state.global.serverRoot}/Tracker_Init`,
+    urlGetTrackerInit: `${state.global.serverRoot}/Tracker_Init`,
     running: localState.running,
   }
 }
