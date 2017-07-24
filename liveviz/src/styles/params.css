@@ -201,8 +201,8 @@
     padding: 4px 10px;
 }
 
-#graph-params .bootstrap-switch .bootstrap-switch-handle-off, 
-#graph-params .bootstrap-switch .bootstrap-switch-handle-on, 
+#graph-params .bootstrap-switch .bootstrap-switch-handle-off,
+#graph-params .bootstrap-switch .bootstrap-switch-handle-on,
 #graph-params .bootstrap-switch .bootstrap-switch-label {
     line-height: 24px;
     display: inline-flex !important;
