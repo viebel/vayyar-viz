@@ -12,6 +12,7 @@ const TargetUI = ({x, y, z, color, posture, showPosture, showZLayer, showShadow}
         Sitting: "sitting",
         Standing: "standing",
         Lying: "lying",
+        Walking: "standing",
     }
     const targetClass = targetClasses[color] || "blue-target";
 
@@ -38,7 +39,7 @@ const TargetUI = ({x, y, z, color, posture, showPosture, showZLayer, showShadow}
             </div>
             <div
               className={`target-arena ${targetClass}`}
-              style={{"box-shadow": getShadow()}}>
+              style={{"boxShadow": getShadow()}}>
                 <div
                   className={`target-arena-posture target-arena-${showPosture ? postures[posture] : ''}`}/>
             </div>

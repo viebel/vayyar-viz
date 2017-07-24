@@ -12,6 +12,7 @@ const SwitchComponent = ({args, onChange}) =>
         <ControlLabel>
             {args.Description + ' '}
         </ControlLabel>
+        <br/>
         <Switch
             value={truthy(args.Value)}
             onChange={(e, state) => onChange(state)}
