@@ -1,20 +1,23 @@
 import React from 'react'
-import FetchPeriodic from 'common/FetchPeriodic'
+import FetchInit from 'common/FetchInit'
 import ParamsUI from './ParamsUI';
 
 
-const ParamsFetchUI = ({status, urlGetParams, isEditable, preventFetch, interval, onSuccess, onError, paramsByCategory, updateParam, resetParams, changeParamsStatus, sendParams, error}) =>
+const ParamsFetchUI = ({status, isRunning, urlGetParams, urlPost, isEditable, interval, onSuccess, onError, paramsByCategory, updateParam, resetParams, changeParamsStatus, sendParams, paramsInit, error}) =>
   <div>
     {status === "disconnected"? null :
-      <FetchPeriodic
-        url={ urlGetParams }
+      <FetchInit
+        isRunning={ isRunning }
+        paramsInit={ paramsInit }
+        urlGet={ urlGetParams }
+        urlPost={ urlPost }
         interval={ interval }
-        prevent={ preventFetch}
         onSuccess={ onSuccess}
         onError={ onError }
         />
     }
     <ParamsUI
+      isRunning={ isRunning }
       error={ error }
       isEditable={isEditable}
       paramsByCategory={ paramsByCategory }
