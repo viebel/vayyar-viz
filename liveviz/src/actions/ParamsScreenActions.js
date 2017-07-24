@@ -43,6 +43,14 @@ const sendParamsToServer = (dispatch, url, params) => {
   })
 }
 
+export const requestInitParams = (url) =>
+(dispatch, getState) => {
+  const state = getState(),
+  params = state.data.paramsInit.variables
+
+  return sendParamsToServer(dispatch, url, params)
+}
+
 export const sendParams = () =>
 (dispatch, getState) => {
   const state = getState(),
@@ -51,7 +59,6 @@ export const sendParams = () =>
 
   return sendParamsToServer(dispatch, url, params)
 }
-
 
 const DEBOUNCE_DELAY_SEND_PARAMS = 300
 export const debouncedSendParams = () => {
