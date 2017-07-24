@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import TitleBarUI from '../ui/TitleBarUI';
-import { trackerScreenToggleRunning, trackerAppScreenSetView} from 'actions/TrackerScreenActions'
+import { trackerAppScreenSetView, sendCommand } from 'actions/TrackerScreenActions'
 import { toggleParamsDisplay } from 'actions/ParamsScreenActions'
 
 
@@ -16,7 +16,7 @@ const mapStateToProps = (state) => ({
 const TitleBar = connect(
   mapStateToProps,
   {
-    toggleRunning: trackerScreenToggleRunning,
+    sendCommand: sendCommand,
     toggleParams: toggleParamsDisplay,
     setViewMode: trackerAppScreenSetView
   }
