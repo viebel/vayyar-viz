@@ -80,10 +80,8 @@ class TrackerUI extends Component {
   }
   render() {
     const {width, height} = this.state;
-    const arenaWidth = this.props.room.Data[0][0]
-    const arenaHeight = this.props.room.Data[0][1]
-    const sensorX = this.props.room.Data[1][0]
-    const sensorY = this.props.room.Data[1][1]
+    const {arenaWidth, arenaHeight} = this.props.room.Data[0]
+    const {sensorX, sensorY} = this.props.room.Data[1]
     const targets = convertData(window.notrackerData || this.props.targets);
     return (
       <div className="graph-arena"
