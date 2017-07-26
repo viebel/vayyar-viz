@@ -55,7 +55,7 @@ const trackerData = {
 }
 
 const convertData = (data) => {
-  const nTargets = length(filter(x=> x !== "NA", data.PostureVector))
+  const nTargets = Math.min(length(filter(x=> x !== "NA", data.PostureVector)), length(filter(x=> x[0] !== "NaN", data.LocationMatrix)))
   const colors = ["blue", "green", "orange", "blue", "blue"]
   return map(i => ({
     color: colors[i],
@@ -75,11 +75,13 @@ class TrackerUI extends Component {
   }
   componentDidMount() {
     const {width, height} = this.domElement.getBoundingClientRect();
+
     this.setState(merge(this.state, {width, height}));
   }
   render() {
-    const {width, height} = this.state,
-    [arenaWidth, arenaHeight] = [20, 10]
+    const {width, height} = this.state;
+    const {arenaWidth, arenaHeight} = this.props.room.Data[0]
+    const {sensorX, sensorY} = this.props.room.Data[1]
     const targets = convertData(window.notrackerData || this.props.targets);
     return (
       <div className="graph-arena"
@@ -91,8 +93,8 @@ class TrackerUI extends Component {
               type={target.color}
               posture={target.Posture}
               color={target.color}
-              x={Math.abs(target.Location[0])*1* width/arenaWidth}
-              y={Math.abs(target.Location[1])*1* height/arenaHeight}
+              x={(target.Location[0] + sensorX) / arenaWidth * width}
+              y={(target.Location[1] + sensorY) / arenaHeight * height}
               z={0}
               showPosture={this.props.showPosture}
               showZLayer={this.props.showZLayer}

@@ -10,6 +10,18 @@ yarn start
 yarn test
 ```
 
+## Windows
+Set environment variable and run:
+```bash
+$Env:NODE_PATH = "./src"; node scripts/start.js
+```
+
+## Issues
+Specific modules may be missing after the install (for examlpe the module 'amdefine'). To install:
+```bash
+npm install module_name
+```
+
 ## Deploy
 
 ```sh

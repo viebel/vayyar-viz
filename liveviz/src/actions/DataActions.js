@@ -1,3 +1,8 @@
+export const updateTrackerInitData = (data) =>  ({
+  type: 'DATA_UPDATE_TRACKER_INIT',
+  val: data,
+})
+
 export const updateTrackerData = (data) =>  ({
   type: 'DATA_UPDATE_TRACKER',
   val: data,
