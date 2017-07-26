@@ -6,8 +6,8 @@ import { connect } from 'react-redux'
 const mapStateToProps = (state, {view, mapIdx}) => ({
     layers: getTrackerAppLayers(state, view, mapIdx),
     slice: getTrackerAppSlice(state, view, mapIdx),
-    availableLayers: ["heatmap", "target", "position", "raw", "height", "sensor"],
-    availableSlices: ["XY", "XZ"]
+    availableLayers: ["heatmap", "target", "position", "raw", "height", "sensor", "threeD"],
+    availableSlices: ["XY", "XZ"],
 })
 
 const mapDispatchToProps = (dispatch, {view, mapIdx}) => ({

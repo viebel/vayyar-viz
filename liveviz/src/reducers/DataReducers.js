@@ -331,6 +331,7 @@ export const defaultState = {
   trackerInit: trackerInitData,
   tracker: trackerData,
   heatmap: heatmapData,
+  threeD: heatmapData,
   params: paramsData,
   paramsInit: paramsInit,
   vCubeOutputs : vCubeOutputsData,
@@ -350,7 +351,6 @@ export const paramsByCategory = state => {
   return groupBy(p => head(split('.', p.VisibleName)))(variables)
 }
 
-
 export const data = (state=defaultState, action) => {
   switch(action.type) {
     case 'DATA_UPDATE_TRACKER_INIT':
@@ -360,6 +360,8 @@ export const data = (state=defaultState, action) => {
     return assoc('tracker', action.val, state)
     case 'DATA_UPDATE_HEATMAP':
     return assoc('heatmap', action.val, state)
+    case 'DATA_UPDATE_THREED':
+    return assoc('threeD', action.val, state)
     case 'DATA_UPDATE_PARAMS':
     return assoc('params', action.val, state)
     case 'DATA_UPDATE_PARAM':
