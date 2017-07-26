@@ -71,10 +71,6 @@ class TrackerUI extends Component {
     this.state = {
       width: 0,
       height: 0,
-      arenaWidth: this.props.room.Data[0][0],
-      arenaHeight: this.props.room.Data[0][1],
-      sensorX: this.props.room.Data[1][0],
-      sensorY: this.props.room.Data[1][1],
     }
   }
   componentDidMount() {
@@ -83,7 +79,11 @@ class TrackerUI extends Component {
     this.setState(merge(this.state, {width, height}));
   }
   render() {
-    const {width, height, arenaWidth, arenaHeight, sensorX, sensorY} = this.state;
+    const {width, height} = this.state;
+    const arenaWidth: this.props.room.Data[0][0]
+    const arenaHeight: this.props.room.Data[0][1]
+    const sensorX: this.props.room.Data[1][0]
+    const sensorY: this.props.room.Data[1][1]
     const targets = convertData(window.notrackerData || this.props.targets);
     return (
       <div className="graph-arena"
