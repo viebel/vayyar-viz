@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
-import { toggleParamsStatus, paramsScreenSetError } from 'actions/ParamsScreenActions'
+import { trackerScreenSetError, trackerScreenSetConnected } from 'actions/TrackerScreenActions'
 import { updateParamsData } from 'actions/DataActions'
-import { debouncedSendParams, sendParams, resetParams, updateParam } from 'actions/ParamsScreenActions'
+import { toggleParamsStatus, debouncedSendParams, sendParams, resetParams, updateParam } from 'actions/ParamsScreenActions'
 import { getParamsByCategory } from 'reducers'
 import ParamsFetchUI from '../ui/ParamsFechUI'
 
@@ -18,9 +18,10 @@ const mapDispatchToProps = (dispatch) => ({
   },
   onSuccess(data) {
     dispatch(updateParamsData(data))
+    dispatch(trackerScreenSetConnected())
   },
   onError(reason, url) {
-    dispatch(paramsScreenSetError(reason, url))
+    dispatch(trackerScreenSetError(reason, url))
   },
   updateParam(name, value) {
     dispatch(debouncedSendParams())

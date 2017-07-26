@@ -1,11 +1,9 @@
 import { connect } from 'react-redux'
 import AppUI from 'app/AppUI'
 import { setServerRoot, setConnectionStatus } from 'actions/GlobalActions'
-import { requestInitParams } from 'actions/ParamsScreenActions'
 
 const mapDispatchToProps = (dispatch) => ({
     onConnect(url)  {
-      dispatch(requestInitParams(url))
       dispatch(setServerRoot(url))
       dispatch(setConnectionStatus("connecting"))
     },
