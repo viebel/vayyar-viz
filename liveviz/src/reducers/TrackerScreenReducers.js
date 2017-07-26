@@ -1,15 +1,15 @@
 import { assoc  } from 'ramda'
 
 const defaultState = {
-  running: false,
+  phase: 'DISCONNECTED',
   preventFetch: false,
   message: null,
 }
 
 export const tracker = (state=defaultState, action) => {
   switch(action.type) {
-    case 'TRACKER_SCREEN_TOGGLE_RUNNING':
-    return assoc('running', !state.running, state)
+    case 'TRACKER_SCREEN_SET_PHASE':
+    return assoc('phase', action.val, state)
     case 'TRACKER_SCREEN_STOP_RUNNING':
     return assoc('running', false, state)
     case 'PARAMS_SCREEN_TOGGLE_PREVENT_FETCH':
