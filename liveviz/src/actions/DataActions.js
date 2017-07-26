@@ -13,8 +13,17 @@ export const updateHeatMapData = (data) => ({
   val: data,
 })
 
+export const updateThreeDData = (data) => ({
+  type: 'DATA_UPDATE_THREED',
+  val: data,
+})
+
 
 export const updateParamsData = (data) => ({
   type: 'DATA_UPDATE_PARAMS',
   val: data,
+})
+
+export const resetDataState = () => ({
+  type: 'DATA_RESET_DATA_STATE',
 })

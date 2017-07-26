@@ -16,6 +16,7 @@ const HeatMapFetchUI = ({error, status, running, url, data, onSuccess, onError})
                     onError={ onError }
                 />
                 <HeatMapUI
+                    display={ display }
                     data={ data }
                 />
             </div>
