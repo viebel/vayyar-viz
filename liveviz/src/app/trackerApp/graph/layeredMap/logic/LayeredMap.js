@@ -8,6 +8,8 @@ const mapStateToProps = (state, {view, mapIdx}) => ({
     slice: getTrackerAppSlice(state, view, mapIdx),
     availableLayers: ["heatmap", "target", "position", "raw", "height", "sensor", "threeD"],
     availableSlices: ["XY", "XZ"],
+    maxHorizontalValue: state.data.trackerInit.Data[0][0],
+    maxVerticalValue: state.data.trackerInit.Data[0][1],
 })
 
 const mapDispatchToProps = (dispatch, {view, mapIdx}) => ({
