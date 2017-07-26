@@ -87,6 +87,10 @@
     background-image: url("./images/layer_icons/heatmap.png");
 }
 
+.layeredMap_projection_threeD{
+    background-image: url("./images/layer_icons/3D.png");
+}
+
 .layeredMap_projection_position{
     background-image: url("./images/layer_icons/position.png");
 }
