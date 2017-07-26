@@ -25,7 +25,7 @@ const mapStateToProps = (state) => {
     room: state.data.trackerInit,
     display: state.screens.display,
     url: `${state.global.serverRoot}/Tracker_Update`,
-    running: localState.running,
+    phase: localState.phase,
   }
 }
 

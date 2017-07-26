@@ -4,14 +4,14 @@ import FetchPeriodic from '../../common/FetchPeriodic';
 import HeatMapUI from './HeatMapUI';
 
 
-const HeatMapFetchUI = ({error, status, running, url, data, onSuccess, onError}) =>
+const HeatMapFetchUI = ({error, status, phase, url, data, display, onSuccess, onError}) =>
     <div>
         {status === "disconnected"? null :
             <div>
                 <FetchPeriodic
                     url={ url }
                     onAnimationFrame={true}
-                    prevent={!running}
+                    prevent={phase !== 'RUNNING'}
                     onSuccess={ onSuccess }
                     onError={ onError }
                 />

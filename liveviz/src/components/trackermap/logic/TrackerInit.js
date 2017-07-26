@@ -22,7 +22,7 @@ const mapStateToProps = (state) => {
     error: localState.error,
     room: state.data.trackerInit,
     urlGetTrackerInit: `${state.global.serverRoot}/Tracker_Init`,
-    running: localState.running,
+    phase: localState.phase,
   }
 }
 
