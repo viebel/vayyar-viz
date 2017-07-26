@@ -1,6 +1,5 @@
 import {Component} from 'react';
 import PropTypes from 'prop-types';
-import { paramsInit } from 'reducers/DataReducers';
 
 class FetchInit extends Component {
   constructor(props) {
@@ -35,7 +34,7 @@ class FetchInit extends Component {
       headers: {
         'Content-Type': 'text/plain'
       },
-      body: JSON.stringify(paramsInit)
+      body: JSON.stringify(that.props.paramsInit)
     }).then(response => {
       getParams(that, that.props.urlGet)
     }).catch(reason => {

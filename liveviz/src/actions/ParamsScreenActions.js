@@ -1,10 +1,5 @@
 import { assoc, map } from 'ramda';
 
-export const paramsScreenSetError = (reason, url) => ({
-  type: 'PARAMS_SCREEN_SET_ERROR',
-  val: {reason, url},
-})
-
 export const paramsScreenTogglePreventFetch = (prevent) => ({
   type: 'PARAMS_SCREEN_TOGGLE_PREVENT_FETCH',
   val: prevent,
@@ -41,14 +36,6 @@ const sendParamsToServer = (dispatch, url, params) => {
     dispatch(paramsScreenTogglePreventFetch(false))
     console.log(`error in sendParamsToServer => url: ${url} err: ${err}`)
   })
-}
-
-export const requestInitParams = (url) =>
-(dispatch, getState) => {
-  const state = getState(),
-  params = state.data.paramsInit.variables
-
-  return sendParamsToServer(dispatch, url, params)
 }
 
 export const sendParams = () =>
@@ -90,8 +77,13 @@ export const resetParams = () =>
   params = state.data.params.variables,
   defaultParams = map(p => assoc('Value', p.DefaultValue, p))(params),
   url = `${state.global.serverRoot}/post`
+  map(p => dispatch(updateParamInState(p.ActualName, p.DefaultValue)))(params)
 
   return sendParamsToServer(dispatch, url, defaultParams)
+}
+
+export const resetOutputs = () => {
+  return updateParam('Cfg.ExternalGUI.OutputTypes', '{}')
 }
 
 
