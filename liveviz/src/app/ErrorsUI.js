@@ -1,9 +1,9 @@
 import React from 'react';
 
-const ErrorsUI = ({error}) =>
+const ErrorsUI = ({message}) =>
 <div
   className="App-errors">
-  {error}
+  {message}
 </div>
 
 

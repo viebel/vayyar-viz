@@ -3,7 +3,7 @@ import ErrorsUI from './ErrorsUI'
 
 
 const mapStateToProps = (state) => ({
-    error: state.screens.tracker.error
+    message: state.screens.tracker.message
   })
 
 const Connection = connect(

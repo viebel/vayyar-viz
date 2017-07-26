@@ -319,6 +319,14 @@ const paramsData = { // (Yonah) Initial params to be shown by GUI until server s
   "__jTypeID":"MatGUIInterfaces.UpdateConfigurationEditorDataBlock, MatGUIInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
 }
 
+const resetData = state => {
+  state = assoc('trackerInit', trackerInitData, state)
+  state = assoc('tracker', trackerData, state)
+  state = assoc('heatmap', heatmapData, state)
+  state = assoc('threeD', heatmapData, state)
+  return state;
+}
+
 export const defaultState = {
   trackerInit: trackerInitData,
   tracker: trackerData,
@@ -356,6 +364,8 @@ export const data = (state=defaultState, action) => {
     return assoc('params', action.val, state)
     case 'DATA_UPDATE_PARAM':
     return assocPath(['params', 'variables'], updateParam(state.params.variables, action.val.name, action.val.value), state)
+    case 'DATA_RESET_DATA_STATE':
+    return resetData(state)
     default:
     return state
   }
