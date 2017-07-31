@@ -34,13 +34,14 @@ const mapStateToProps = (state) => {
   const localState = state.screens.params;
   return {
     status: state.global.connectionStatus,
-    error: localState.error,
-    preventFetch: localState.preventFetch,
+    isRunning: state.screens.tracker.running,
     interval: FETCH_PARAMS_INTERVAL,
     params: state.data.params,
+    paramsInit: state.data.paramsInit,
     paramsByCategory: getParamsByCategory(state),
     isEditable: localState.isParamEditable,
     urlGetParams: `${state.global.serverRoot}/UpdateConfigurationEditor`,
+    urlPost: `${state.global.serverRoot}/post`,
   }
 }
 

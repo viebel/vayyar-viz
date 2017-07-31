@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { trackerScreenToggleRunning, trackerAppScreenSetView} from 'actions/TrackerScreenActions'
+import { trackerAppScreenSetView } from 'actions/TrackerScreenActions'
 import TrackerAppUI from '../ui/TrackerAppUI';
 import { toggleParamsDisplay } from 'actions/ParamsScreenActions'
 
@@ -15,7 +15,6 @@ const mapStateToProps = (state) => ({
 const TrackerApp = connect(
   mapStateToProps,
   {
-    toggleRunning: trackerScreenToggleRunning,
     toggleParams: toggleParamsDisplay,
     setViewMode: trackerAppScreenSetView
   }

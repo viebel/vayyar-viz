@@ -5,14 +5,25 @@ import '../styles/TitleBar.css';
 const playOrPauseButtonText = (running) =>
 running ? <i className="glyphicon glyphicon-pause"></i> : <i className="glyphicon glyphicon-play"></i>
 
-const TitleBarUI = ({ setViewMode, displayParams, running, status, error, toggleRunning, toggleParams }) =>
+const TitleBarUI = ({ setViewMode, displayParams, running, status, error, sendCommand, toggleParams }) =>
 <Row className="page-toolbar titleBar">
     <Col xs={6}>
         <Button
-            onClick={ toggleRunning }
+            onClick={ () => sendCommand('Pause', !running) }
             bsStyle="primary"
         >
             { playOrPauseButtonText(running) }
+        </Button>
+        <Button
+            onClick={ () => sendCommand('Stop') }
+            bsStyle="primary"
+        >
+          { <i className="glyphicon glyphicon-stop"></i> }
+        </Button>
+        <Button
+            onClick={ () => sendCommand('Closing') }
+            bsStyle="primary">
+            Exit
         </Button>
     </Col>
     <Col xs={6}>

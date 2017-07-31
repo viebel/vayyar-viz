@@ -62,6 +62,9 @@ body {
     font-size: 14px;
 }
 
+#root .page-toolbar .btn.btn-primary {
+  margin: 4px;
+}
 .graphCol{
     height: 50%;
 }

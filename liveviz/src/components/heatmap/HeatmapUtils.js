@@ -33,7 +33,7 @@ export const drawHeatMap = (canvas, data, {min, max}) => {
     for (var j = 0; j < n; j++) {
       const val = scale(data[i][j], min, max, 0, 255);
       ctx.fillStyle = rainbowColor(val);
-      ctx.fillRect(i * scaleX - 1, j * scaleY - 1, scaleX + 1, scaleY + 1); // Adds +1 for smoothing - slight overlap between squares removes small gaps.
+      ctx.fillRect(i * scaleX, j * scaleY, scaleX + 1, scaleY + 1); // Adds +1 for smoothing - slight overlap between squares removes small gaps.
     }
   }
 }
