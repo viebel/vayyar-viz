@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import TrackerApp from 'app/trackerApp/logic/TrackerApp'
-import Connection from './Connection';
 import Errors from './Errors';
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/css/bootstrap-theme.css'
@@ -18,7 +17,7 @@ const AppUI = ({url, status, graphKey, onConnect, updateStatus}) =>
           </Navbar.Brand>
 
         </Navbar.Header>
-        <Connection/>
+
         <Errors/>
     </Navbar>
     <TrackerApp
@@ -30,7 +29,7 @@ const AppUI = ({url, status, graphKey, onConnect, updateStatus}) =>
 )
 
 AppUI.propTypes = {
-  url: PropTypes.string.isRequired,
+  url: PropTypes.string,
   status: PropTypes.string.isRequired,
   graphKey: PropTypes.number.isRequired,
 }

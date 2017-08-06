@@ -15,7 +15,7 @@
     "react-bootstrap-switch": "^15.5.0-a",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.4",
-    "react-router-redux": "next",
+    "react-router-dom": "^4.1.1",
     "redux": "^3.6.0",
     "redux-debounced": "^0.4.0",
     "redux-thunk": "^2.2.0"
