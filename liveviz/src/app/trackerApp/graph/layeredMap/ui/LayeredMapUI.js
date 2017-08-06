@@ -6,8 +6,10 @@ import RulerUI from './RulerUI'
 import '../styles/LayeredMap.css';
 import 'styles/layeredMap.css'
 
+import ThreeD from 'components/3d/ThreeD';
 import HeatMap from 'components/heatmap/HeatMap';
 import Tracker from 'components/trackermap/logic/Tracker';
+import TrackerInit from 'components/trackermap/logic/TrackerInit';
 
 
 const LayeredMapUI = ({setLayers, setSlice, layers, slice, availableLayers}) =>
@@ -23,16 +25,24 @@ const LayeredMapUI = ({setLayers, setSlice, layers, slice, availableLayers}) =>
       />
     <div className="layeredMap__graph">
       {
-        layers.heatmap &&
+        layers.heatmap && !layers.threeD && // Prevent 3D from overlapping with other layers
         <HeatMap/>
       }
       {
-        (layers.target || layers.position || layers.raw || layers.height) &&
+        (!layers.threeD) && (layers.target || layers.position || layers.raw || layers.height) &&
         <Tracker
           showPosture={layers.position}
           showZLayer={layers.raw}
           showShadow={layers.height}
           />
+      }
+    {
+      (!layers.threeD) && (layers.target || layers.position || layers.raw || layers.height) &&
+      <TrackerInit/>
+    }
+      {
+        layers.threeD &&
+            <ThreeD/>
       }
     </div>
   </div>

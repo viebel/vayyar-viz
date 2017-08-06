@@ -1,4 +1,4 @@
-import TrackerFetchUI from '../ui/TrackerFetchUI'
+import TrackerInitFetchUI from '../ui/TrackerInitFetchUI'
 import { connect } from 'react-redux'
 import { trackerScreenSetError} from '../../../actions/TrackerScreenActions'
 import { updateTrackerInitData } from '../../../actions/DataActions'
@@ -26,7 +26,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-const Tracker = connect(
+const TrackerInit = connect(
   mapStateToProps,
   mapDispatchToProps
 )(TrackerInitFetchUI)

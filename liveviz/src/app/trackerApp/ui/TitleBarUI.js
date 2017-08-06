@@ -36,7 +36,16 @@ const TitleBarUI = ({ setViewMode, displayParams, running, status, error, sendCo
                 onClick={ () => setViewMode('multipleMap') }>
                 <div className="titleBar__btnImg titleBar__multipleGraphBtn"/>
             </Button>
-
+            <Button
+                bsStyle="primary"
+                onClick={ toggleFlipDisplay }>
+                Flip
+            </Button>
+            <Button
+                bsStyle="primary"
+                onClick={ toggleRotateDisplay }>
+                Rotate
+            </Button>
             <Button
                 id="menu-toggle"
                 className="titleBar__toggleParams"

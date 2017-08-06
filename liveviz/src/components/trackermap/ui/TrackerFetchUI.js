@@ -3,7 +3,7 @@ import FetchPeriodic from '../../../common/FetchPeriodic';
 
 import TrackerUI from './TrackerUI';
 
-const TrackerFetchUI = ({error, status, running, url, targets, room, showPosture, showZLayer, showShadow, onSuccess, onError}) =>
+const TrackerFetchUI = ({error, status, phase, url, display, targets, room, showPosture, showZLayer, showShadow, onSuccess, onError}) =>
     <div>
         {status !== "disconnected" &&
             <FetchPeriodic
@@ -15,6 +15,7 @@ const TrackerFetchUI = ({error, status, running, url, targets, room, showPosture
             />
         }
         <TrackerUI
+          display={display}
           room={room}
           targets={targets}
           showPosture={showPosture}

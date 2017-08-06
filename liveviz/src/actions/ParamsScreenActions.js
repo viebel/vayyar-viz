@@ -1,10 +1,5 @@
 import { assoc, map } from 'ramda';
 
-export const paramsScreenSetError = (reason, url) => ({
-  type: 'PARAMS_SCREEN_SET_ERROR',
-  val: {reason, url},
-})
-
 export const paramsScreenTogglePreventFetch = (prevent) => ({
   type: 'PARAMS_SCREEN_TOGGLE_PREVENT_FETCH',
   val: prevent,
@@ -52,7 +47,6 @@ export const sendParams = () =>
   return sendParamsToServer(dispatch, url, params)
 }
 
-
 const DEBOUNCE_DELAY_SEND_PARAMS = 300
 export const debouncedSendParams = () => {
   const thunk = sendParams()
@@ -83,8 +77,13 @@ export const resetParams = () =>
   params = state.data.params.variables,
   defaultParams = map(p => assoc('Value', p.DefaultValue, p))(params),
   url = `${state.global.serverRoot}/post`
+  map(p => dispatch(updateParamInState(p.ActualName, p.DefaultValue)))(params)
 
   return sendParamsToServer(dispatch, url, defaultParams)
+}
+
+export const resetOutputs = () => {
+  return updateParam('Cfg.ExternalGUI.OutputTypes', '{}')
 }
 
 

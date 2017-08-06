@@ -6,7 +6,7 @@ import LayeredMap from './layeredMap/logic/LayeredMap'
 const MultipleMapsUI = ({ url, running, status, updateStatus}) =>
 <div className="graphSection">
 {
-  [[0,1],[2,3]].map(indexArr =>
+  [[0, 1]].map(indexArr =>
     <Row
       key={indexArr.toString()}
       className="graphRow">

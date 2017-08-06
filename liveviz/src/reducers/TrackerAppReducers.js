@@ -12,11 +12,9 @@ export const defaultState = {
     slice: "XY",
   },
   multipleMapView : {
-    slices: ["XY", "XY", "XZ", "XZ"],
+    slices: ["XY", "XY"],
     layers: [
-      {raw: true},
-      {tracker:true},
-      {tracker:true},
+      {raw:true, tracker:true},
       {raw:true, tracker:true}
     ]
   }

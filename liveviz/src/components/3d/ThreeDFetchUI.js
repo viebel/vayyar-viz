@@ -1,21 +1,22 @@
 import React from 'react';
 import FetchPeriodic from '../../common/FetchPeriodic';
 
-import HeatMapUI from './HeatMapUI';
+import ThreeDUI from './ThreeDUI';
 
 
-const HeatMapFetchUI = ({error, status, running, url, data, onSuccess, onError}) =>
-    <div>
+const ThreeDFetchUI = ({error, status, phase, url, data, display, view, onSuccess, onError}) =>
+    <div id="threeDcont">
         {status === "disconnected"? null :
             <div>
                 <FetchPeriodic
                     url={ url }
                     onAnimationFrame={true}
-                    prevent={!running}
+                    prevent={phase !== 'RUNNING'}
                     onSuccess={ onSuccess }
                     onError={ onError }
                 />
-                <HeatMapUI
+                <ThreeDUI
+                    view={ view }
                     display={ display }
                     data={ data }
                 />
@@ -23,4 +24,4 @@ const HeatMapFetchUI = ({error, status, running, url, data, onSuccess, onError})
         }
     </div>
 
-export default HeatMapFetchUI;
+export default ThreeDFetchUI;

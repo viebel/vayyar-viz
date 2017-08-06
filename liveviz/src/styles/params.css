@@ -90,7 +90,7 @@
     top: 2px;
 }
 
-#sidebar-wrapper .err-message {
+#sidebar-wrapper .connection-message {
     overflow: auto;
     color: #fff;
     font-size: 13px;

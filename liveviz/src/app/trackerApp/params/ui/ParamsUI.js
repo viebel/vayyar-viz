@@ -3,7 +3,7 @@ import {Button, ButtonToolbar} from 'react-bootstrap';
 import {map, keys } from 'ramda';
 import ParamsBlockUI from './ParamsBlockUI';
 
-const ParamsUI = ({params, paramsByCategory, updateParam, resetParams, sendParams, status, error, isEditable, changeParamsStatus}) =>
+const ParamsUI = ({params, paramsByCategory, updateParam, resetParams, sendParams, status, isEditable, isRunning, changeParamsStatus}) =>
     <div>
         <div className="mode-toggle">
             <Button
@@ -11,14 +11,15 @@ const ParamsUI = ({params, paramsByCategory, updateParam, resetParams, sendParam
                 onClick={ changeParamsStatus }
                 bsStyle="primary">
                 <i className={`glyphicon
-          ${isEditable? "glyphicon-ok": "glyphicon-pencil"}`}
+          ${(isEditable && !isRunning)? "glyphicon-ok": "glyphicon-pencil"}`}
                 />
             </Button>
         </div>
-        <div className="err-message"> {error}</div>
+        <div className="err-message"> </div>
         {
             map( group =>
                 <ParamsBlockUI
+                    isRunning={ isRunning }
                     key={group}
                     updateParam={updateParam}
                     group={group}
@@ -26,7 +27,7 @@ const ParamsUI = ({params, paramsByCategory, updateParam, resetParams, sendParam
                     isEditable={isEditable}/>
             )(keys(paramsByCategory))
         }
-        <ButtonToolbar className={isEditable ? "" : "hidden" }>
+        <ButtonToolbar className={(isEditable && !isRunning) ? "" : "hidden" }>
             <Button
                 onClick={ resetParams }
                 bsStyle="primary">
