@@ -25,6 +25,17 @@ const TitleBarUI = ({ setViewMode, displayParams, phase, status, error, sendComm
             bsStyle="primary">
             Exit
         </Button>
+        <Button
+            onClick={ () => sendCommand('Stop') }
+            bsStyle="primary"
+        >
+          { <i className="glyphicon glyphicon-stop"></i> }
+        </Button>
+        <Button
+            onClick={ () => sendCommand('Closing') }
+            bsStyle="primary">
+            Exit
+        </Button>
     </Col>
     <Col xs={6}>
         <div className="text-right">

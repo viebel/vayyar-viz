@@ -5,7 +5,7 @@ const heatmapData = {"DataType":"demoData2","Data":[[0.0,0.0,0.0,0.0,0.0,0.0,0.0
 
 const trackerInitData = {
   "DataType":"Tracker_Init",
-  "Data":[[3.0,3.0],[1.5,1.5]],
+  "Data":[[3.0,3.0], [-1, -1]],
   "X0":0.0,
   "X1":0.0,
   "Y0":0.0,
@@ -58,42 +58,19 @@ export const paramsInit = { // Params to be requested, setting values "NA" tells
       "ActualName":"MPR.BoardType",
       "VariableType":"Dropdown",
       "Value":"NA",
-      "Description":"Board Type",
+      "Description":"Choose a Board Type",
       "DefaultValue":"vCube",
-      "ListValues":["vCube", "Vex"]
+      "ListValues":["vCube", "Vex"],
     },
     {
-      "VisibleName":"Flow.Read_From_File",
+      "VisibleName":"Mode.Read_From_File",
       "ActualName":"MPR.read_from_file",
       "VariableType":"Switch",
-      "Description":"Read From File",
       "Value":"NA",
+      "Description":"Load Recording",
       "DefaultValue":true,
     },
-    {
-      "VisibleName":"Flow.Save_Image_To_File",
-      "ActualName":"MPR.save_image_to_file",
-      "VariableType":"Switch",
-      "Description":"Save Image To File",
-      "Value":"NA",
-      "DefaultValue":true,
-    },
-    {
-      "VisibleName":"Flow.Save_To_File",
-      "ActualName":"MPR.save_to_file",
-      "VariableType":"Switch",
-      "Description":"Save Raw Data To File",
-      "Value":"NA",
-      "DefaultValue":true,
-    },
-    {
-      "VisibleName":"Flow.Save_Calibed_Data",
-      "ActualName":"MPR.saveData_calib",
-      "VariableType":"Switch",
-      "Description":"Save Calibrated Data",
-      "Value":"NA",
-      "DefaultValue":true,
-    },
+
     {
       "VisibleName":"Arena.X",
       "ActualName":"Cfg.Radar.LimitImageToXYZ(1:2)",
@@ -126,6 +103,30 @@ export const paramsInit = { // Params to be requested, setting values "NA" tells
       "Max":5.0,
       "DefaultValue":[-1.5, 1.5],
       "Step":0.5,
+    },
+    {
+      "VisibleName":"Recording.Save_Image_To_File",
+      "ActualName":"MPR.save_image_to_file",
+      "VariableType":"Switch",
+      "Description":"Save Image To File",
+      "Value":"NA",
+      "DefaultValue":true,
+    },
+    {
+      "VisibleName":"Recording.Save_To_File",
+      "ActualName":"MPR.save_to_file",
+      "VariableType":"Switch",
+      "Description":"Save Raw Data To File",
+      "Value":"NA",
+      "DefaultValue":true,
+    },
+    {
+      "VisibleName":"Recording.Save_Calibed_Data",
+      "ActualName":"MPR.saveData_calib",
+      "VariableType":"Switch",
+      "Description":"Save Calibrated Data",
+      "Value":"NA",
+      "DefaultValue":true,
     },
   ],
   "ID":"UpdateConfigurationEditor",
@@ -173,40 +174,16 @@ const paramsData = { // (Yonah) Initial params to be shown by GUI until server s
       "ActualName":"MPR.BoardType",
       "VariableType":"Dropdown",
       "Value":"vCube",
-      "Description":"Board Type",
+      "Description":"Choose a Board Type",
       "DefaultValue":"vCube",
-      "ListValues":["vCube", "Vex"]
+      "ListValues":["vCube", "Vex"],
     },
     {
-      "VisibleName":"Flow.Read_From_File",
+      "VisibleName":"Mode.Read_From_File",
       "ActualName":"MPR.read_from_file",
       "VariableType":"Switch",
-      "Description":"Read From File",
-      "Value":false,
-      "DefaultValue":true,
-    },
-    {
-      "VisibleName":"Flow.Save_Image_To_File",
-      "ActualName":"MPR.save_image_to_file",
-      "VariableType":"Switch",
-      "Description":"Save Image To File",
-      "Value": false,
-      "DefaultValue":true,
-    },
-    {
-      "VisibleName":"Flow.Save_To_File",
-      "ActualName":"MPR.save_to_file",
-      "VariableType":"Switch",
-      "Description":"Save Raw Data To File",
-      "Value":false,
-      "DefaultValue":true,
-    },
-    {
-      "VisibleName":"Flow.Save_Calibed_Data",
-      "ActualName":"MPR.saveData_calib",
-      "VariableType":"Switch",
-      "Description":"Save Calibrated Data",
-      "Value": false,
+      "Description":"Load Recording",
+      "Value":true,
       "DefaultValue":true,
     },
     {
@@ -242,6 +219,30 @@ const paramsData = { // (Yonah) Initial params to be shown by GUI until server s
       "DefaultValue":[-1.0, 1.0],
       "Step":0.5,
     },
+    {
+      "VisibleName":"Recording.Save_Image_To_File",
+      "ActualName":"MPR.save_image_to_file",
+      "VariableType":"Switch",
+      "Description":"Save Image To File",
+      "Value": false,
+      "DefaultValue":true,
+    },
+    {
+      "VisibleName":"Recording.Save_To_File",
+      "ActualName":"MPR.save_to_file",
+      "VariableType":"Switch",
+      "Description":"Save Raw Data To File",
+      "Value":false,
+      "DefaultValue":true,
+    },
+    {
+      "VisibleName":"Recording.Save_Calibed_Data",
+      "ActualName":"MPR.saveData_calib",
+      "VariableType":"Switch",
+      "Description":"Save Calibrated Data",
+      "Value": false,
+      "DefaultValue":true,
+    },
   ],
   "ID":"UpdateConfigurationEditor",
   "__jTypeID":"MatGUIInterfaces.UpdateConfigurationEditorDataBlock, MatGUIInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
@@ -256,6 +257,7 @@ const resetData = state => {
 }
 
 export const defaultState = {
+  totalPersonnel: null,
   trackerInit: trackerInitData,
   tracker: trackerData,
   heatmap: heatmapData,
@@ -281,9 +283,10 @@ export const paramsByCategory = state => {
 
 export const data = (state=defaultState, action) => {
   switch(action.type) {
+    case 'DATA_UPDATE_TOTAL_PERSONNEL':
+    return assoc('totalPersonnel', action.val, state)
     case 'DATA_UPDATE_TRACKER_INIT':
     return assoc('trackerInit', action.val, state)
-    // TODO: (Yonah, 18,7,17) - Add multisensor functionality
     case 'DATA_UPDATE_TRACKER':
     return assoc('tracker', action.val, state)
     case 'DATA_UPDATE_HEATMAP':

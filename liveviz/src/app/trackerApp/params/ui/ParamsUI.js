@@ -3,6 +3,7 @@ import {Button, ButtonToolbar} from 'react-bootstrap';
 import {map, keys } from 'ramda';
 import ParamsBlockUI from './ParamsBlockUI';
 
+
 const ParamsUI = ({params, paramsByCategory, updateParam, resetParams, sendParams, phase, isEditable, changeParamsStatus}) =>
     <div>
         <div className="mode-toggle">

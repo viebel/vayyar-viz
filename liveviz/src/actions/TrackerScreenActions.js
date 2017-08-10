@@ -10,6 +10,11 @@ export const trackerScreenStopRunning = () =>
   type: 'TRACKER_SCREEN_STOP_RUNNING'
 })
 
+export const trackerScreenStopRunning = () =>
+({
+  type: 'TRACKER_SCREEN_STOP_RUNNING'
+})
+
 export const trackerScreenSetError = (reason, url) => ({
   type: 'TRACKER_SCREEN_SET_MESSAGE',
   message: `Cannot connect to: ${url}`,
