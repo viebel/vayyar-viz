@@ -1,7 +1,13 @@
 
-export const trackerScreenToggleRunning = () =>
+export const trackerScreenSetPhase = (value) =>
 ({
-  type: 'TRACKER_SCREEN_TOGGLE_RUNNING'
+  type: 'TRACKER_SCREEN_SET_PHASE',
+  val: value,
+})
+
+export const trackerScreenStopRunning = () =>
+({
+  type: 'TRACKER_SCREEN_STOP_RUNNING'
 })
 
 export const trackerScreenStopRunning = () =>
@@ -86,21 +92,28 @@ const sendCommandToServer = (dispatch, url, command) => {
   })
 }
 
-export const sendCommand = (button, isRunning) =>
+export const sendCommand = (button) =>
 (dispatch, getState) => {
-  let command;
+  let command
+  const state = getState()
 
   if (button === 'Pause') {
-    command = isRunning ? 'Start' : 'Pause'
-    if (command === 'Start') {
+    if (state.screens.tracker.phase === 'RUNNING') {
+      command = 'Pause'
+      dispatch(trackerScreenSetPhase('PAUSED'))
+    } else {
+      command = 'Start'
+      dispatch(trackerScreenSetPhase('RUNNING'))
       dispatch(requestOutputTypes())
     }
-    dispatch(trackerScreenToggleRunning())
   } else {
-    command = button;
-    dispatch(trackerScreenStopRunning())
+    if (button === 'Stop') {
+      dispatch(trackerScreenSetPhase('STOPPED'))
+    } else { // button === 'Exit'
+      dispatch(trackerScreenSetPhase('DISCONNECTED'))
+    }
+    command = button
   }
-  const state = getState(),
-  url = `${state.global.serverRoot}/post`
+  const url = `${state.global.serverRoot}/post`
   return sendCommandToServer(dispatch, url, command)
 }

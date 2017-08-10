@@ -7,7 +7,7 @@ import { resetDataState } from 'actions/DataActions'
 
 
 const mapStateToProps = (state) => ({
-  running: state.screens.tracker.running,
+  phase: state.screens.tracker.phase,
   displayParams: state.screens.params.display,
   status: state.global.connectionStatus,
   error: state.screens.tracker.error,

@@ -3,7 +3,8 @@ import {Button, ButtonToolbar} from 'react-bootstrap';
 import {map, keys } from 'ramda';
 import ParamsBlockUI from './ParamsBlockUI';
 
-const ParamsUI = ({params, paramsByCategory, updateParam, resetParams, sendParams, status, isEditable, isRunning, changeParamsStatus}) =>
+
+const ParamsUI = ({params, paramsByCategory, updateParam, resetParams, sendParams, phase, isEditable, changeParamsStatus}) =>
     <div>
         <div className="mode-toggle">
             <Button
@@ -11,23 +12,23 @@ const ParamsUI = ({params, paramsByCategory, updateParam, resetParams, sendParam
                 onClick={ changeParamsStatus }
                 bsStyle="primary">
                 <i className={`glyphicon
-          ${(isEditable && !isRunning)? "glyphicon-ok": "glyphicon-pencil"}`}
+          ${(isEditable && (phase === 'STOPPED' || phase === 'DISCONNECTED'))? "glyphicon-ok": "glyphicon-pencil"}`}
                 />
             </Button>
         </div>
-        <div className="err-message"> </div>
+        <div className="connection-message"> </div>
         {
             map( group =>
                 <ParamsBlockUI
-                    isRunning={ isRunning }
+                    phase={ phase }
                     key={group}
                     updateParam={updateParam}
                     group={group}
                     params={paramsByCategory[group]}
-                    isEditable={isEditable}/>
+                    isEditable={isEditable && (phase === 'STOPPED' || phase === 'DISCONNECTED')}/>
             )(keys(paramsByCategory))
         }
-        <ButtonToolbar className={(isEditable && !isRunning) ? "" : "hidden" }>
+        <ButtonToolbar className={(isEditable && (phase === 'STOPPED' || phase === 'DISCONNECTED')) ? "" : "hidden" }>
             <Button
                 onClick={ resetParams }
                 bsStyle="primary">

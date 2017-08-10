@@ -35,7 +35,7 @@ const mapStateToProps = (state) => {
   const localState = state.screens.params;
   return {
     status: state.global.connectionStatus,
-    isRunning: state.screens.tracker.running,
+    phase: state.screens.tracker.phase,
     interval: FETCH_PARAMS_INTERVAL,
     params: state.data.params,
     paramsInit: state.data.paramsInit,

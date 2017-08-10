@@ -9,7 +9,7 @@ const TrackerFetchUI = ({error, status, phase, url, display, targets, room, show
             <FetchPeriodic
                 url={ url }
                 onAnimationFrame={true}
-                prevent={ !running }
+                prevent={phase !== 'RUNNING'}
                 onSuccess={ onSuccess }
                 onError={ onError }
             />

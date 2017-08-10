@@ -12,17 +12,17 @@ import Tracker from 'components/trackermap/logic/Tracker';
 import TrackerInit from 'components/trackermap/logic/TrackerInit';
 
 
-const LayeredMapUI = ({setLayers, setSlice, layers, slice, availableLayers}) =>
+const LayeredMapUI = ({setLayers, setSlice, layers, slice, availableLayers, maxHorizontalValue, maxVerticalValue}) =>
 <div className="layered-map">
-  <RulerUI maxVerticalValue={15} maxHorizontalValue={20}/>
+<LayerMapToolbarUI
+  layers={layers}
+  slice={slice}
+  setLayers={setLayers}
+  setSlice={setSlice}
+  availableLayers={availableLayers}
+  />
   <div className="layeredMap__drawingSection">
-    <LayerMapToolbarUI
-      layers={layers}
-      slice={slice}
-      setLayers={setLayers}
-      setSlice={setSlice}
-      availableLayers={availableLayers}
-      />
+    <RulerUI maxVerticalValue={maxVerticalValue*10} maxHorizontalValue={maxHorizontalValue*10}/>
     <div className="layeredMap__graph">
       {
         layers.heatmap && !layers.threeD && // Prevent 3D from overlapping with other layers

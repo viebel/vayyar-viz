@@ -2,10 +2,10 @@ import React from 'react'
 import {range, map} from 'ramda'
 
 const getItemHorizontal = index =>
-(index % 5 === 0)? index : "|"
+(index % 5 === 0)? index / 10 : "|"
 
 const getItemVertical = index =>
-(index % 5 === 0)? index : "__";
+(index % 5 === 0)? index / 10 : "__";
 
 const getVerticalItems = (maxVerticalValue) =>
 map(i =>

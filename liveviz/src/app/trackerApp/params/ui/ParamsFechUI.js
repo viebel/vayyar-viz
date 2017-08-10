@@ -3,11 +3,10 @@ import FetchInit from 'common/FetchInit'
 import ParamsUI from './ParamsUI';
 
 
-const ParamsFetchUI = ({status, isRunning, urlGetParams, urlPost, isEditable, interval, onSuccess, onError, paramsByCategory, updateParam, resetParams, changeParamsStatus, sendParams, paramsInit, error}) =>
+const ParamsFetchUI = ({status, phase, urlGetParams, urlPost, isEditable, interval, onSuccess, onError, paramsByCategory, updateParam, resetParams, changeParamsStatus, sendParams, paramsInit, error}) =>
   <div>
-    {status === "disconnected"? null :
+    {status === "disconnected" ? null :
       <FetchInit
-        isRunning={ isRunning }
         paramsInit={ paramsInit }
         urlGet={ urlGetParams }
         urlPost={ urlPost }
@@ -17,7 +16,7 @@ const ParamsFetchUI = ({status, isRunning, urlGetParams, urlPost, isEditable, in
         />
     }
     <ParamsUI
-      isRunning={ isRunning }
+      phase={ phase }
       error={ error }
       isEditable={isEditable}
       paramsByCategory={ paramsByCategory }

@@ -2,17 +2,28 @@ import React from 'react'
 import { Row, Button, Col } from 'react-bootstrap'
 import '../styles/TitleBar.css';
 
-const playOrPauseButtonText = (running) =>
-running ? <i className="glyphicon glyphicon-pause"></i> : <i className="glyphicon glyphicon-play"></i>
+const playOrPauseButtonText = (phase) =>
+(phase === "RUNNING") ? <i className="glyphicon glyphicon-pause"></i> : <i className="glyphicon glyphicon-play"></i>
 
-const TitleBarUI = ({ setViewMode, displayParams, running, status, error, sendCommand, toggleParams }) =>
+const TitleBarUI = ({ setViewMode, displayParams, phase, status, error, sendCommand, toggleParams, toggleFlipDisplay, toggleRotateDisplay, resetDataState, resetOutputs }) =>
 <Row className="page-toolbar titleBar">
     <Col xs={6}>
         <Button
-            onClick={ () => sendCommand('Pause', !running) }
+            onClick={ () => sendCommand('Pause', phase) }
             bsStyle="primary"
         >
-            { playOrPauseButtonText(running) }
+            { playOrPauseButtonText(phase) }
+        </Button>
+        <Button
+            onClick={ () => {resetDataState(); sendCommand('Stop', phase); resetOutputs()} }
+            bsStyle="primary"
+        >
+          { <i className="glyphicon glyphicon-stop"></i> }
+        </Button>
+        <Button
+            onClick={ () => () => {resetDataState(); sendCommand('Closing', phase)} }
+            bsStyle="primary">
+            Exit
         </Button>
         <Button
             onClick={ () => sendCommand('Stop') }

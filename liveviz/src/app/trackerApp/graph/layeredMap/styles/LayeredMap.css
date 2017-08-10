@@ -1,14 +1,15 @@
 .layeredMap__drawingSection{
     position: absolute;
+    background-color: #3B4154;
     top: 0;
     bottom: 20px;
     right: 0;
-    left: 20px;
+    left: 44px;
 }
 
 .layered-map{
     position:absolute;
-    background-color: #3B4154;
+    background-color: #222736;
     top:10px;
     left:10px;
     right:10px;
@@ -87,6 +88,10 @@
     background-image: url("./images/layer_icons/heatmap.png");
 }
 
+.layeredMap_projection_threeD{
+    background-image: url("./images/layer_icons/3D.png");
+}
+
 .layeredMap_projection_position{
     background-image: url("./images/layer_icons/position.png");
 }
@@ -135,11 +140,11 @@
     bottom: 0px;
     left:0;
     text-align: center;
-    background-color: #222736;
+    background-color: #3B4154;
 }
 
 .rulerUI_vertical{
-    background-color: #222736;
+    background-color: #3B4154;
     position: absolute;
     width: 20px;
     top: 0;
@@ -148,7 +153,7 @@
 }
 
 .rulerUI_horizontal{
-    background-color: #222736;
+    background-color: #3B4154;
     position: absolute;
     height: 20px;
     right: 0;
